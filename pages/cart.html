@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your shopping cart at Mobile Zone. Review your items and proceed to checkout." />
+    <title>My Cart – Mobile Zone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
+                <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
+            </a>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                    <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="new-year-offer.html">New Year Offer</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu modern-dropdown">
+                            <li><a class="dropdown-item" href="category.html?cat=display"><i
+                                        class="bi bi-phone me-2"></i>Display</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
+                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
+                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
+                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
+                                        class="bi bi-plug me-2"></i>Chargers</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
+                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <a href="cart.html" class="nav-icon-btn cart-btn position-relative"
+                        style="background:var(--blue);color:white;">
+                        <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop"
+                            style="background:var(--red);">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="container">
+            <h1><i class="bi bi-cart3 me-2"></i>My Cart</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Cart</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- CART CONTENT -->
+    <section class="py-5">
+        <div class="container">
+
+            <!-- Empty Cart -->
+            <div class="empty-cart" id="emptyCart" style="display:none;">
+                <i class="bi bi-cart-x"></i>
+                <h4>Your cart is empty</h4>
+                <p>Looks like you haven't added anything to your cart yet. Start shopping!</p>
+                <a href="products.html" class="btn btn-add-cart" style="padding:.8rem 2rem;">
+                    <i class="bi bi-bag-fill me-2"></i>Start Shopping
+                </a>
+            </div>
+
+            <!-- Cart Items + Summary -->
+            <div id="cartSummarySection" style="display:none;">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 style="font-weight:800;margin:0;">Cart Items <span id="cartItemCount"
+                                    style="color:var(--text-muted);font-size:.9rem;font-weight:500;"></span></h5>
+                            <button class="btn btn-sm" style="color:var(--red);font-size:.82rem;font-weight:700;"
+                                onclick="if(confirm('Clear all items?')){clearCart();renderCartPage();}">
+                                <i class="bi bi-trash3 me-1"></i>Clear All
+                            </button>
+                        </div>
+
+                        <!-- Cart Items rendered by JS -->
+                        <div id="cartItems"></div>
+
+                        <!-- Promo Code -->
+                        <div
+                            style="background:white;border-radius:var(--radius-md);padding:1.2rem;box-shadow:var(--shadow-sm);border:1px dashed var(--blue);margin-top:1rem;">
+                            <div style="font-size:.85rem;font-weight:700;margin-bottom:.6rem;color:var(--text-dark);"><i
+                                    class="bi bi-tag-fill me-2 text-primary"></i>Apply Promo Code</div>
+                            <div class="d-flex gap-2">
+                                <input type="text" id="promoInput" class="form-control form-control-sm"
+                                    placeholder="Enter promo code"
+                                    style="border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.85rem;" />
+                                <button class="btn btn-sm btn-add-cart" onclick="applyPromo()"
+                                    style="white-space:nowrap;">Apply</button>
+                            </div>
+                            <div id="promoMsg" style="font-size:.8rem;margin-top:.4rem;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="col-lg-4">
+                        <div class="cart-summary">
+                            <h5>Order Summary</h5>
+                            <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+                            <div class="summary-row" style="color:var(--green,#2E7D32);"><span>You Save</span><span
+                                    id="cartSavings" style="color:#2E7D32;">₹0</span></div>
+                            <div class="summary-row"><span>Delivery</span><span id="cartDelivery">₹49</span></div>
+                            <div class="summary-row summary-total"><span>Total</span><span id="cartTotal">₹0</span>
+                            </div>
+                            <button class="btn btn-add-cart w-100 mt-3" style="padding:.85rem;font-size:.95rem;"
+                                onclick="checkout()">
+                                <i class="bi bi-credit-card me-2"></i>Proceed to Checkout
+                            </button>
+                            <a href="products.html" class="btn w-100 mt-2"
+                                style="background:var(--light-gray);color:var(--text-dark);font-weight:600;font-size:.88rem;border-radius:var(--radius-sm);">
+                                <i class="bi bi-arrow-left me-2"></i>Continue Shopping
+                            </a>
+
+                            <!-- Trust Badges -->
+                            <div class="mt-3 pt-3" style="border-top:1px solid var(--border);">
+                                <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
+                                    <span
+                                        style="font-size:.72rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem;"><i
+                                            class="bi bi-shield-check-fill text-success"></i>Secure Checkout</span>
+                                    <span
+                                        style="font-size:.72rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem;"><i
+                                            class="bi bi-truck text-primary"></i>Free Delivery ₹499+</span>
+                                    <span
+                                        style="font-size:.72rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem;"><i
+                                            class="bi bi-arrow-repeat text-warning"></i>Easy Returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SUGGESTED PRODUCTS -->
+    <section class="py-5 bg-light-custom" id="suggestedSection">
+        <div class="container">
+            <div class="section-header text-center mb-4">
+                <h5 style="font-family:'Poppins',sans-serif;font-weight:800;">You Might Also Like</h5>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <div class="product-slide-card">
+                        <div class="product-slide-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=300&fit=crop&auto=format"
+                                alt="TWS Earbuds" class="product-slide-img" loading="lazy" />
+                            <div class="product-overlay">
+                                <button class="overlay-btn"
+                                    onclick="addToCart({id:5,name:'TWS Earbuds Pro',price:1999,oldPrice:3499,img:'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=300&fit=crop&auto=format',cat:'headphones'})"><i
+                                        class="bi bi-cart-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <div class="product-slide-info">
+                            <h6 class="product-name">TWS Earbuds Pro</h6>
+                            <div class="product-price-row"><span class="price-new">₹1,999</span><span
+                                    class="price-old">₹3,499</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="product-slide-card">
+                        <div class="product-slide-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=300&h=300&fit=crop&auto=format"
+                                alt="Charger" class="product-slide-img" loading="lazy" />
+                            <div class="product-overlay">
+                                <button class="overlay-btn"
+                                    onclick="addToCart({id:2,name:'65W GaN Charger',price:1299,oldPrice:1999,img:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=300&h=300&fit=crop&auto=format',cat:'chargers'})"><i
+                                        class="bi bi-cart-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <div class="product-slide-info">
+                            <h6 class="product-name">65W GaN Charger</h6>
+                            <div class="product-price-row"><span class="price-new">₹1,299</span><span
+                                    class="price-old">₹1,999</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="product-slide-card">
+                        <div class="product-slide-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=300&h=300&fit=crop&auto=format"
+                                alt="Phone Case" class="product-slide-img" loading="lazy" />
+                            <div class="product-overlay">
+                                <button class="overlay-btn"
+                                    onclick="addToCart({id:3,name:'Armor Phone Case',price:399,oldPrice:699,img:'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=300&h=300&fit=crop&auto=format',cat:'covers'})"><i
+                                        class="bi bi-cart-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <div class="product-slide-info">
+                            <h6 class="product-name">Armor Phone Case</h6>
+                            <div class="product-price-row"><span class="price-new">₹399</span><span
+                                    class="price-old">₹699</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="product-slide-card">
+                        <div class="product-slide-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=300&h=300&fit=crop&auto=format"
+                                alt="Power Bank" class="product-slide-img" loading="lazy" />
+                            <div class="product-overlay">
+                                <button class="overlay-btn"
+                                    onclick="addToCart({id:4,name:'20000mAh Power Bank',price:1499,oldPrice:2499,img:'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=300&h=300&fit=crop&auto=format',cat:'powerbank'})"><i
+                                        class="bi bi-cart-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <div class="product-slide-info">
+                            <h6 class="product-name">20000mAh Power Bank</h6>
+                            <div class="product-price-row"><span class="price-new">₹1,499</span><span
+                                    class="price-old">₹2,499</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <a class="footer-logo" href="../index.html"><i
+                                    class="bi bi-phone-fill"></i>Mobile<span>Zone</span></a>
+                            <p>Your one-stop destination for premium mobile accessories.</p>
+                            <div class="social-links"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
+                                        class="bi bi-instagram"></i></a><a href="https://wa.me/919876543210"><i
+                                        class="bi bi-whatsapp"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=chargers">Chargers</a></li>
+                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="footer-heading">Contact</h6>
+                        <ul class="footer-contact-list">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>123, Mobile Market, Mumbai – 400008</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 98765 43210</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="mb-0">© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
+            class="whatsapp-label">Chat with us</span></a>
+    <button class="scroll-top-btn" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></button>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartToast" class="toast cart-toast" role="alert">
+            <div class="toast-body"><i class="bi bi-cart-check-fill me-2"></i><span id="toastMsg">Item added!</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script>
+        const PROMO_CODES = {
+            'NY10': { type: 'percent', value: 10, label: '10% discount applied!' },
+            'SAVE500': { type: 'flat', value: 500, label: '₹500 discount applied!' },
+            'FREESHIP26': { type: 'shipping', label: 'Free shipping applied!' },
+        };
+
+        function applyPromo() {
+            const code = document.getElementById('promoInput').value.trim().toUpperCase();
+            const msgEl = document.getElementById('promoMsg');
+            if (!code) { msgEl.style.color = 'var(--red)'; msgEl.textContent = 'Please enter a promo code.'; return; }
+            if (PROMO_CODES[code]) {
+                msgEl.style.color = '#2E7D32';
+                msgEl.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i>' + PROMO_CODES[code].label;
+            } else {
+                msgEl.style.color = 'var(--red)';
+                msgEl.innerHTML = '<i class="bi bi-x-circle-fill me-1"></i>Invalid promo code.';
+            }
+        }
+
+        function checkout() {
+            alert('🎉 Thank you for shopping with Mobile Zone!\n\nThis is a demo store. In a real implementation, this would redirect to a checkout/payment page.\n\nFor orders, please contact us on WhatsApp: +91 98765 43210');
+        }
+    </script>
+</body>
+
+</html>

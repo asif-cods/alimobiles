@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" id="metaDesc" content="Buy mobile accessories at Mobile Zone." />
+    <title id="pageTitle">Product – Mobile Zone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
+                <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
+            </a>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                    <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="new-year-offer.html">New Year Offer</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu modern-dropdown">
+                            <li><a class="dropdown-item" href="category.html?cat=display"><i
+                                        class="bi bi-phone me-2"></i>Display</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
+                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
+                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
+                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
+                                        class="bi bi-plug me-2"></i>Chargers</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
+                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                        <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div style="background:var(--off-white);border-bottom:1px solid var(--border);padding:.75rem 0;">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0" style="font-size:.82rem;">
+                    <li class="breadcrumb-item"><a href="../index.html" style="color:var(--blue)">Home</a></li>
+                    <li class="breadcrumb-item"><a href="products.html" style="color:var(--blue)">Products</a></li>
+                    <li class="breadcrumb-item active" id="breadcrumbCat">Product</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5" id="productDetailContent">
+                <!-- Rendered by JS -->
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="mt-3 text-muted">Loading product...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="py-5 bg-light-custom" id="reviewsSection" style="display:none">
+        <div class="container">
+            <div class="section-header mb-4">
+                <h3 class="section-title">Customer <span class="text-gradient">Reviews</span></h3>
+            </div>
+            <div class="row g-3" id="reviewsGrid"></div>
+        </div>
+    </section>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-header text-center mb-4">
+                <span class="section-badge">You May Also Like</span>
+                <h3 class="section-title">Related <span class="text-gradient">Products</span></h3>
+            </div>
+            <div id="relatedCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="relatedProductsInner"></div>
+                <button class="carousel-control-prev carousel-nav-btn" type="button" data-bs-target="#relatedCarousel"
+                    data-bs-slide="prev"><i class="bi bi-chevron-left"></i></button>
+                <button class="carousel-control-next carousel-nav-btn" type="button" data-bs-target="#relatedCarousel"
+                    data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-brand">
+                            <a class="footer-logo" href="../index.html"><i
+                                    class="bi bi-phone-fill"></i>Mobile<span>Zone</span></a>
+                            <p>Your one-stop destination for premium mobile accessories.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="https://wa.me/919876543210"><i class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=chargers">Chargers</a></li>
+                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                            <li><a href="category.html?cat=covers">Cases</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="footer-heading">Contact</h6>
+                        <ul class="footer-contact-list">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>123, Mobile Market, Mumbai – 400008</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 98765 43210</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="mb-0">© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
+            class="whatsapp-label">Chat with us</span></a>
+    <button class="scroll-top-btn" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></button>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartToast" class="toast cart-toast" role="alert">
+            <div class="toast-body"><i class="bi bi-cart-check-fill me-2"></i><span id="toastMsg">Item added!</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script>
+        let currentProduct = null;
+        let detailQty = 1;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const id = parseInt(new URLSearchParams(window.location.search).get('id'));
+            const p = PRODUCTS.find(pr => pr.id === id) || PRODUCTS[0];
+            currentProduct = p;
+
+            renderProductDetail(p);
+            renderReviews(p);
+            renderRelated(p);
+
+            document.getElementById('pageTitle').textContent = p.name + ' – Mobile Zone';
+            document.getElementById('metaDesc').content = p.desc;
+            document.getElementById('breadcrumbCat').textContent = p.name;
+        });
+
+        function renderProductDetail(p) {
+            const disc = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
+            const stars = Array.from({ length: 5 }, (_, i) => `<i class="bi bi-star-fill text-${i < p.rating ? 'warning' : 'muted'}"></i>`).join('');
+
+            const specs = {
+                'Brand': p.name.split(' ')[0],
+                'Category': p.cat.charAt(0).toUpperCase() + p.cat.slice(1),
+                'Warranty': '1 Year',
+                'In Stock': 'Yes',
+                'Shipping': 'Free on orders ₹499+'
+            };
+            const specRows = Object.entries(specs).map(([k, v]) => `<tr><td class="fw-600" style="font-weight:600;width:40%">${k}</td><td>${v}</td></tr>`).join('');
+
+            document.getElementById('productDetailContent').innerHTML = `
+    <!-- Gallery -->
+    <div class="col-lg-5">
+      <div class="product-detail-gallery">
+        <img src="${p.img}" alt="${p.name}" class="main-product-img" id="mainImg" />
+        <div class="thumb-gallery">
+          ${[p.img, p.img, p.img].map((src, i) => `
+            <div class="thumb-item${i === 0 ? ' active' : ''}" onclick="switchImg(this,'${src}')">
+              <img src="${src}" alt="View ${i + 1}" loading="lazy"/>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="col-lg-7">
+      <div style="background:var(--blue);color:white;font-size:.75rem;font-weight:700;border-radius:4px;display:inline-block;padding:.15rem .6rem;margin-bottom:.5rem;text-transform:uppercase;">${p.cat}</div>
+      <h1 style="font-family:'Poppins',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:.5rem;">${p.name}</h1>
+      <div class="mb-2">${stars} <span style="color:var(--text-muted);font-size:.82rem;margin-left:4px;">(${p.reviews} reviews)</span></div>
+
+      <div class="detail-price-wrap">
+        <span class="detail-price-main">₹${p.price.toLocaleString('en-IN')}</span>
+        ${p.oldPrice ? `<span class="detail-price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>` : ''}
+        ${disc ? `<span class="detail-discount">${disc}% OFF</span>` : ''}
+      </div>
+
+      ${p.oldPrice ? `<div style="background:#E8F5E9;color:#2E7D32;padding:.4rem .8rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;margin-bottom:1rem;display:inline-block;">
+        <i class="bi bi-tag-fill me-1"></i>You save ₹${(p.oldPrice - p.price).toLocaleString('en-IN')}!
+      </div>` : ''}
+
+      <p style="color:var(--text-muted);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;">${p.desc}</p>
+
+      <!-- Features -->
+      <div class="row g-2 mb-3">
+        <div class="col-6"><div style="background:var(--light-gray);padding:.6rem .8rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;"><i class="bi bi-shield-check-fill me-2 text-success"></i>1 Year Warranty</div></div>
+        <div class="col-6"><div style="background:var(--light-gray);padding:.6rem .8rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;"><i class="bi bi-truck me-2 text-primary"></i>Fast Delivery</div></div>
+        <div class="col-6"><div style="background:var(--light-gray);padding:.6rem .8rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;"><i class="bi bi-arrow-repeat me-2 text-warning"></i>7-Day Returns</div></div>
+        <div class="col-6"><div style="background:var(--light-gray);padding:.6rem .8rem;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;"><i class="bi bi-award-fill me-2 text-danger"></i>100% Genuine</div></div>
+      </div>
+
+      <!-- Qty + Cart -->
+      <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+        <div class="modal-qty-row mb-0">
+          <label style="font-size:.88rem;font-weight:600;">Qty:</label>
+          <div class="qty-control">
+            <button onclick="changeDetailQty(-1)">-</button>
+            <span id="detailQty">1</span>
+            <button onclick="changeDetailQty(1)">+</button>
+          </div>
+        </div>
+        <button class="btn btn-add-cart flex-grow-1" style="padding:.8rem 1.5rem;font-size:.95rem;" onclick="addProductToCart()">
+          <i class="bi bi-cart-plus me-2"></i>Add to Cart
+        </button>
+        <a href="https://wa.me/919876543210?text=Hi, I want to order ${encodeURIComponent(p.name)}" target="_blank" class="btn" style="background:#25D366;color:white;border-radius:var(--radius-sm);padding:.8rem 1rem;">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+      </div>
+
+      <!-- Specs Table -->
+      <div class="mt-3">
+        <h6 style="font-weight:700;margin-bottom:.7rem;">Specifications</h6>
+        <table class="table spec-table table-sm mb-0" style="border-radius:var(--radius-sm);overflow:hidden;">
+          ${specRows}
+        </table>
+      </div>
+    </div>
+  `;
+        }
+
+        function renderReviews(p) {
+            const sampleReviews = [
+                { name: 'Rahul S.', city: 'Delhi', rating: 5, text: `Absolutely love this ${p.name}! Great quality and fast delivery. Exactly as described.` },
+                { name: 'Priya M.', city: 'Mumbai', rating: 4, text: `Good product for the price. The build quality is solid and it works perfectly.` },
+                { name: 'Amit K.', city: 'Bangalore', rating: 5, text: `Excellent purchase! Arrived on time and packaging was great. Highly recommend.` },
+            ];
+            document.getElementById('reviewsSection').style.display = 'block';
+            const stars = (n) => Array.from({ length: 5 }, (_, i) => `<i class="bi bi-star-fill text-${i < n ? 'warning' : 'muted'}"></i>`).join('');
+            document.getElementById('reviewsGrid').innerHTML = sampleReviews.map(r => `
+    <div class="col-md-4">
+      <div class="review-card">
+        <div class="review-stars">${stars(r.rating)}</div>
+        <p class="review-text">"${r.text}"</p>
+        <div class="reviewer-info">
+          <img src="https://i.pravatar.cc/60?u=${r.name}" alt="${r.name}" class="reviewer-avatar" loading="lazy"/>
+          <div><strong>${r.name}</strong><small>${r.city}</small></div>
+        </div>
+      </div>
+    </div>`).join('');
+        }
+
+        function renderRelated(p) {
+            const related = PRODUCTS.filter(pr => pr.cat === p.cat && pr.id !== p.id).slice(0, 4);
+            if (!related.length) return;
+
+            document.getElementById('relatedProductsInner').innerHTML = `
+    <div class="carousel-item active">
+      <div class="row g-3 px-2">
+        ${related.map(pr => {
+                const d = pr.oldPrice ? Math.round((1 - pr.price / pr.oldPrice) * 100) : 0;
+                return `
+          <div class="col-6 col-md-3">
+            <div class="product-slide-card">
+              <div class="product-slide-img-wrap">
+                ${d ? `<div class="product-grid-badge">-${d}%</div>` : ''}
+                <img src="${pr.img}" alt="${pr.name}" class="product-slide-img" loading="lazy"/>
+                <div class="product-overlay">
+                  <button class="overlay-btn" onclick="addToCart(${JSON.stringify(pr).replace(/"/g, '&quot;')})"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+                </div>
+              </div>
+              <div class="product-slide-info">
+                <h6 class="product-name"><a href="product-detail.html?id=${pr.id}" style="color:inherit;">${pr.name}</a></h6>
+                <div class="product-price-row">
+                  <span class="price-new">₹${pr.price.toLocaleString('en-IN')}</span>
+                  ${pr.oldPrice ? `<span class="price-old">₹${pr.oldPrice.toLocaleString('en-IN')}</span>` : ''}
+                </div>
+              </div>
+            </div>
+          </div>`;
+            }).join('')}
+      </div>
+    </div>`;
+        }
+
+        function switchImg(el, src) {
+            document.getElementById('mainImg').src = src;
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function changeDetailQty(delta) {
+            detailQty = Math.max(1, detailQty + delta);
+            document.getElementById('detailQty').textContent = detailQty;
+        }
+
+        function addProductToCart() {
+            if (!currentProduct) return;
+            addToCart({ ...currentProduct, qty: detailQty });
+        }
+    </script>
+</body>
+
+</html>

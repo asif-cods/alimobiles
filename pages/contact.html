@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Contact Mobile Zone – Get in touch for orders, queries, or support. Visit our store at Lamington Road, Mumbai." />
+    <title>Contact Us – Mobile Zone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
+                <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
+            </a>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                    <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="new-year-offer.html">New Year Offer</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu modern-dropdown">
+                            <li><a class="dropdown-item" href="category.html?cat=display"><i
+                                        class="bi bi-phone me-2"></i>Display</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
+                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
+                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
+                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
+                                        class="bi bi-plug me-2"></i>Chargers</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
+                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                        <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p style="color:rgba(255,255,255,.8);max-width:500px;margin:.5rem auto 1rem;font-size:.95rem;">We're here to
+                help! Reach out for any queries, orders, or support.</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- CONTACT CARDS -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-md-3 col-6">
+                    <div class="contact-card reveal">
+                        <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+                        <h6 style="font-weight:700;margin-bottom:.3rem;">Call Us</h6>
+                        <a href="tel:+919876543210" style="color:var(--blue);font-weight:600;font-size:.9rem;">+91 98765
+                            43210</a>
+                        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.3rem;">Mon–Sat: 10AM–8PM</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="contact-card reveal">
+                        <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                        <h6 style="font-weight:700;margin-bottom:.3rem;">Email Us</h6>
+                        <a href="mailto:info@mobilezone.in"
+                            style="color:var(--blue);font-weight:600;font-size:.9rem;">info@mobilezone.in</a>
+                        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.3rem;">Reply within 24 hours</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="contact-card reveal">
+                        <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+                        <h6 style="font-weight:700;margin-bottom:.3rem;">WhatsApp</h6>
+                        <a href="https://wa.me/919876543210" target="_blank"
+                            style="color:#25D366;font-weight:600;font-size:.9rem;">Chat Now</a>
+                        <p style="font-size:.78rem;color:var(--text-muted);margin-top:.3rem;">Instant support</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="contact-card reveal">
+                        <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                        <h6 style="font-weight:700;margin-bottom:.3rem;">Visit Store</h6>
+                        <p style="color:var(--blue);font-weight:600;font-size:.85rem;margin:0;">123, Lamington
+                            Road,<br />Mumbai – 400008</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form + Map -->
+            <div class="row g-5">
+                <div class="col-lg-6 reveal">
+                    <div class="contact-form-wrap">
+                        <h3 style="font-family:'Poppins',sans-serif;font-weight:800;margin-bottom:.3rem;">Send Us a
+                            Message</h3>
+                        <p style="color:var(--text-muted);font-size:.88rem;margin-bottom:1.5rem;">Fill out the form and
+                            we'll get back to you within 24 hours.</p>
+                        <form id="contactForm" onsubmit="submitForm(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="fname" class="form-label fw-600"
+                                        style="font-size:.88rem;font-weight:600;">First Name *</label>
+                                    <input type="text" class="form-control" id="fname" required placeholder="John" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lname" class="form-label fw-600"
+                                        style="font-size:.88rem;font-weight:600;">Last Name *</label>
+                                    <input type="text" class="form-control" id="lname" required placeholder="Doe" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-600"
+                                        style="font-size:.88rem;font-weight:600;">Email *</label>
+                                    <input type="email" class="form-control" id="email" required
+                                        placeholder="john@example.com" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label fw-600"
+                                        style="font-size:.88rem;font-weight:600;">Phone</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXX XXXXX" />
+                                </div>
+                                <div class="col-12">
+                                    <label for="subject" class="form-label fw-600"
+                                        style="font-size:.88rem;font-weight:600;">Subject *</label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="">Select a topic</option>
+                                        <option value="order">Order Query</option>
+                                        <option value="product">Product Information</option>
+                                        <option value="return">Return / Refund</option>
+                                        <option value="warranty">Warranty Claim</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label fw-600"
+                                        style="font-size:.88rem;font-weight:600;">Message *</label>
+                                    <textarea class="form-control" id="message" rows="5" required
+                                        placeholder="Tell us how we can help you..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-add-cart w-100"
+                                        style="padding:.85rem;font-size:.95rem;">
+                                        <i class="bi bi-send me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Success message -->
+                        <div id="formSuccess"
+                            style="display:none;margin-top:1rem;background:#E8F5E9;border:1px solid #A5D6A7;border-radius:var(--radius-sm);padding:1rem;text-align:center;color:#2E7D32;">
+                            <i class="bi bi-check-circle-fill" style="font-size:1.5rem;"></i>
+                            <h6 style="margin:.5rem 0 .2rem;font-weight:700;">Message Sent!</h6>
+                            <p style="font-size:.85rem;margin:0;">We'll get back to you within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 reveal">
+                    <!-- Map Embed -->
+                    <div
+                        style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.5rem;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.857!2d72.8193!3d18.9657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce6200000001%3A0x1!2sLamington+Road%2C+Mumbai!5e0!3m2!1sen!2sin!4v1700000000000"
+                            width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" title="Mobile Zone Store Location"></iframe>
+                    </div>
+
+                    <!-- Store Info -->
+                    <div
+                        style="background:white;border-radius:var(--radius-md);padding:1.5rem;box-shadow:var(--shadow-sm);border:1px solid var(--border);">
+                        <h5 style="font-weight:800;margin-bottom:1rem;">Store Information</h5>
+                        <ul class="footer-contact-list" style="color:var(--text-dark);">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>Shop No. 123, Mobile Market, Lamington Road,
+                                    Grant Road East, Mumbai – 400008, Maharashtra, India</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 98765 43210 / +91 98765 43211</span></li>
+                            <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
+                            <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 10:00 AM – 8:00 PM<br /><small
+                                        style="color:var(--text-muted);">Sunday: 11:00 AM – 6:00 PM</small></span></li>
+                        </ul>
+                        <div class="d-flex gap-2 mt-3">
+                            <a href="https://wa.me/919876543210" target="_blank" class="btn"
+                                style="background:#25D366;color:white;border-radius:var(--radius-sm);font-size:.85rem;font-weight:700;flex:1;"><i
+                                    class="bi bi-whatsapp me-1"></i>WhatsApp</a>
+                            <a href="tel:+919876543210" class="btn btn-add-cart"
+                                style="border-radius:var(--radius-sm);font-size:.85rem;flex:1;"><i
+                                    class="bi bi-telephone me-1"></i>Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <a class="footer-logo" href="../index.html"><i
+                                    class="bi bi-phone-fill"></i>Mobile<span>Zone</span></a>
+                            <p>Your one-stop destination for premium mobile accessories.</p>
+                            <div class="social-links"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i
+                                        class="bi bi-instagram"></i></a><a href="https://wa.me/919876543210"><i
+                                        class="bi bi-whatsapp"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="hot-deals.html">Hot Deals</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=chargers">Chargers</a></li>
+                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                            <li><a href="category.html?cat=covers">Cases</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="footer-heading">Contact</h6>
+                        <ul class="footer-contact-list">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>123, Mobile Market, Lamington Road, Mumbai –
+                                    400008</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 98765 43210</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="mb-0">© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
+            class="whatsapp-label">Chat with us</span></a>
+    <button class="scroll-top-btn" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></button>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartToast" class="toast cart-toast" role="alert">
+            <div class="toast-body"><i class="bi bi-cart-check-fill me-2"></i><span id="toastMsg">Item added!</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script>
+        function submitForm(e) {
+            e.preventDefault();
+            const form = document.getElementById('contactForm');
+            form.style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

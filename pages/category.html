@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shop mobile accessories by category at Mobile Zone." />
+    <title id="pageTitle">Category – Mobile Zone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
+                <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
+            </a>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                    <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="new-year-offer.html">New Year Offer</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu modern-dropdown">
+                            <li><a class="dropdown-item" href="category.html?cat=display"><i
+                                        class="bi bi-phone me-2"></i>Display</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
+                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
+                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
+                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
+                                        class="bi bi-plug me-2"></i>Chargers</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
+                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                        <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CATEGORY HERO BANNER -->
+    <div class="page-hero" id="categoryBanner" style="padding:5rem 0 3rem;position:relative;overflow:hidden;">
+        <div class="container position-relative" style="z-index:2">
+            <div id="catIconDisplay" style="font-size:3.5rem;margin-bottom:0.8rem;"></div>
+            <h1 id="categoryTitle">Category</h1>
+            <p id="categoryDesc"
+                style="color:rgba(255,255,255,0.8);max-width:500px;margin:0 auto 1rem;font-size:.95rem;"></p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="products.html">Products</a></li>
+                    <li class="breadcrumb-item active" id="breadcrumbCat">Category</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Sidebar -->
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="filter-sidebar">
+                        <h6 class="filter-heading">Filter</h6>
+                        <div class="filter-group">
+                            <label>Max Price: <strong id="priceDisplay">₹15,000</strong></label>
+                            <input type="range" class="price-range form-range" id="priceRange" min="100" max="15000"
+                                value="15000" step="100" />
+                        </div>
+                        <div class="filter-group">
+                            <label>Sort By</label>
+                            <select id="sortSelect" class="form-select form-select-sm">
+                                <option value="default">Featured</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="discount">Best Discount</option>
+                            </select>
+                        </div>
+                        <hr />
+                        <h6 class="filter-heading mt-2">Other Categories</h6>
+                        <div class="d-grid gap-1">
+                            <a href="category.html?cat=headphones" class="btn btn-sm"
+                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
+                                    class="bi bi-headphones me-2 text-primary"></i>Headphones</a>
+                            <a href="category.html?cat=chargers" class="btn btn-sm"
+                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
+                                    class="bi bi-plug me-2 text-danger"></i>Chargers</a>
+                            <a href="category.html?cat=powerbank" class="btn btn-sm"
+                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
+                                    class="bi bi-lightning me-2 text-warning"></i>Power Bank</a>
+                            <a href="category.html?cat=covers" class="btn btn-sm"
+                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
+                                    class="bi bi-shield me-2 text-success"></i>Cases</a>
+                            <a href="category.html?cat=display" class="btn btn-sm"
+                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
+                                    class="bi bi-phone me-2 text-info"></i>Display</a>
+                            <a href="category.html?cat=battery" class="btn btn-sm"
+                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
+                                    class="bi bi-battery-charging me-2 text-secondary"></i>Battery</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div class="col-lg-9">
+                    <div class="sort-filter-bar">
+                        <span class="result-count" id="resultCount">Loading...</span>
+                        <select id="sortSelectTop" class="form-select form-select-sm" style="width:auto">
+                            <option value="default">Sort: Featured</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="discount">Best Discount</option>
+                        </select>
+                    </div>
+                    <div class="row g-3" id="productsGrid"></div>
+                    <nav class="mt-4">
+                        <ul class="pagination justify-content-center" id="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick-View Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content product-modal">
+                <button type="button" class="modal-close-btn" data-bs-dismiss="modal"><i
+                        class="bi bi-x-lg"></i></button>
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <div class="modal-product-img-wrap">
+                            <img src="" alt="" id="modalProductImg" class="modal-product-img" />
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="modal-product-body">
+                            <span class="modal-product-cat" id="modalProductCat"></span>
+                            <h4 id="modalProductName"></h4>
+                            <div class="modal-stars" id="modalStars"></div>
+                            <div class="modal-prices">
+                                <span class="modal-price-new" id="modalPriceNew"></span>
+                                <span class="modal-price-old" id="modalPriceOld"></span>
+                                <span class="modal-discount" id="modalDiscount"></span>
+                            </div>
+                            <p id="modalProductDesc" class="modal-desc"></p>
+                            <div class="modal-qty-row">
+                                <label>Quantity:</label>
+                                <div class="qty-control">
+                                    <button onclick="changeQty(-1)">-</button>
+                                    <span id="qtyValue">1</span>
+                                    <button onclick="changeQty(1)">+</button>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <button class="btn btn-add-cart-modal" id="modalAddCart"><i
+                                        class="bi bi-cart-plus me-2"></i>Add to Cart</button>
+                                <a class="btn btn-view-detail" id="modalViewDetail" href="#"><i
+                                        class="bi bi-eye me-2"></i>View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-brand">
+                            <a class="footer-logo" href="../index.html"><i
+                                    class="bi bi-phone-fill"></i>Mobile<span>Zone</span></a>
+                            <p>Your one-stop destination for premium mobile accessories.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="https://wa.me/919876543210"><i class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="hot-deals.html">Hot Deals</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6">
+                        <h6 class="footer-heading">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=display">Display</a></li>
+                            <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                            <li><a href="category.html?cat=chargers">Chargers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="footer-heading">Contact</h6>
+                        <ul class="footer-contact-list">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>123, Mobile Market, Lamington Road, Mumbai –
+                                    400008</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 98765 43210</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="mb-0">© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
+            class="whatsapp-label">Chat with us</span></a>
+    <button class="scroll-top-btn" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></button>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartToast" class="toast cart-toast" role="alert">
+            <div class="toast-body"><i class="bi bi-cart-check-fill me-2"></i><span id="toastMsg">Item added!</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/products.js"></script>
+    <script>
+        // Category meta info
+        const CAT_INFO = {
+            headphones: { title: 'Headphones & Earphones', icon: '🎧', desc: 'Premium audio experience with noise cancellation and crisp sound quality.' },
+            chargers: { title: 'Chargers & Cables', icon: '🔌', desc: 'Fast charging solutions for all your devices. GaN, PD, and wireless options.' },
+            powerbank: { title: 'Power Banks', icon: '⚡', desc: 'Stay charged all day with our high-capacity portable power banks.' },
+            covers: { title: 'Mobile Cases & Covers', icon: '🛡️', desc: 'Protect your phone in style with our wide range of cases.' },
+            display: { title: 'Display Screens', icon: '📱', desc: 'High-quality OLED and IPS display replacements for all major brands.' },
+            battery: { title: 'Replacement Batteries', icon: '🔋', desc: 'Long-lasting Li-Ion batteries to restore your phone\'s power.' },
+            all: { title: 'All Products', icon: '🛒', desc: 'Browse our complete range of premium mobile accessories.' },
+        };
+
+        function changeQty(delta) {
+            const el = document.getElementById('qtyValue');
+            if (el) el.textContent = Math.max(1, parseInt(el.textContent) + delta);
+        }
+
+        // Set banner info based on ?cat= param
+        document.addEventListener('DOMContentLoaded', () => {
+            const cat = new URLSearchParams(window.location.search).get('cat') || 'all';
+            const info = CAT_INFO[cat] || CAT_INFO.all;
+            document.getElementById('categoryTitle').textContent = info.title;
+            document.getElementById('categoryDesc').textContent = info.desc;
+            document.getElementById('catIconDisplay').textContent = info.icon;
+            document.getElementById('breadcrumbCat').textContent = info.title;
+            document.getElementById('pageTitle').textContent = info.title + ' – Mobile Zone';
+
+            // Sync sortSelectTop → sortSelect
+            const sortTop = document.getElementById('sortSelectTop');
+            const sortSide = document.getElementById('sortSelect');
+            if (sortTop && sortSide) {
+                sortTop.addEventListener('change', () => {
+                    sortSide.value = sortTop.value;
+                    applyFilters();
+                });
+                sortSide.addEventListener('change', () => {
+                    sortTop.value = sortSide.value;
+                    applyFilters();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
