@@ -20,6 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
   initHotDealsPage();
 });
 
+
+// ============================================
+// PRODUCTS DATA (shared across pages)
+// ============================================
+const PRODUCTS = [
+  { id: 1, name: 'Dell Keyboard and Mouse', cat: 'keyboard', price: 499, oldPrice: 699, img: '../images/KM-1.png', rating: 4, reviews: 45, desc: 'Fast Latency Keyboard and Mouse combo.', brand: 'DELL' },
+  { id: 2, name: 'Sony WH-1000XM5', cat: 'headphones', price: 8999, oldPrice: 12999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 214, desc: 'Industry-leading noise cancellation.', brand: 'OUD', model: 'WH-1000XM5' },
+  { id: 3, name: '65W GaN Fast Charger', cat: 'chargers', price: 1299, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Compact GaN technology.', brand: 'ZEBRONICS', watts: 65, model: 'FastCharge65' },
+  { id: 4, name: 'Armor Phone Case', cat: 'covers', price: 399, oldPrice: 699, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 156, desc: 'Military-grade drop protection.', brand: 'MZ' },
+  { id: 5, name: '20000mAh Power Bank', cat: 'powerbank', price: 1499, oldPrice: 2499, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 302, desc: 'Massive capacity with dual USB.', brand: 'REDME', mah: 20000 },
+  { id: 6, name: 'boAt TWS Earbuds Pro', cat: 'headphones', price: 1999, oldPrice: 3499, img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 178, desc: 'Active noise cancellation.', brand: 'BOAT', model: 'Airdopes 441' },
+  { id: 7, name: 'OLED Display Screen', cat: 'display', price: 2499, oldPrice: 3999, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 67, desc: 'High-resolution OLED replacement.', brand: 'ORIGINAL BRAND' },
+  { id: 8, name: 'Braided USB-C Cable 120W', cat: 'chargers', price: 299, oldPrice: 499, img: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 421, desc: 'Premium nylon-braided cable.', brand: 'RD', watts: 120 },
+  { id: 9, name: 'Slim 10000mAh PD Bank', cat: 'powerbank', price: 999, oldPrice: 1799, img: 'https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 93, desc: 'Ultra-slim 10000mAh with 18W PD.', brand: 'LAPCARE', mah: 10000 },
+  { id: 10, name: 'Realme Buds Premium', cat: 'headphones', price: 4499, oldPrice: 8999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 128, desc: 'Extra bass deep sound.', brand: 'REALME', model: 'Buds Wireless Pro' },
+  { id: 11, name: '100W Super Fast Charger', cat: 'chargers', price: 1099, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 256, desc: '100W USB-C PD charging.', brand: 'OUD', watts: 85 },
+  { id: 12, name: '360° Protection Cover', cat: 'covers', price: 299, oldPrice: 499, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Full-body 360° protection case.', brand: 'VALI' },
+  { id: 13, name: 'Anker 12000mAh Power Bank', cat: 'powerbank', price: 1949, oldPrice: 2999, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 312, desc: 'Massive capacity with triple ports.', brand: 'VALI', mah: 12000 },
+  { id: 14, name: 'Li-Ion 5000mAh Battery', cat: 'battery', price: 799, oldPrice: 1299, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 54, desc: 'High-capacity replacement battery.', brand: 'MOBATREE', mah: 5000 },
+  { id: 15, name: 'Wireless Charger Pad 20W', cat: 'chargers', price: 699, oldPrice: 1199, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 112, desc: '20W max wireless charging.', brand: 'ZEBRONICS', watts: 20 },
+  { id: 16, name: 'Clear Transparent Cover', cat: 'covers', price: 199, oldPrice: 349, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 3, reviews: 67, desc: 'Ultra-thin crystal clear TPU case.' },
+  { id: 17, name: 'SanDisk 128GB Pendrive', cat: 'storage', price: 899, oldPrice: 1499, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 38, desc: 'Fast transfer OTG pendrive.', brand: 'SANDISK', gb: 128 },
+
+];
+
+
+window.PRODUCTS = PRODUCTS;
+
 // ============================================
 // NAVBAR – Scroll shadow + Active Link
 // ============================================
@@ -368,12 +396,13 @@ function initHotDealsPage() {
   if (!container) return;
 
   // Filter products that have a significant discount (>20%)
-  const deals = PRODUCTS.filter(p => ((1 - p.price / p.oldPrice) * 100) > 20);
+  const deals = PRODUCTS.filter(p => ((1 - p.price / p.oldPrice) * 100) > 44);
 
   container.innerHTML = deals.map(p => {
     const disc = Math.round((1 - p.price / p.oldPrice) * 100);
+    // reveal, (class)
     return `
-      <div class="col-6 col-lg-3 reveal">
+      <div class="col-6 col-lg-3 ">
         <div class="deal-card">
           <div class="deal-badge">🔥 ${disc}% OFF</div>
           <a href="product-detail.html?id=${p.id}">
@@ -407,29 +436,4 @@ function changeQty(delta) {
   if (el) el.textContent = currentModalQty;
 }
 
-// ============================================
-// PRODUCTS DATA (shared across pages)
-// ============================================
-const PRODUCTS = [
-  { id: 1, name: 'Dell Keyboard and Mouse', cat: 'keyboard', price: 499, oldPrice: 699, img: '../images/KM-1.png', rating: 4, reviews: 45, desc: 'Fast Latency Keyboard and Mouse combo.', brand: 'DELL' },
-  { id: 2, name: 'Sony WH-1000XM5', cat: 'headphones', price: 8999, oldPrice: 12999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 214, desc: 'Industry-leading noise cancellation.', brand: 'OUD', model: 'WH-1000XM5' },
-  { id: 3, name: '65W GaN Fast Charger', cat: 'chargers', price: 1299, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Compact GaN technology.', brand: 'ZEBRONICS', watts: 65, model: 'FastCharge65' },
-  { id: 4, name: 'Armor Phone Case', cat: 'covers', price: 399, oldPrice: 699, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 156, desc: 'Military-grade drop protection.', brand: 'MZ' },
-  { id: 5, name: '20000mAh Power Bank', cat: 'powerbank', price: 1499, oldPrice: 2499, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 302, desc: 'Massive capacity with dual USB.', brand: 'REDME', mah: 20000 },
-  { id: 6, name: 'boAt TWS Earbuds Pro', cat: 'headphones', price: 1999, oldPrice: 3499, img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 178, desc: 'Active noise cancellation.', brand: 'BOAT', model: 'Airdopes 441' },
-  { id: 7, name: 'OLED Display Screen', cat: 'display', price: 2499, oldPrice: 3999, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 67, desc: 'High-resolution OLED replacement.', brand: 'ORIGINAL BRAND' },
-  { id: 8, name: 'Braided USB-C Cable 120W', cat: 'chargers', price: 299, oldPrice: 499, img: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 421, desc: 'Premium nylon-braided cable.', brand: 'RD', watts: 120 },
-  { id: 9, name: 'Slim 10000mAh PD Bank', cat: 'powerbank', price: 999, oldPrice: 1799, img: 'https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 93, desc: 'Ultra-slim 10000mAh with 18W PD.', brand: 'LAPCARE', mah: 10000 },
-  { id: 10, name: 'Realme Buds Premium', cat: 'headphones', price: 4499, oldPrice: 8999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 128, desc: 'Extra bass deep sound.', brand: 'REALME', model: 'Buds Wireless Pro' },
-  { id: 11, name: '100W Super Fast Charger', cat: 'chargers', price: 1099, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 256, desc: '100W USB-C PD charging.', brand: 'OUD', watts: 85 },
-  { id: 12, name: '360° Protection Cover', cat: 'covers', price: 299, oldPrice: 499, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Full-body 360° protection case.', brand: 'VALI' },
-  { id: 13, name: 'Anker 12000mAh Power Bank', cat: 'powerbank', price: 1949, oldPrice: 2999, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 312, desc: 'Massive capacity with triple ports.', brand: 'VALI', mah: 12000 },
-  { id: 14, name: 'Li-Ion 5000mAh Battery', cat: 'battery', price: 799, oldPrice: 1299, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 54, desc: 'High-capacity replacement battery.', brand: 'MOBATREE', mah: 5000 },
-  { id: 15, name: 'Wireless Charger Pad 20W', cat: 'chargers', price: 699, oldPrice: 1199, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 112, desc: '20W max wireless charging.', brand: 'ZEBRONICS', watts: 20 },
-  { id: 16, name: 'Clear Transparent Cover', cat: 'covers', price: 199, oldPrice: 349, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 3, reviews: 67, desc: 'Ultra-thin crystal clear TPU case.' },
-  { id: 17, name: 'SanDisk 128GB Pendrive', cat: 'storage', price: 899, oldPrice: 1499, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 38, desc: 'Fast transfer OTG pendrive.', brand: 'SANDISK', gb: 128 },
 
-];
-
-
-window.PRODUCTS = PRODUCTS;
