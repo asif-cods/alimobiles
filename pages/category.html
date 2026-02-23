@@ -25,6 +25,7 @@
                 <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
             </a>
             <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <button class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></button>
                 <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                     <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
                 </a>
@@ -37,7 +38,6 @@
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="new-year-offer.html">New Year Offer</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" role="button"
                             data-bs-toggle="dropdown">Categories</a>
@@ -48,6 +48,8 @@
                                         class="bi bi-headphones me-2"></i>Headphones</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=battery"><i
                                         class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=storage"><i
+                                        class="bi bi-sd-card me-2"></i>Storage</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
                                         class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=chargers"><i
@@ -58,11 +60,29 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
                 </ul>
                 <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <div class="nav-item mx-2">
+                        <a class="btn btn-danger-custom px-4 rounded-pill d-inline-flex align-items-center"
+                            href="mobile-repair.html" style="font-weight:600; font-size: 0.95rem;">
+                            <i class="bi bi-tools me-2"></i>Mobile Repair
+                        </a>
+                    </div>
+                    <button class="nav-icon-btn" id="searchToggle"><i class="bi bi-search"></i></button>
                     <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                         <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
                     </a>
+                </div>
+            </div>
+        </div>
+        <!-- Search Bar -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for products..." class="form-control" />
+                    <button id="searchBtn"><i class="bi bi-search"></i></button>
+                    <button id="closeSearch"><i class="bi bi-x-lg"></i></button>
                 </div>
             </div>
         </div>
@@ -90,61 +110,238 @@
         <div class="container">
             <div class="row g-4">
                 <!-- Sidebar -->
+
                 <div class="col-lg-3 d-none d-lg-block">
                     <div class="filter-sidebar">
-                        <h6 class="filter-heading">Filter</h6>
-                        <div class="filter-group">
-                            <label>Max Price: <strong id="priceDisplay">₹15,000</strong></label>
-                            <input type="range" class="price-range form-range" id="priceRange" min="100" max="15000"
-                                value="15000" step="100" />
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="filter-heading mb-0">Filters</h6>
+                            <button class="btn btn-sm" onclick="clearFilters()"
+                                style="color:var(--red);font-size:.78rem;font-weight:700;">Clear All</button>
                         </div>
-                        <div class="filter-group">
-                            <label>Sort By</label>
-                            <select id="sortSelect" class="form-select form-select-sm">
-                                <option value="default">Featured</option>
+                        <!-- Category Filter -->
+                        <div class="filter-group mb-3">
+                            <label class="fw-bold mb-2">Category</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="covers" /> Back Cases</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="display" /> Display</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="tempglass" /> Temp Glass</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="battery" /> Battery</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="speakers" /> Speakers</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="keyboard" /> Keyboard & Mouse</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="storage" /> Storage</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="powerbank" /> Power Bank</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="chargers" /> Chargers</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="headphones" /> Headphones</label>
+                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="connectors" /> Connectors</label>
+                        </div>
+
+                        <!-- General Filters -->
+                        <div class="filter-group mb-3">
+                            <label class="fw-bold mb-2">Model Search</label>
+                            <input type="text" id="modelFilter" class="form-control form-control-sm"
+                                placeholder="Search model..." oninput="debounce(applyFilters, 300)()" />
+                        </div>
+                        <div class="filter-group mb-3 pb-3">
+                            <label class="fw-bold mb-2 w-100 d-flex justify-content-between">
+                                <span>Price Range</span>
+                                <span id="priceRangeDisplay"
+                                    style="color:var(--blue); font-size: 0.85rem; font-weight: 600;">₹0 -
+                                    ₹15,000+</span>
+                            </label>
+                            <div class="price-range-slider">
+                                <div class="progress" id="sliderProgress"></div>
+                            </div>
+                            <div class="range-input-wrapper">
+                                <input type="range" id="priceMin" min="0" max="15000" value="0" step="100"
+                                    oninput="updatePriceRangeSlider(false)" onchange="applyFilters()">
+                                <input type="range" id="priceMax" min="0" max="15000" value="15000" step="100"
+                                    oninput="updatePriceRangeSlider(false)" onchange="applyFilters()">
+                            </div>
+                        </div>
+
+                        <!-- SPECIFIC FILTERS -->
+                        <div id="dynamicFiltersContainer">
+                            <!-- Backcase -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="covers" style="display:none;">
+                                <label class="fw-bold mb-2">Mobile Brand</label>
+                                <select id="coverBrandFilter" class="form-select form-select-sm mb-2"
+                                    onchange="applyFilters()">
+                                    <option value="all">Any Brand</option>
+                                    <option value="apple">Apple</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="vivo">Vivo</option>
+                                    <option value="oppo">Oppo</option>
+                                    <option value="realme">Realme</option>
+                                    <option value="xiaomi">Xiaomi</option>
+                                </select>
+                                <label class="fw-bold mb-2">Color</label>
+                                <select id="coverColorFilter" class="form-select form-select-sm"
+                                    onchange="applyFilters()">
+                                    <option value="all">Any Color</option>
+                                    <option value="black">Black</option>
+                                    <option value="transparent">Transparent</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="red">Red</option>
+                                    <option value="white">White</option>
+                                </select>
+                            </div>
+
+                            <!-- Display -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="display" style="display:none;">
+                                <label class="fw-bold mb-2">Display Brand/Type</label>
+                                <select id="displayTypeFilter" class="form-select form-select-sm"
+                                    onchange="applyFilters()">
+                                    <option value="all">All Types</option>
+                                    <option value="oud">OUD</option>
+                                    <option value="rd">RD</option>
+                                    <option value="oled">OLED</option>
+                                    <option value="original">ORIGINAL BRAND</option>
+                                </select>
+                            </div>
+
+                            <!-- Temp Glass -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="tempglass" style="display:none;">
+                                <label class="fw-bold mb-2">Glass Type</label>
+                                <select id="glassTypeFilter" class="form-select form-select-sm"
+                                    onchange="applyFilters()">
+                                    <option value="all">All Types</option>
+                                    <option value="normal">Normal temp</option>
+                                    <option value="11d">11D</option>
+                                    <option value="esd">ESD</option>
+                                    <option value="6d">6D</option>
+                                    <option value="gorilla">GORILLA</option>
+                                    <option value="mate">MATE</option>
+                                    <option value="privacy">PRIVACY</option>
+                                    <option value="uv">UV temp</option>
+                                    <option value="fullglue">FULL GLUE</option>
+                                    <option value="matesd">MATE SD</option>
+                                    <option value="clearsd">CLEAR SD</option>
+                                </select>
+                            </div>
+
+                            <!-- Battery -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="battery" style="display:none;">
+                                <label class="fw-bold mb-2">Battery Brand</label>
+                                <select id="batteryBrandFilter" class="form-select form-select-sm"
+                                    onchange="applyFilters()">
+                                    <option value="all">All Brands</option>
+                                    <option value="oud">OUD</option>
+                                    <option value="rm">RM</option>
+                                    <option value="mobatree">MOBATREE</option>
+                                </select>
+                            </div>
+
+                            <!-- Speakers -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="speakers" style="display:none;">
+                                <label class="fw-bold mb-2">Speaker Brand</label>
+                                <select id="speakerBrandFilter" class="form-select form-select-sm mb-2"
+                                    onchange="applyFilters()">
+                                    <option value="all">All Brands</option>
+                                    <option value="oud">OUD</option>
+                                    <option value="mz">MZ</option>
+                                    <option value="zebronics">ZEBRONICS</option>
+                                    <option value="boat">BOAT</option>
+                                </select>
+                                <label class="fw-bold mb-2">Connection</label>
+                                <select id="speakerConnFilter" class="form-select form-select-sm"
+                                    onchange="applyFilters()">
+                                    <option value="all">Any</option>
+                                    <option value="bluetooth">Bluetooth</option>
+                                    <option value="wired">Wired</option>
+                                </select>
+                            </div>
+
+                            <!-- Keyboard & Mouse -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="keyboard" style="display:none;">
+                                <label class="fw-bold mb-2">Brand</label>
+                                <select id="kbBrandFilter" class="form-select form-select-sm mb-2"
+                                    onchange="applyFilters()">
+                                    <option value="all">All Brands</option>
+                                    <option value="zebronics">ZEBRONICS</option>
+                                    <option value="dell">DELL</option>
+                                </select>
+                                <label class="fw-bold mb-2">Connection</label>
+                                <select id="kbConnFilter" class="form-select form-select-sm" onchange="applyFilters()">
+                                    <option value="all">Any</option>
+                                    <option value="bluetooth">Bluetooth</option>
+                                    <option value="wired">Wired</option>
+                                </select>
+                            </div>
+
+                            <!-- Storage -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="storage" style="display:none;">
+                                <label class="fw-bold mb-2">Capacity / Type</label>
+                                <select id="storageFilter" class="form-select form-select-sm" onchange="applyFilters()">
+                                    <option value="all">All Storage</option>
+                                    <option value="8mc">8 GB MC</option>
+                                    <option value="16mc">16 GB MC</option>
+                                    <option value="32mc">32 GB MC</option>
+                                    <option value="128mc">128 GB MC</option>
+                                    <option value="256mc">256 GB MC</option>
+                                    <option value="pendrive_sandisk">Pendrive (Sandisk)</option>
+                                    <option value="otg">OTG pendrive</option>
+                                </select>
+                            </div>
+
+                            <!-- Power Bank -->
+                            <div class="filter-group mb-3 cat-spec-filter" data-cat="powerbank" style="display:none;">
+                                <label class="fw-bold mb-2">Brand</label>
+                                <select id="pbBrandFilter" class="form-select form-select-sm mb-2"
+                                    onchange="applyFilters()">
+                                    <option value="all">All Brands</option>
+                                    <option value="lapcare">Lapcare</option>
+                                    <option value="vali">Vali</option>
+                                    <option value="zebronics">Zebronics</option>
+                                    <option value="redme">Redme</option>
+                                </select>
+                                <label class="fw-bold mb-2">Capacity (mAh)</label>
+                                <select id="pbMahFilter" class="form-select form-select-sm" onchange="applyFilters()">
+                                    <option value="all">All Capacities</option>
+                                    <option value="5000">5000 mAh</option>
+                                    <option value="10000">10000 mAh</option>
+                                    <option value="12000">12000 mAh</option>
+                                    <option value="20000">20000 mAh</option>
+                                    <option value="22000">22000 mAh</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+
+                <div class="col-lg-9">
+                    <!-- Sort Bar -->
+
+                    <div class="sort-filter-bar">
+                        <span class="result-count" id="resultCount">Loading...</span>
+                        <div class="d-flex align-items-center gap-2">
+                            <!-- Mobile filter toggle -->
+                            <button class="btn btn-sm d-lg-none" style="background:var(--light-gray);font-size:.82rem;"
+                                data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
+                                <i class="bi bi-funnel me-1"></i>Filters
+                            </button>
+                            <select id="sortSelect" class="form-select form-select-sm" style="width:auto">
+                                <option value="default">Sort: Featured</option>
                                 <option value="price-asc">Price: Low to High</option>
                                 <option value="price-desc">Price: High to Low</option>
                                 <option value="rating">Highest Rated</option>
                                 <option value="discount">Best Discount</option>
                             </select>
                         </div>
-                        <hr />
-                        <h6 class="filter-heading mt-2">Other Categories</h6>
-                        <div class="d-grid gap-1">
-                            <a href="category.html?cat=headphones" class="btn btn-sm"
-                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
-                                    class="bi bi-headphones me-2 text-primary"></i>Headphones</a>
-                            <a href="category.html?cat=chargers" class="btn btn-sm"
-                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
-                                    class="bi bi-plug me-2 text-danger"></i>Chargers</a>
-                            <a href="category.html?cat=powerbank" class="btn btn-sm"
-                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
-                                    class="bi bi-lightning me-2 text-warning"></i>Power Bank</a>
-                            <a href="category.html?cat=covers" class="btn btn-sm"
-                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
-                                    class="bi bi-shield me-2 text-success"></i>Cases</a>
-                            <a href="category.html?cat=display" class="btn btn-sm"
-                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
-                                    class="bi bi-phone me-2 text-info"></i>Display</a>
-                            <a href="category.html?cat=battery" class="btn btn-sm"
-                                style="background:var(--light-gray);text-align:left;font-size:.82rem;font-weight:600;"><i
-                                    class="bi bi-battery-charging me-2 text-secondary"></i>Battery</a>
-                        </div>
                     </div>
-                </div>
 
-                <!-- Grid -->
-                <div class="col-lg-9">
-                    <div class="sort-filter-bar">
-                        <span class="result-count" id="resultCount">Loading...</span>
-                        <select id="sortSelectTop" class="form-select form-select-sm" style="width:auto">
-                            <option value="default">Sort: Featured</option>
-                            <option value="price-asc">Price: Low to High</option>
-                            <option value="price-desc">Price: High to Low</option>
-                            <option value="rating">Highest Rated</option>
-                            <option value="discount">Best Discount</option>
-                        </select>
-                    </div>
+                    <!-- Products Grid -->
                     <div class="row g-3" id="productsGrid"></div>
                     <nav class="mt-4">
                         <ul class="pagination justify-content-center" id="pagination"></ul>
@@ -154,7 +351,209 @@
         </div>
     </section>
 
+    <!-- Mobile Filter Offcanvas -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="filterOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-700">Filters</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Category Filter -->
+            <div class="filter-group mb-3">
+                <label class="fw-bold mb-2">Category</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="covers" /> Back Cases</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="display" /> Display</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="tempglass" /> Temp Glass</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="battery" /> Battery</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="speakers" /> Speakers</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="keyboard" /> Keyboard & Mouse</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="storage" /> Storage</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="powerbank" /> Power Bank</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="chargers" /> Chargers</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="headphones" /> Headphones</label>
+                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="connectors" /> Connectors</label>
+            </div>
+
+            <!-- General Filters -->
+            <div class="filter-group mb-3">
+                <label class="fw-bold mb-2">Model Search</label>
+                <input type="text" id="modelFilterMobile" class="form-control form-control-sm"
+                    placeholder="Search model..." oninput="debounce(applyFilters, 300)()" />
+            </div>
+            <div class="filter-group mb-3 pb-3">
+                <label class="fw-bold mb-2 w-100 d-flex justify-content-between">
+                    <span>Price Range</span>
+                    <span id="priceRangeDisplayMobile"
+                        style="color:var(--blue); font-size: 0.85rem; font-weight: 600;">₹0 - ₹15,000+</span>
+                </label>
+                <div class="price-range-slider">
+                    <div class="progress" id="sliderProgressMobile"></div>
+                </div>
+                <div class="range-input-wrapper">
+                    <input type="range" id="priceMinMobile" min="0" max="15000" value="0" step="100"
+                        oninput="updatePriceRangeSlider(true)" onchange="applyFilters()">
+                    <input type="range" id="priceMaxMobile" min="0" max="15000" value="15000" step="100"
+                        oninput="updatePriceRangeSlider(true)" onchange="applyFilters()">
+                </div>
+            </div>
+
+            <!-- SPECIFIC FILTERS -->
+            <div id="dynamicFiltersContainer">
+                <!-- Backcase -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="covers" style="display:none;">
+                    <label class="fw-bold mb-2">Mobile Brand</label>
+                    <select id="coverBrandFilterMobile" class="form-select form-select-sm mb-2"
+                        onchange="applyFilters()">
+                        <option value="all">Any Brand</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="vivo">Vivo</option>
+                        <option value="oppo">Oppo</option>
+                        <option value="realme">Realme</option>
+                        <option value="xiaomi">Xiaomi</option>
+                    </select>
+                    <label class="fw-bold mb-2">Color</label>
+                    <select id="coverColorFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">Any Color</option>
+                        <option value="black">Black</option>
+                        <option value="transparent">Transparent</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="white">White</option>
+                    </select>
+                </div>
+
+                <!-- Display -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="display" style="display:none;">
+                    <label class="fw-bold mb-2">Display Brand/Type</label>
+                    <select id="displayTypeFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">All Types</option>
+                        <option value="oud">OUD</option>
+                        <option value="rd">RD</option>
+                        <option value="oled">OLED</option>
+                        <option value="original">ORIGINAL BRAND</option>
+                    </select>
+                </div>
+
+                <!-- Temp Glass -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="tempglass" style="display:none;">
+                    <label class="fw-bold mb-2">Glass Type</label>
+                    <select id="glassTypeFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">All Types</option>
+                        <option value="normal">Normal temp</option>
+                        <option value="11d">11D</option>
+                        <option value="esd">ESD</option>
+                        <option value="6d">6D</option>
+                        <option value="gorilla">GORILLA</option>
+                        <option value="mate">MATE</option>
+                        <option value="privacy">PRIVACY</option>
+                        <option value="uv">UV temp</option>
+                        <option value="fullglue">FULL GLUE</option>
+                        <option value="matesd">MATE SD</option>
+                        <option value="clearsd">CLEAR SD</option>
+                    </select>
+                </div>
+
+                <!-- Battery -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="battery" style="display:none;">
+                    <label class="fw-bold mb-2">Battery Brand</label>
+                    <select id="batteryBrandFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">All Brands</option>
+                        <option value="oud">OUD</option>
+                        <option value="rm">RM</option>
+                        <option value="mobatree">MOBATREE</option>
+                    </select>
+                </div>
+
+                <!-- Speakers -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="speakers" style="display:none;">
+                    <label class="fw-bold mb-2">Speaker Brand</label>
+                    <select id="speakerBrandFilterMobile" class="form-select form-select-sm mb-2"
+                        onchange="applyFilters()">
+                        <option value="all">All Brands</option>
+                        <option value="oud">OUD</option>
+                        <option value="mz">MZ</option>
+                        <option value="zebronics">ZEBRONICS</option>
+                        <option value="boat">BOAT</option>
+                    </select>
+                    <label class="fw-bold mb-2">Connection</label>
+                    <select id="speakerConnFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">Any</option>
+                        <option value="bluetooth">Bluetooth</option>
+                        <option value="wired">Wired</option>
+                    </select>
+                </div>
+
+                <!-- Keyboard & Mouse -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="keyboard" style="display:none;">
+                    <label class="fw-bold mb-2">Brand</label>
+                    <select id="kbBrandFilterMobile" class="form-select form-select-sm mb-2" onchange="applyFilters()">
+                        <option value="all">All Brands</option>
+                        <option value="zebronics">ZEBRONICS</option>
+                        <option value="dell">DELL</option>
+                    </select>
+                    <label class="fw-bold mb-2">Connection</label>
+                    <select id="kbConnFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">Any</option>
+                        <option value="bluetooth">Bluetooth</option>
+                        <option value="wired">Wired</option>
+                    </select>
+                </div>
+
+                <!-- Storage -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="storage" style="display:none;">
+                    <label class="fw-bold mb-2">Capacity / Type</label>
+                    <select id="storageFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">All Storage</option>
+                        <option value="8mc">8 GB MC</option>
+                        <option value="16mc">16 GB MC</option>
+                        <option value="32mc">32 GB MC</option>
+                        <option value="128mc">128 GB MC</option>
+                        <option value="256mc">256 GB MC</option>
+                        <option value="pendrive_sandisk">Pendrive (Sandisk)</option>
+                        <option value="otg">OTG pendrive</option>
+                    </select>
+                </div>
+
+                <!-- Power Bank -->
+                <div class="filter-group mb-3 cat-spec-filter" data-cat="powerbank" style="display:none;">
+                    <label class="fw-bold mb-2">Brand</label>
+                    <select id="pbBrandFilterMobile" class="form-select form-select-sm mb-2" onchange="applyFilters()">
+                        <option value="all">All Brands</option>
+                        <option value="lapcare">Lapcare</option>
+                        <option value="vali">Vali</option>
+                        <option value="zebronics">Zebronics</option>
+                        <option value="redme">Redme</option>
+                    </select>
+                    <label class="fw-bold mb-2">Capacity (mAh)</label>
+                    <select id="pbMahFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
+                        <option value="all">All Capacities</option>
+                        <option value="5000">5000 mAh</option>
+                        <option value="10000">10000 mAh</option>
+                        <option value="12000">12000 mAh</option>
+                        <option value="20000">20000 mAh</option>
+                        <option value="22000">22000 mAh</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-add-cart w-100 mt-3" data-bs-dismiss="offcanvas">Apply Filters</button>
+        </div>
+    </div>
+
     <!-- Quick-View Modal -->
+
     <div class="modal fade" id="productModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content product-modal">
@@ -198,47 +597,59 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer-section">
         <div class="footer-top">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-brand">
-                            <a class="footer-logo" href="../index.html"><i
-                                    class="bi bi-phone-fill"></i>Mobile<span>Zone</span></a>
-                            <p>Your one-stop destination for premium mobile accessories.</p>
+                            <a class="footer-logo" href="../index.html">
+                                <i class="bi bi-phone-fill"></i>
+                                Mobile<span>Zone</span>
+                            </a>
+                            <p>Your one-stop destination for premium mobile accessories. Quality products, unbeatable
+                                prices, and excellent service.</p>
                             <div class="social-links">
-                                <a href="#"><i class="bi bi-facebook"></i></a>
-                                <a href="#"><i class="bi bi-instagram"></i></a>
-                                <a href="https://wa.me/919876543210"><i class="bi bi-whatsapp"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="https://wa.me/917358014459" aria-label="WhatsApp"><i
+                                        class="bi bi-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-6">
+                    <div class="col-lg-2 col-md-6 col-6">
                         <h6 class="footer-heading">Quick Links</h6>
                         <ul class="footer-links">
                             <li><a href="../index.html">Home</a></li>
                             <li><a href="products.html">Products</a></li>
                             <li><a href="hot-deals.html">Hot Deals</a></li>
+                            <li><a href="about.html">About Us</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-2 col-6">
+                    <div class="col-lg-2 col-md-6 col-6">
                         <h6 class="footer-heading">Categories</h6>
                         <ul class="footer-links">
                             <li><a href="category.html?cat=display">Display</a></li>
                             <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=battery">Battery</a></li>
+                            <li><a href="category.html?cat=storage">Storage</a></li>
                             <li><a href="category.html?cat=powerbank">Power Bank</a></li>
                             <li><a href="category.html?cat=chargers">Chargers</a></li>
+                            <li><a href="category.html?cat=covers">Mobile Cases</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4">
-                        <h6 class="footer-heading">Contact</h6>
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class="footer-heading">Contact & Store</h6>
                         <ul class="footer-contact-list">
-                            <li><i class="bi bi-geo-alt-fill"></i><span>123, Mobile Market, Lamington Road, Mumbai –
-                                    400008</span></li>
-                            <li><i class="bi bi-telephone-fill"></i><span>+91 98765 43210</span></li>
+                            <li><i class="bi bi-geo-alt-fill"></i><span>13th ST S.V.M Nagar, Ennore, Chennai –
+                                    600057</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
+                            <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
+                            <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 10:00 AM – 8:00 PM</span></li>
                         </ul>
                     </div>
                 </div>
@@ -246,12 +657,24 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p class="mb-0">© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="payment-icons">
+                            <img src="https://img.icons8.com/color/40/visa.png" alt="Visa" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/mastercard.png" alt="Mastercard" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/gpay.png" alt="Google Pay" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/paytm.png" alt="Paytm" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
+    <a href="https://wa.me/917358014459" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
             class="whatsapp-label">Chat with us</span></a>
     <button class="scroll-top-btn" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></button>
 

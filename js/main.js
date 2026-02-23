@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initRevealAnimations();
   initCountdownTimer();
   initCartCount();
+  // Init Dynamic Content
+  initFeaturedProducts();
+  initHotDeals();
+  initHotDealsPage();
 });
 
 // ============================================
@@ -133,7 +137,9 @@ function initSearch() {
 
 function doSearch(query) {
   if (!query) return;
-  window.location.href = `pages/products.html?search=${encodeURIComponent(query)}`;
+  const isInPages = window.location.pathname.includes('/pages/');
+  const path = isInPages ? `products.html?search=${encodeURIComponent(query)}` : `pages/products.html?search=${encodeURIComponent(query)}`;
+  window.location.href = path;
 }
 
 // ============================================
@@ -218,18 +224,32 @@ function initCartCount() {
 // ============================================
 // PRODUCT MODAL
 // ============================================
+// Helper to fix local pathing
+function fixImgPath(path) {
+  if (!path) return '';
+  if (path.startsWith('http') || path.startsWith('data:')) return path;
+
+  const isInPages = window.location.pathname.includes('/pages/');
+  const cleanPath = path.replace(/^\.\//, '');
+
+  if (isInPages && !cleanPath.startsWith('../')) {
+    return '../' + cleanPath;
+  }
+  return cleanPath;
+}
+
 let currentModalQty = 1;
 let currentModalProduct = null;
 
-function openProductModal(index) {
-  if (typeof featuredProducts === 'undefined' || !featuredProducts[index]) return;
-  const p = featuredProducts[index];
+function openProductModal(productId) {
+  const p = PRODUCTS.find(prod => prod.id === productId);
+  if (!p) return;
   currentModalProduct = p;
   currentModalQty = 1;
 
-  document.getElementById('modalProductImg').src = p.img;
+  document.getElementById('modalProductImg').src = fixImgPath(p.img);
   document.getElementById('modalProductImg').alt = p.name;
-  document.getElementById('modalProductCat').textContent = p.category;
+  document.getElementById('modalProductCat').textContent = p.cat;
   document.getElementById('modalProductName').textContent = p.name;
   document.getElementById('modalPriceNew').textContent = '₹' + p.price.toLocaleString('en-IN');
   document.getElementById('modalPriceOld').textContent = '₹' + p.oldPrice.toLocaleString('en-IN');
@@ -241,7 +261,7 @@ function openProductModal(index) {
   // Stars
   let starsHtml = '';
   for (let i = 1; i <= 5; i++) {
-    starsHtml += `<i class="bi bi-star-fill${i > p.stars ? ' text-muted' : ''}"></i>`;
+    starsHtml += `<i class="bi bi-star-fill${i > p.rating ? ' text-muted' : ''}"></i>`;
   }
   document.getElementById('modalStars').innerHTML = starsHtml;
 
@@ -260,6 +280,127 @@ function openProductModal(index) {
   modal.show();
 }
 
+// ============================================
+// DYNAMIC PRODUCTS RENDERING
+// ============================================
+
+function initFeaturedProducts() {
+  const container = document.getElementById('featuredCarouselInner');
+  if (!container) return;
+
+  // Take first 8 products for featured (2 slides of 4)
+  const featured = PRODUCTS.slice(0, 8);
+  let html = '';
+
+  for (let i = 0; i < featured.length; i += 4) {
+    const chunk = featured.slice(i, i + 4);
+    html += `
+      <div class="carousel-item ${i === 0 ? 'active' : ''}">
+        <div class="row g-3 px-2">
+          ${chunk.map(p => {
+      const disc = Math.round((1 - p.price / p.oldPrice) * 100);
+      return `
+              <div class="col-6 col-md-3">
+                <div class="product-slide-card" onclick="openProductModal(${p.id})">
+                  <div class="product-slide-img-wrap">
+                    <img src="${fixImgPath(p.img)}" alt="${p.name}" class="product-slide-img" loading="lazy" />
+                    <div class="product-overlay">
+                      <button class="overlay-btn" onclick="event.stopPropagation(); addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+                        <i class="bi bi-cart-plus"></i> Add to Cart
+                      </button>
+                      <button class="overlay-view-btn" onclick="event.stopPropagation(); openProductModal(${p.id})">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-slide-info">
+                    <span class="product-category">${p.cat}</span>
+                    <h6 class="product-name">${p.name}</h6>
+                    <div class="product-price-row">
+                      <span class="price-new">₹${p.price.toLocaleString('en-IN')}</span>
+                      <span class="price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
+                      <span class="discount-badge-sm">-${disc}%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+    }).join('')}
+        </div>
+      </div>
+    `;
+  }
+  container.innerHTML = html;
+}
+
+function initHotDeals() {
+  const container = document.getElementById('hotDealsGrid');
+  if (!container) return;
+
+  // Take products 9-12 for hot deals
+  const deals = PRODUCTS.slice(8, 12);
+
+  container.innerHTML = deals.map(p => {
+    const disc = Math.round((1 - p.price / p.oldPrice) * 100);
+    return `
+      <div class="col-6 col-md-3">
+        <a href="pages/product-detail.html?id=${p.id}" class="deal-card-custom">
+          <div class="deal-img-box">
+            <img src="${fixImgPath(p.img)}" alt="${p.name}" loading="lazy">
+          </div>
+          <div class="deal-info-custom">
+            <span class="product-category text-uppercase">${p.cat}</span>
+            <h6 class="deal-name-custom fw-bold">${p.name}</h6>
+            <div class="product-price-row">
+              <span class="price-new">₹${p.price.toLocaleString('en-IN')}</span>
+              <span class="price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
+              <span class="discount-badge-sm">-${disc}%</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    `;
+  }).join('');
+}
+
+function initHotDealsPage() {
+  const container = document.getElementById('hotDealsPageGrid');
+  if (!container) return;
+
+  // Filter products that have a significant discount (>20%)
+  const deals = PRODUCTS.filter(p => ((1 - p.price / p.oldPrice) * 100) > 20);
+
+  container.innerHTML = deals.map(p => {
+    const disc = Math.round((1 - p.price / p.oldPrice) * 100);
+    return `
+      <div class="col-6 col-lg-3 reveal">
+        <div class="deal-card">
+          <div class="deal-badge">🔥 ${disc}% OFF</div>
+          <a href="product-detail.html?id=${p.id}">
+            <div class="deal-img-wrap">
+              <img src="${fixImgPath(p.img)}" alt="${p.name}" class="deal-img" loading="lazy" />
+            </div>
+          </a>
+          <div class="deal-body">
+            <h6 class="deal-name">${p.name}</h6>
+            <div class="deal-prices">
+              <span class="deal-price-new">₹${p.price.toLocaleString('en-IN')}</span>
+              <span class="deal-price-old">₹${p.oldPrice.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="deal-stars">
+              ${Array.from({ length: 5 }, (_, i) => `<i class="bi bi-star-fill${i >= p.rating ? ' text-muted' : ''}"></i>`).join('')}
+              <span>(${p.reviews || 0})</span>
+            </div>
+            <button class="btn btn-add-cart w-100 mt-2" onclick="addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})">
+              <i class="bi bi-cart-plus me-1"></i>Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
 function changeQty(delta) {
   currentModalQty = Math.max(1, currentModalQty + delta);
   const el = document.getElementById('qtyValue');
@@ -270,22 +411,25 @@ function changeQty(delta) {
 // PRODUCTS DATA (shared across pages)
 // ============================================
 const PRODUCTS = [
-  { id:1,  name:'Sony WH-1000XM5',         cat:'headphones', price:8999,  oldPrice:12999, img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating:5, reviews:214, desc:'Industry-leading noise cancellation. 30-hour battery life. Crystal clear calls.' },
-  { id:2,  name:'65W GaN Fast Charger',     cat:'chargers',   price:1299,  oldPrice:1999,  img:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating:4, reviews:89,  desc:'Compact GaN technology. Charges laptop, phone, tablet simultaneously.' },
-  { id:3,  name:'Armor Phone Case',          cat:'covers',     price:399,   oldPrice:699,   img:'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating:4, reviews:156, desc:'Military-grade drop protection. Slim profile with raised camera bezels.' },
-  { id:4,  name:'20000mAh Power Bank',       cat:'powerbank',  price:1499,  oldPrice:2499,  img:'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating:5, reviews:302, desc:'Massive capacity with dual USB + USB-C PD output. LED charge indicator.' },
-  { id:5,  name:'TWS Earbuds Pro',           cat:'headphones', price:1999,  oldPrice:3499,  img:'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=500&fit=crop&auto=format', rating:4, reviews:178, desc:'Active noise cancellation with 8-hour playtime + 24hr case.' },
-  { id:6,  name:'OLED Display Screen',       cat:'display',    price:2499,  oldPrice:3999,  img:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating:4, reviews:67,  desc:'High-resolution OLED replacement panel. True-color display technology.' },
-  { id:7,  name:'Braided USB-C Cable',       cat:'chargers',   price:299,   oldPrice:499,   img:'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=500&fit=crop&auto=format', rating:5, reviews:421, desc:'Premium nylon-braided cable. Supports 100W fast charging. 1.5m length.' },
-  { id:8,  name:'Slim 10000mAh PD Bank',     cat:'powerbank',  price:999,   oldPrice:1799,  img:'https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=600&h=500&fit=crop&auto=format', rating:4, reviews:93,  desc:'Ultra-slim 10000mAh with 18W PD. Airline-friendly portable design.' },
-  { id:9,  name:'XB900 Premium Headphones',  cat:'headphones', price:4499,  oldPrice:8999,  img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating:5, reviews:128, desc:'Extra bass deep sound with 35-hour battery. Foldable design.' },
-  { id:10, name:'100W Super Fast Charger',   cat:'chargers',   price:1099,  oldPrice:1999,  img:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating:5, reviews:256, desc:'100W USB-C PD charging. GaN technology. Compact travel charger.' },
-  { id:11, name:'360° Protection Cover',     cat:'covers',     price:299,   oldPrice:499,   img:'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating:4, reviews:89,  desc:'Full-body 360° protection case with tempered glass screen protector.' },
-  { id:12, name:'Anker 26800mAh Power Bank', cat:'powerbank',  price:1949,  oldPrice:2999,  img:'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating:5, reviews:312, desc:'Massive 26800mAh with triple ports. Charge 3 devices simultaneously.' },
-  { id:13, name:'Li-Ion 4500mAh Battery',   cat:'battery',    price:799,   oldPrice:1299,  img:'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating:4, reviews:54,  desc:'High-capacity Li-Ion replacement battery. 500+ charge cycle life.' },
-  { id:14, name:'Wireless Charger Pad',      cat:'chargers',   price:699,   oldPrice:1199,  img:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating:4, reviews:112, desc:'15W max wireless charging. Compatible with all Qi-enabled devices.' },
-  { id:15, name:'Clear Transparent Cover',  cat:'covers',     price:199,   oldPrice:349,   img:'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating:3, reviews:67,  desc:'Ultra-thin crystal clear TPU case. Anti-yellowing technology.' },
-  { id:16, name:'IPS Display Replacement',  cat:'display',    price:1899,  oldPrice:2999,  img:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating:4, reviews:38,  desc:'Full HD IPS LCD replacement. Touch digitizer pre-assembled.' },
+  { id: 1, name: 'Dell Keyboard and Mouse', cat: 'keyboard', price: 499, oldPrice: 699, img: '../images/KM-1.png', rating: 4, reviews: 45, desc: 'Fast Latency Keyboard and Mouse combo.', brand: 'DELL' },
+  { id: 2, name: 'Sony WH-1000XM5', cat: 'headphones', price: 8999, oldPrice: 12999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 214, desc: 'Industry-leading noise cancellation.', brand: 'OUD', model: 'WH-1000XM5' },
+  { id: 3, name: '65W GaN Fast Charger', cat: 'chargers', price: 1299, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Compact GaN technology.', brand: 'ZEBRONICS', watts: 65, model: 'FastCharge65' },
+  { id: 4, name: 'Armor Phone Case', cat: 'covers', price: 399, oldPrice: 699, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 156, desc: 'Military-grade drop protection.', brand: 'MZ' },
+  { id: 5, name: '20000mAh Power Bank', cat: 'powerbank', price: 1499, oldPrice: 2499, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 302, desc: 'Massive capacity with dual USB.', brand: 'REDME', mah: 20000 },
+  { id: 6, name: 'boAt TWS Earbuds Pro', cat: 'headphones', price: 1999, oldPrice: 3499, img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 178, desc: 'Active noise cancellation.', brand: 'BOAT', model: 'Airdopes 441' },
+  { id: 7, name: 'OLED Display Screen', cat: 'display', price: 2499, oldPrice: 3999, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 67, desc: 'High-resolution OLED replacement.', brand: 'ORIGINAL BRAND' },
+  { id: 8, name: 'Braided USB-C Cable 120W', cat: 'chargers', price: 299, oldPrice: 499, img: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 421, desc: 'Premium nylon-braided cable.', brand: 'RD', watts: 120 },
+  { id: 9, name: 'Slim 10000mAh PD Bank', cat: 'powerbank', price: 999, oldPrice: 1799, img: 'https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 93, desc: 'Ultra-slim 10000mAh with 18W PD.', brand: 'LAPCARE', mah: 10000 },
+  { id: 10, name: 'Realme Buds Premium', cat: 'headphones', price: 4499, oldPrice: 8999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 128, desc: 'Extra bass deep sound.', brand: 'REALME', model: 'Buds Wireless Pro' },
+  { id: 11, name: '100W Super Fast Charger', cat: 'chargers', price: 1099, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 256, desc: '100W USB-C PD charging.', brand: 'OUD', watts: 85 },
+  { id: 12, name: '360° Protection Cover', cat: 'covers', price: 299, oldPrice: 499, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Full-body 360° protection case.', brand: 'VALI' },
+  { id: 13, name: 'Anker 12000mAh Power Bank', cat: 'powerbank', price: 1949, oldPrice: 2999, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 312, desc: 'Massive capacity with triple ports.', brand: 'VALI', mah: 12000 },
+  { id: 14, name: 'Li-Ion 5000mAh Battery', cat: 'battery', price: 799, oldPrice: 1299, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 54, desc: 'High-capacity replacement battery.', brand: 'MOBATREE', mah: 5000 },
+  { id: 15, name: 'Wireless Charger Pad 20W', cat: 'chargers', price: 699, oldPrice: 1199, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 112, desc: '20W max wireless charging.', brand: 'ZEBRONICS', watts: 20 },
+  { id: 16, name: 'Clear Transparent Cover', cat: 'covers', price: 199, oldPrice: 349, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 3, reviews: 67, desc: 'Ultra-thin crystal clear TPU case.' },
+  { id: 17, name: 'SanDisk 128GB Pendrive', cat: 'storage', price: 899, oldPrice: 1499, img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 38, desc: 'Fast transfer OTG pendrive.', brand: 'SANDISK', gb: 128 },
+
 ];
+
 
 window.PRODUCTS = PRODUCTS;

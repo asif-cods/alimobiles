@@ -25,6 +25,7 @@
                 <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
             </a>
             <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <button class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></button>
                 <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                     <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
                 </a>
@@ -37,7 +38,6 @@
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="new-year-offer.html">New Year Offer</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Categories</a>
@@ -48,6 +48,8 @@
                                         class="bi bi-headphones me-2"></i>Headphones</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=battery"><i
                                         class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=storage"><i
+                                        class="bi bi-sd-card me-2"></i>Storage</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
                                         class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=chargers"><i
@@ -58,11 +60,29 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
                 </ul>
                 <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <div class="nav-item mx-2">
+                        <a class="btn btn-danger-custom px-4 rounded-pill d-inline-flex align-items-center"
+                            href="mobile-repair.html" style="font-weight:600; font-size: 0.95rem;">
+                            <i class="bi bi-tools me-2"></i>Mobile Repair
+                        </a>
+                    </div>
+                    <button class="nav-icon-btn" id="searchToggle"><i class="bi bi-search"></i></button>
                     <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                         <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
                     </a>
+                </div>
+            </div>
+        </div>
+        <!-- Search Bar -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for products..." class="form-control" />
+                    <button id="searchBtn"><i class="bi bi-search"></i></button>
+                    <button id="closeSearch"><i class="bi bi-x-lg"></i></button>
                 </div>
             </div>
         </div>
@@ -134,7 +154,7 @@
                             <div class="social-links">
                                 <a href="#"><i class="bi bi-facebook"></i></a>
                                 <a href="#"><i class="bi bi-instagram"></i></a>
-                                <a href="https://wa.me/919876543210"><i class="bi bi-whatsapp"></i></a>
+                                <a href="https://wa.me/917358014459"><i class="bi bi-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
@@ -173,7 +193,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
+    <a href="https://wa.me/917358014459" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
             class="whatsapp-label">Chat with us</span></a>
     <button class="scroll-top-btn" id="scrollTopBtn"><i class="bi bi-arrow-up"></i></button>
 
@@ -183,6 +203,83 @@
             </div>
         </div>
     </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-brand">
+                            <a class="footer-logo" href="../index.html">
+                                <i class="bi bi-phone-fill"></i>
+                                Mobile<span>Zone</span>
+                            </a>
+                            <p>Your one-stop destination for premium mobile accessories. Quality products, unbeatable
+                                prices, and excellent service.</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="https://wa.me/917358014459" aria-label="WhatsApp"><i
+                                        class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="hot-deals.html">Hot Deals</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <h6 class="footer-heading">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=display">Display</a></li>
+                            <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=battery">Battery</a></li>
+                            <li><a href="category.html?cat=storage">Storage</a></li>
+                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                            <li><a href="category.html?cat=chargers">Chargers</a></li>
+                            <li><a href="category.html?cat=covers">Mobile Cases</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class="footer-heading">Contact & Store</h6>
+                        <ul class="footer-contact-list">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>13th ST S.V.M Nagar, Ennore, Chennai –
+                                    600057</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
+                            <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
+                            <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 10:00 AM – 8:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="payment-icons">
+                            <img src="https://img.icons8.com/color/40/visa.png" alt="Visa" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/mastercard.png" alt="Mastercard" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/gpay.png" alt="Google Pay" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/paytm.png" alt="Paytm" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
@@ -214,7 +311,7 @@
                 'Category': p.cat.charAt(0).toUpperCase() + p.cat.slice(1),
                 'Warranty': '1 Year',
                 'In Stock': 'Yes',
-                'Shipping': 'Free on orders ₹499+'
+                'Shipping': 'Free on orders ₹1500+'
             };
             const specRows = Object.entries(specs).map(([k, v]) => `<tr><td class="fw-600" style="font-weight:600;width:40%">${k}</td><td>${v}</td></tr>`).join('');
 
@@ -222,11 +319,11 @@
     <!-- Gallery -->
     <div class="col-lg-5">
       <div class="product-detail-gallery">
-        <img src="${p.img}" alt="${p.name}" class="main-product-img" id="mainImg" />
+        <img src="${fixImgPath(p.img)}" alt="${p.name}" class="main-product-img" id="mainImg" />
         <div class="thumb-gallery">
           ${[p.img, p.img, p.img].map((src, i) => `
-            <div class="thumb-item${i === 0 ? ' active' : ''}" onclick="switchImg(this,'${src}')">
-              <img src="${src}" alt="View ${i + 1}" loading="lazy"/>
+            <div class="thumb-item${i === 0 ? ' active' : ''}" onclick="switchImg(this,'${fixImgPath(src)}')">
+              <img src="${fixImgPath(src)}" alt="View ${i + 1}" loading="lazy"/>
             </div>`).join('')}
         </div>
       </div>
@@ -271,7 +368,7 @@
         <button class="btn btn-add-cart flex-grow-1" style="padding:.8rem 1.5rem;font-size:.95rem;" onclick="addProductToCart()">
           <i class="bi bi-cart-plus me-2"></i>Add to Cart
         </button>
-        <a href="https://wa.me/919876543210?text=Hi, I want to order ${encodeURIComponent(p.name)}" target="_blank" class="btn" style="background:#25D366;color:white;border-radius:var(--radius-sm);padding:.8rem 1rem;">
+        <a href="https://wa.me/917358014459?text=Hi, I want to order ${encodeURIComponent(p.name)}" target="_blank" class="btn" style="background:#25D366;color:white;border-radius:var(--radius-sm);padding:.8rem 1rem;">
           <i class="bi bi-whatsapp"></i>
         </a>
       </div>
@@ -322,7 +419,7 @@
             <div class="product-slide-card">
               <div class="product-slide-img-wrap">
                 ${d ? `<div class="product-grid-badge">-${d}%</div>` : ''}
-                <img src="${pr.img}" alt="${pr.name}" class="product-slide-img" loading="lazy"/>
+                <img src="${fixImgPath(pr.img)}" alt="${pr.name}" class="product-slide-img" loading="lazy"/>
                 <div class="product-overlay">
                   <button class="overlay-btn" onclick="addToCart(${JSON.stringify(pr).replace(/"/g, '&quot;')})"><i class="bi bi-cart-plus"></i> Add to Cart</button>
                 </div>

@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // Apply All Filters & Render
 // ============================================
+
 function applyFilters() {
     if (typeof PRODUCTS === 'undefined') return;
 
@@ -47,27 +48,127 @@ function applyFilters() {
     // Get checked categories from sidebar
     const checkedCats = [...document.querySelectorAll('.cat-filter-check:checked')].map(c => c.value);
 
-    // Price range
-    const priceRange = document.getElementById('priceRange');
-    const maxPrice = priceRange ? parseInt(priceRange.value) : 15000;
+    // Determine active categories for dynamic UI
+    let activeCats = [];
+    if (catFilter !== 'all') activeCats.push(catFilter);
+    if (checkedCats.length > 0) activeCats = [...new Set([...activeCats, ...checkedCats])];
 
-    // Sort
+    // If search query is present, try to guess categories
+    if (searchQuery) {
+        const brands = ['apple', 'samsung', 'vivo', 'oppo', 'realme', 'xiaomi'];
+        if (searchQuery.includes('case') || searchQuery.includes('cover') || brands.some(b => searchQuery.includes(b))) activeCats.push('covers');
+        if (searchQuery.includes('display') || searchQuery.includes('screen') || searchQuery.includes('lcd')) activeCats.push('display');
+        if (searchQuery.includes('glass') || searchQuery.includes('temp')) activeCats.push('tempglass');
+        if (searchQuery.includes('battery')) activeCats.push('battery');
+        if (searchQuery.includes('speaker') || searchQuery.includes('sound') || searchQuery.includes('bt')) activeCats.push('speakers');
+        if (searchQuery.includes('keyboard') || searchQuery.includes('mouse') || searchQuery.includes('Keyboard and mouse')) activeCats.push('keyboard');
+        if (searchQuery.includes('storage') || searchQuery.includes('card') || searchQuery.includes('pendrive')) activeCats.push('storage');
+        if (searchQuery.includes('power') || searchQuery.includes('bank')) activeCats.push('powerbank');
+        if (searchQuery.includes('charger') || searchQuery.includes('cable') || searchQuery.includes('adapter')) activeCats.push('chargers');
+        if (searchQuery.includes('headphone') || searchQuery.includes('buds') || searchQuery.includes('tws')) activeCats.push('headphones');
+    }
+
+    if (activeCats.length === 0) activeCats = ['all'];
+
+    // Show/hide specific filter sections based on category
+    document.querySelectorAll('.cat-spec-filter').forEach(el => {
+        const c = el.getAttribute('data-cat');
+        // Show if "all" is active OR if the specific category is in the active list
+        if (activeCats.includes('all') || activeCats.includes(c)) {
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+
+    const getFilterVal = (id) => {
+        const d = document.getElementById(id);
+        const m = document.getElementById(id + 'Mobile');
+        if (d && d.value && d.value !== 'all' && d.value !== '') return d.value;
+        if (m && m.value && m.value !== 'all' && m.value !== '') return m.value;
+        return 'all';
+    };
+
+    const getModelVal = () => {
+        const d = document.getElementById('modelFilter');
+        const m = document.getElementById('modelFilterMobile');
+        if (d && d.value.trim()) return d.value.toLowerCase().trim();
+        if (m && m.value.trim()) return m.value.toLowerCase().trim();
+        return '';
+    };
+
+    const modelFilter = getModelVal();
+    const minPrice = getPrice('priceMin', 0);
+    const maxPrice = getPrice('priceMax', 15000); // large default max
+
+    // Extract dynamic filters values
+    // Covers
+    const coverBrand = getFilterVal('coverBrandFilter').toLowerCase();
+    const coverColor = getFilterVal('coverColorFilter').toLowerCase();
+    // Display
+    const displayType = getFilterVal('displayTypeFilter').toLowerCase();
+    // Temp Glass
+    const glassType = getFilterVal('glassTypeFilter').toLowerCase();
+    // Battery
+    const batteryBrand = getFilterVal('batteryBrandFilter').toLowerCase();
+    const batteryMah = getFilterVal('batteryMahFilter').toLowerCase();
+    // Speakers
+    const speakerBrand = getFilterVal('speakerBrandFilter').toLowerCase();
+    const speakerConn = getFilterVal('speakerConnFilter').toLowerCase();
+    // KB
+    const kbBrand = getFilterVal('kbBrandFilter').toLowerCase();
+    const kbConn = getFilterVal('kbConnFilter').toLowerCase();
+    // Storage
+    const storageType = getFilterVal('storageFilter').toLowerCase();
+    // PowerBank
+    const pbBrand = getFilterVal('pbBrandFilter').toLowerCase();
+    const pbMah = getFilterVal('pbMahFilter').toLowerCase();
+
     const sortSelect = document.getElementById('sortSelect');
     const sortBy = sortSelect ? sortSelect.value : 'default';
 
-    // Filter
     filteredProducts = PRODUCTS.filter(p => {
+        const pCat = p.cat ? p.cat.toLowerCase() : '';
         const matchCat = catFilter !== 'all'
-            ? p.cat === catFilter
-            : (checkedCats.length === 0 || checkedCats.includes(p.cat));
-        const matchPrice = p.price <= maxPrice;
+            ? pCat === catFilter
+            : (checkedCats.length === 0 || checkedCats.includes(pCat));
+
+        const matchPrice = p.price >= minPrice && p.price <= maxPrice;
+
         const matchSearch = !searchQuery ||
             p.name.toLowerCase().includes(searchQuery) ||
-            p.cat.toLowerCase().includes(searchQuery);
-        return matchCat && matchPrice && matchSearch;
+            pCat.includes(searchQuery);
+
+        const matchModel = !modelFilter || p.name.toLowerCase().includes(modelFilter) || (p.model && p.model.toLowerCase().includes(modelFilter));
+
+        // Category-Specific matching
+        let matchSpec = true;
+        if (pCat === 'covers') {
+            if (coverBrand !== 'all' && (!p.mobileBrand || p.mobileBrand.toLowerCase() !== coverBrand)) matchSpec = false;
+            if (coverColor !== 'all' && (!p.color || p.color.toLowerCase() !== coverColor)) matchSpec = false;
+        } else if (pCat === 'display') {
+            if (displayType !== 'all' && (!p.brand || p.brand.toLowerCase() !== displayType) && (!p.type || p.type.toLowerCase() !== displayType)) matchSpec = false;
+        } else if (pCat === 'tempglass') {
+            if (glassType !== 'all' && (!p.type || p.type.toLowerCase() !== glassType)) matchSpec = false;
+        } else if (pCat === 'battery') {
+            if (batteryBrand !== 'all' && (!p.brand || p.brand.toLowerCase() !== batteryBrand)) matchSpec = false;
+            if (batteryMah !== 'all' && (!p.mah || p.mah.toString() !== batteryMah)) matchSpec = false;
+        } else if (pCat === 'speakers') {
+            if (speakerBrand !== 'all' && (!p.brand || p.brand.toLowerCase() !== speakerBrand)) matchSpec = false;
+            if (speakerConn !== 'all' && (!p.connection || p.connection.toLowerCase() !== speakerConn)) matchSpec = false;
+        } else if (pCat === 'keyboard') {
+            if (kbBrand !== 'all' && (!p.brand || p.brand.toLowerCase() !== kbBrand)) matchSpec = false;
+            if (kbConn !== 'all' && (!p.connection || p.connection.toLowerCase() !== kbConn)) matchSpec = false;
+        } else if (pCat === 'storage') {
+            if (storageType !== 'all' && (!p.capacity || p.capacity.toLowerCase() !== storageType) && (!p.type || p.type.toLowerCase() !== storageType)) matchSpec = false;
+        } else if (pCat === 'powerbank') {
+            if (pbBrand !== 'all' && (!p.brand || p.brand.toLowerCase() !== pbBrand)) matchSpec = false;
+            if (pbMah !== 'all' && (!p.mah || p.mah.toString() !== pbMah)) matchSpec = false;
+        }
+
+        return matchCat && matchPrice && matchSearch && matchModel && matchSpec;
     });
 
-    // Sort
     if (sortBy === 'price-asc') filteredProducts.sort((a, b) => a.price - b.price);
     if (sortBy === 'price-desc') filteredProducts.sort((a, b) => b.price - a.price);
     if (sortBy === 'rating') filteredProducts.sort((a, b) => b.rating - a.rating);
@@ -77,6 +178,14 @@ function applyFilters() {
     renderProducts();
     renderPagination();
     updateResultCount();
+}
+
+function getPrice(id, fallback) {
+    const d = document.getElementById(id);
+    const m = document.getElementById(id + 'Mobile');
+    if (d && d.value) return parseFloat(d.value);
+    if (m && m.value) return parseFloat(m.value);
+    return fallback;
 }
 
 // ============================================
@@ -111,7 +220,7 @@ function renderProducts() {
         <div class="product-grid-card">
           <div class="product-grid-img-wrap">
             ${disc ? `<span class="product-grid-badge">-${disc}%</span>` : ''}
-            <img src="${p.img}" alt="${p.name}" class="product-grid-img" loading="lazy" />
+            <img src="${fixImgPath(p.img)}" alt="${p.name}" class="product-grid-img" loading="lazy" />
             <div class="product-grid-actions">
               <button class="action-btn-sm" onclick="openQuickView(${p.id})" title="Quick View"><i class="bi bi-eye"></i></button>
               <button class="action-btn-sm" onclick="addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
@@ -148,7 +257,7 @@ function openQuickView(productId) {
         return;
     }
 
-    document.getElementById('modalProductImg').src = p.img;
+    document.getElementById('modalProductImg').src = fixImgPath(p.img);
     document.getElementById('modalProductImg').alt = p.name;
     document.getElementById('modalProductCat').textContent = p.cat;
     document.getElementById('modalProductName').textContent = p.name;
@@ -255,12 +364,20 @@ function initFilterListeners() {
 // ============================================
 function clearFilters() {
     document.querySelectorAll('.cat-filter-check').forEach(cb => cb.checked = false);
-    const priceRange = document.getElementById('priceRange');
-    if (priceRange) {
-        priceRange.value = priceRange.max;
-        const priceDisplay = document.getElementById('priceDisplay');
-        if (priceDisplay) priceDisplay.textContent = '₹' + parseInt(priceRange.max).toLocaleString('en-IN');
-    }
+
+    const resetVal = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.value = val;
+        const elm = document.getElementById(id + 'Mobile');
+        if (elm) elm.value = val;
+    };
+
+    resetVal('modelFilter', '');
+    ['priceMin'].forEach(id => resetVal(id, '0'));
+    ['priceMax'].forEach(id => resetVal(id, '15000'));
+
+    ['coverBrandFilter', 'coverColorFilter', 'displayTypeFilter', 'glassTypeFilter', 'batteryBrandFilter', 'batteryMahFilter', 'speakerBrandFilter', 'speakerConnFilter', 'kbBrandFilter', 'kbConnFilter', 'storageFilter', 'pbBrandFilter', 'pbMahFilter'].forEach(id => resetVal(id, 'all'));
+
     const sortSelect = document.getElementById('sortSelect');
     if (sortSelect) sortSelect.value = 'default';
     const productSearch = document.getElementById('productSearch');
@@ -269,6 +386,7 @@ function clearFilters() {
     url.searchParams.delete('cat');
     url.searchParams.delete('search');
     history.replaceState(null, '', url);
+    updatePriceRangeSlider(false);
     applyFilters();
 }
 
@@ -282,3 +400,55 @@ function debounce(fn, delay) {
         timer = setTimeout(() => fn.apply(this, args), delay);
     };
 }
+
+
+function updatePriceRangeSlider(sourceMobile) {
+    const srcSuffix = sourceMobile ? 'Mobile' : '';
+    const destSuffix = sourceMobile ? '' : 'Mobile';
+
+    const srcMin = document.getElementById('priceMin' + srcSuffix);
+    const srcMax = document.getElementById('priceMax' + srcSuffix);
+    const destMin = document.getElementById('priceMin' + destSuffix);
+    const destMax = document.getElementById('priceMax' + destSuffix);
+
+    if (!srcMin || !srcMax) return;
+
+    let minVal = parseInt(srcMin.value);
+    let maxVal = parseInt(srcMax.value);
+
+    // Gap enforcement
+    if (maxVal - minVal < 500) {
+        if (event && event.target === srcMin) {
+            srcMin.value = maxVal - 500;
+            minVal = parseInt(srcMin.value);
+        } else {
+            srcMax.value = minVal + 500;
+            maxVal = parseInt(srcMax.value);
+        }
+    }
+
+    const updateDisplay = (suffix, mi, ma, inputMax) => {
+        const prog = document.getElementById('sliderProgress' + suffix);
+        const disp = document.getElementById('priceRangeDisplay' + suffix);
+        if (prog) {
+            prog.style.left = (mi / inputMax) * 100 + "%";
+            prog.style.right = 100 - (ma / inputMax) * 100 + "%";
+        }
+        if (disp) {
+            let maxStr = ma >= inputMax ? ma.toLocaleString('en-IN') + '+' : ma.toLocaleString('en-IN');
+            disp.textContent = `₹${mi.toLocaleString('en-IN')} - ₹${maxStr}`;
+        }
+    };
+
+    updateDisplay(srcSuffix, minVal, maxVal, parseInt(srcMax.max));
+
+    if (destMin && destMax) {
+        destMin.value = minVal;
+        destMax.value = maxVal;
+        updateDisplay(destSuffix, minVal, maxVal, parseInt(destMax.max));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updatePriceRangeSlider(false);
+});

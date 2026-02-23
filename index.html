@@ -31,7 +31,7 @@
 
 <body>
 
-    <!-- ===== NAVBAR ===== -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -39,10 +39,9 @@
                 <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
             </a>
             <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
-                <a href="#" class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></a>
+                <button class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></button>
                 <a href="pages/cart.html" class="nav-icon-btn cart-btn position-relative">
-                    <i class="bi bi-cart3"></i>
-                    <span class="cart-badge" id="cartCount">0</span>
+                    <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                     <i class="bi bi-list"></i>
@@ -50,13 +49,9 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="index.html" data-section="home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/products.html"
-                            data-section="products">Products</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/hot-deals.html" data-section="deals">Hot
-                            Deals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/new-year-offer.html" data-section="newyear">New
-                            Year Offer</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/hot-deals.html">Hot Deals</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown">Categories</a>
@@ -67,6 +62,8 @@
                                         class="bi bi-headphones me-2"></i>Headphones</a></li>
                             <li><a class="dropdown-item" href="pages/category.html?cat=battery"><i
                                         class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="pages/category.html?cat=storage"><i
+                                        class="bi bi-sd-card me-2"></i>Storage</a></li>
                             <li><a class="dropdown-item" href="pages/category.html?cat=powerbank"><i
                                         class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
                             <li><a class="dropdown-item" href="pages/category.html?cat=chargers"><i
@@ -77,12 +74,18 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+
                 </ul>
                 <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <div class="nav-item mx-2">
+                        <a class="btn btn-danger-custom px-4 rounded-pill d-inline-flex align-items-center"
+                            href="pages/mobile-repair.html" style="font-weight:600; font-size: 0.95rem;">
+                            <i class="bi bi-tools me-2"></i>Mobile Repair
+                        </a>
+                    </div>
                     <button class="nav-icon-btn" id="searchToggle"><i class="bi bi-search"></i></button>
                     <a href="pages/cart.html" class="nav-icon-btn cart-btn position-relative">
-                        <i class="bi bi-cart3"></i>
-                        <span class="cart-badge" id="cartCountDesktop">0</span>
+                        <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
                     </a>
                 </div>
             </div>
@@ -108,36 +111,36 @@
         <div class="container hero-content">
             <div class="row align-items-center min-vh-hero">
                 <div class="col-lg-7 col-md-8">
-                    <div class="hero-badge animate-fadeInUp">🔥 New Year Sale – Up to 50% Off!</div>
+                    <div class="hero-badge animate-fadeInUp">🔥Up to 20% Off!</div>
                     <h1 class="hero-title animate-fadeInUp delay-1">
                         Best Mobile Accessories<br />
                         at <span class="text-gradient">Affordable Price</span>
                     </h1>
                     <p class="hero-subtitle animate-fadeInUp delay-2">
                         Discover premium quality mobile accessories – headphones, power banks, chargers, cases, and
-                        more. Trusted by thousands of customers worldwide.
+                        more. Doorstep delivery and Repairing services.
                     </p>
                     <div class="hero-btns animate-fadeInUp delay-3">
                         <a href="pages/products.html" class="btn btn-hero-primary">
                             <i class="bi bi-bag-fill me-2"></i>Shop Now
                         </a>
-                        <a href="pages/hot-deals.html" class="btn btn-hero-outline">
-                            <i class="bi bi-fire me-2"></i>View Deals
+                        <a href="pages/hot-deals.html" class=" hero-btn btn-hero-outline">
+                            <i class="bi bi-fire me-2"></i>Hot Deals
                         </a>
                     </div>
                     <div class="hero-stats animate-fadeInUp delay-4">
                         <div class="stat-item">
-                            <span class="stat-num">10K+</span>
+                            <span class="stat-num">500+</span>
                             <span class="stat-label">Happy Customers</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <span class="stat-num">500+</span>
+                            <span class="stat-num">1K+</span>
                             <span class="stat-label">Products</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <span class="stat-num">6+</span>
+                            <span class="stat-num">10+</span>
                             <span class="stat-label">Categories</span>
                         </div>
                     </div>
@@ -153,14 +156,14 @@
     <div class="announcement-bar">
         <div class="ticker-wrapper">
             <div class="ticker-content">
-                <span><i class="bi bi-truck me-2"></i>Free Delivery on orders above ₹499</span>
-                <span><i class="bi bi-shield-check me-2"></i>1 Year Warranty on all products</span>
-                <span><i class="bi bi-award me-2"></i>100% Genuine Products</span>
-                <span><i class="bi bi-arrow-repeat me-2"></i>Easy 7-day Returns</span>
+                <span><i class="bi bi-truck me-2"></i>Free And Same-Day Delivery On Orders Above ₹1500 (CHENNAI)</span>
+                <!-- <span><i class="bi bi-shield-check me-2"></i>1 Year Warranty on all products</span> -->
+                <span><i class="bi bi-tools me-2"></i>Doorstep Mobile Repair (CHENNAI)</span>
+                <!-- <span><i class="bi bi-arrow-repeat me-2"></i>Easy 7-day Returns</span> -->
                 <span><i class="bi bi-headset me-2"></i>24/7 Customer Support</span>
-                <span><i class="bi bi-truck me-2"></i>Free Delivery on orders above ₹499</span>
-                <span><i class="bi bi-shield-check me-2"></i>1 Year Warranty on all products</span>
-                <span><i class="bi bi-award me-2"></i>100% Genuine Products</span>
+                <span><i class="bi bi-truck me-2"></i>Free And Same-Day Delivery On Orders Above ₹1500 (CHENNAI)</span>
+                <!-- <span><i class="bi bi-shield-check me-2"></i>1 Year Warranty on all products</span> -->
+                <span><i class="bi bi-tools me-2"></i>Doorstep Mobile Repair (CHENNAI)</span>
             </div>
         </div>
     </div>
@@ -177,8 +180,7 @@
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="pages/category.html?cat=display" class="category-card">
                         <div class="cat-icon-wrap">
-                            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=200&h=200&fit=crop&auto=format"
-                                alt="Display" class="cat-img" loading="lazy" />
+                            <img src="./images/DT-1.png" alt="Display" class="cat-img" loading="lazy" />
                         </div>
                         <h6 class="cat-name">Display</h6>
                     </a>
@@ -186,26 +188,31 @@
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="pages/category.html?cat=headphones" class="category-card">
                         <div class="cat-icon-wrap">
-                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&auto=format"
-                                alt="Headphones" class="cat-img" loading="lazy" />
+                            <img src="./images/HE-1.png" alt="Headphones" class="cat-img" loading="lazy" />
                         </div>
                         <h6 class="cat-name">Headphones</h6>
                     </a>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="pages/category.html?cat=battery" class="category-card">
+                    <a href="pages/category.html?cat=Storage" class="category-card">
                         <div class="cat-icon-wrap">
-                            <img src="https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=200&h=200&fit=crop&auto=format"
-                                alt="Battery" class="cat-img" loading="lazy" />
+                            <img src="./images/MS-1.png" alt="Storage" class="cat-img" loading="lazy" />
                         </div>
-                        <h6 class="cat-name">Battery</h6>
+                        <h6 class="cat-name">Storage</h6>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="pages/category.html?cat=Speaker" class="category-card">
+                        <div class="cat-icon-wrap">
+                            <img src="./images/BS-1.png" alt="Speaker" class="cat-img" loading="lazy" />
+                        </div>
+                        <h6 class="cat-name">Speaker</h6>
                     </a>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="pages/category.html?cat=powerbank" class="category-card">
                         <div class="cat-icon-wrap">
-                            <img src="https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=200&h=200&fit=crop&auto=format"
-                                alt="Power Bank" class="cat-img" loading="lazy" />
+                            <img src="./images/PB-1.png" alt="Power Bank" class="cat-img" loading="lazy" />
                         </div>
                         <h6 class="cat-name">Power Bank</h6>
                     </a>
@@ -213,17 +220,23 @@
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="pages/category.html?cat=chargers" class="category-card">
                         <div class="cat-icon-wrap">
-                            <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=200&h=200&fit=crop&auto=format"
-                                alt="Chargers" class="cat-img" loading="lazy" />
+                            <img src="./images/MC-1.png" alt="Chargers" class="cat-img" loading="lazy" />
                         </div>
                         <h6 class="cat-name">Chargers</h6>
                     </a>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="pages/category.html?cat=Keyboards and Mouse" class="category-card">
+                        <div class="cat-icon-wrap">
+                            <img src="./images/KM-1.png" alt="Keyboards and Mouse" class="cat-img" loading="lazy" />
+                        </div>
+                        <h6 class="cat-name">Keyboards & Mouse</h6>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <a href="pages/category.html?cat=covers" class="category-card">
                         <div class="cat-icon-wrap">
-                            <img src="https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=200&h=200&fit=crop&auto=format"
-                                alt="Mobile Covers" class="cat-img" loading="lazy" />
+                            <img src="./images/BC-1.png" alt="Mobile Covers" class="cat-img" loading="lazy" />
                         </div>
                         <h6 class="cat-name">Mobile Covers</h6>
                     </a>
@@ -241,201 +254,11 @@
                 <p class="section-sub">Handpicked bestsellers loved by our customers</p>
             </div>
             <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row g-3 px-2">
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card" onclick="openProductModal(0)">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop&auto=format"
-                                            alt="Wireless Headphones" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="event.stopPropagation(); addToCart({id:1,name:'Sony WH-1000XM5',price:8999,oldPrice:12999,img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop&auto=format',category:'headphones'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                            <button class="overlay-view-btn"
-                                                onclick="event.stopPropagation(); openProductModal(0)"><i
-                                                    class="bi bi-eye"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Headphones</span>
-                                        <h6 class="product-name">Sony WH-1000XM5</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹8,999</span>
-                                            <span class="price-old">₹12,999</span>
-                                            <span class="discount-badge-sm">-31%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card" onclick="openProductModal(1)">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=300&h=300&fit=crop&auto=format"
-                                            alt="Fast Charger" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="event.stopPropagation(); addToCart({id:2,name:'65W GaN Charger',price:1299,oldPrice:1999,img:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=300&h=300&fit=crop&auto=format',category:'chargers'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                            <button class="overlay-view-btn"
-                                                onclick="event.stopPropagation(); openProductModal(1)"><i
-                                                    class="bi bi-eye"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Chargers</span>
-                                        <h6 class="product-name">65W GaN Charger</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹1,299</span>
-                                            <span class="price-old">₹1,999</span>
-                                            <span class="discount-badge-sm">-35%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card" onclick="openProductModal(2)">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=300&h=300&fit=crop&auto=format"
-                                            alt="Phone Case" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="event.stopPropagation(); addToCart({id:3,name:'Armor Phone Case',price:399,oldPrice:699,img:'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=300&h=300&fit=crop&auto=format',category:'covers'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                            <button class="overlay-view-btn"
-                                                onclick="event.stopPropagation(); openProductModal(2)"><i
-                                                    class="bi bi-eye"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Mobile Cases</span>
-                                        <h6 class="product-name">Armor Phone Case</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹399</span>
-                                            <span class="price-old">₹699</span>
-                                            <span class="discount-badge-sm">-43%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card" onclick="openProductModal(3)">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=300&h=300&fit=crop&auto=format"
-                                            alt="Power Bank" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="event.stopPropagation(); addToCart({id:4,name:'20000mAh Power Bank',price:1499,oldPrice:2499,img:'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=300&h=300&fit=crop&auto=format',category:'powerbank'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                            <button class="overlay-view-btn"
-                                                onclick="event.stopPropagation(); openProductModal(3)"><i
-                                                    class="bi bi-eye"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Power Bank</span>
-                                        <h6 class="product-name">20000mAh Power Bank</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹1,499</span>
-                                            <span class="price-old">₹2,499</span>
-                                            <span class="discount-badge-sm">-40%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row g-3 px-2">
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=300&fit=crop&auto=format"
-                                            alt="TWS Earbuds" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="addToCart({id:5,name:'TWS Earbuds Pro',price:1999,oldPrice:3499,img:'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=300&fit=crop&auto=format',category:'headphones'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Headphones</span>
-                                        <h6 class="product-name">TWS Earbuds Pro</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹1,999</span>
-                                            <span class="price-old">₹3,499</span>
-                                            <span class="discount-badge-sm">-43%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=300&h=300&fit=crop&auto=format"
-                                            alt="Display Screen" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="addToCart({id:6,name:'OLED Display Screen',price:2499,oldPrice:3999,img:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=300&h=300&fit=crop&auto=format',category:'display'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Display</span>
-                                        <h6 class="product-name">OLED Display Screen</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹2,499</span>
-                                            <span class="price-old">₹3,999</span>
-                                            <span class="discount-badge-sm">-37%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=300&fit=crop&auto=format"
-                                            alt="USB Cable" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="addToCart({id:7,name:'Braided USB-C Cable',price:299,oldPrice:499,img:'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=300&fit=crop&auto=format',category:'chargers'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Chargers</span>
-                                        <h6 class="product-name">Braided USB-C Cable</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹299</span>
-                                            <span class="price-old">₹499</span>
-                                            <span class="discount-badge-sm">-40%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="product-slide-card">
-                                    <div class="product-slide-img-wrap">
-                                        <img src="https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=300&h=300&fit=crop&auto=format"
-                                            alt="Power Bank Slim" class="product-slide-img" loading="lazy" />
-                                        <div class="product-overlay">
-                                            <button class="overlay-btn"
-                                                onclick="addToCart({id:8,name:'Slim 10000mAh PD',price:999,oldPrice:1799,img:'https://images.unsplash.com/photo-1585338070-5b2c5f3a5b5b?w=300&h=300&fit=crop&auto=format',category:'powerbank'})"><i
-                                                    class="bi bi-cart-plus"></i> Add to Cart</button>
-                                        </div>
-                                    </div>
-                                    <div class="product-slide-info">
-                                        <span class="product-category">Power Bank</span>
-                                        <h6 class="product-name">Slim 10000mAh PD</h6>
-                                        <div class="product-price-row">
-                                            <span class="price-new">₹999</span>
-                                            <span class="price-old">₹1,799</span>
-                                            <span class="discount-badge-sm">-44%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="carousel-inner" id="featuredCarouselInner">
+                    <!-- Products will be loaded dynamically via main.js -->
+                    <div class="p-5 text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
                     </div>
                 </div>
@@ -455,15 +278,152 @@
         </div>
     </section>
 
-    <!-- ===== HOT DEALS SECTION ===== -->
-    <section class="hot-deals-section py-5" id="deals">
+    <!-- ===== LATEST REELS SECTION ===== -->
+    <section class="reels-section py-5" id="reels">
         <div class="container">
+            <!-- Section Header -->
             <div class="section-header text-center mb-5">
-                <span class="section-badge deals-badge"><i class="bi bi-fire me-1"></i>Limited Time</span>
+                <span class="section-badge reels-badge"><i class="bi bi-instagram me-1"></i>Follow Us</span>
+                <h2 class="section-title">Latest <span class="text-gradient">Reels</span></h2>
+                <p class="section-sub">Watch our latest product reels and discover trending mobile accessories</p>
+            </div>
+
+            <div class="reels-skeleton" id="reelsSkeleton">
+                <div class="reels-slider-wrapper">
+                    <div class="reels-slider">
+                        <!-- Skeleton slides to pretend it's a grid/row -->
+                        <div class="reel-slide col-10 col-md-6 col-lg-3">
+                            <div class="reel-skeleton-card">
+                                <div class="skeleton-shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="reel-slide col-10 col-md-6 col-lg-3">
+                            <div class="reel-skeleton-card">
+                                <div class="skeleton-shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="reel-slide col-10 col-md-6 col-lg-3 d-none d-md-block">
+                            <div class="reel-skeleton-card">
+                                <div class="skeleton-shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="reel-slide col-10 col-md-6 col-lg-3 d-none d-lg-block">
+                            <div class="reel-skeleton-card">
+                                <div class="skeleton-shimmer"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Only show Slider (mobile horizontal / desktop multi-item) -->
+
+            <!-- Reels Slider (mobile horizontal) -->
+            <div class="reels-slider-wrapper" id="reelsSlider">
+                <div class="reels-slider" id="reelsSliderTrack">
+                    <!-- Dynamically injected by JS -->
+                </div>
+                <div class="reels-slider-dots" id="reelsSliderDots"></div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-5">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-reels-more" id="viewMoreReels">
+                    <i class="bi bi-instagram me-2"></i>View More Reels
+                    <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REEL MODAL PLAYER ===== -->
+    <div class="modal fade" id="reelModal" tabindex="-1" aria-label="Instagram Reel Player">
+        <div class="modal-dialog modal-dialog-centered reel-modal-dialog">
+            <div class="modal-content reel-modal-content">
+                <button type="button" class="reel-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                <div class="reel-modal-body">
+                    <div class="reel-modal-embed" id="reelModalEmbed">
+                        <!-- Embed injected by JS -->
+                    </div>
+                    <div class="reel-modal-actions">
+                        <a href="#" class="btn btn-reel-ig" id="reelModalIgLink" target="_blank" rel="noopener">
+                            <i class="bi bi-instagram me-2"></i>Open on Instagram
+                        </a>
+                        <button class="btn btn-reel-share" id="reelModalShare">
+                            <i class="bi bi-share-fill me-2"></i>Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE REPAIR PROMO SECTION ===== -->
+    <section class="repair-promo-section py-5 bg-light" id="repairPromo">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Left side: Graphic Image -->
+                <div class="col-lg-5 fade-in-scroll">
+                    <img src="./images/Mobile-repair-1.png" alt="Mobile Repair Service"
+                        class="img-fluid rounded-4 shadow-lg" loading="lazy" style="border: 2px solid var(--border);">
+                </div>
+                <!-- Right side: Content -->
+                <div class="col-lg-7 fade-in-scroll" style="transition-delay: 0.2s;">
+                    <div class="section-badge reels-badge mb-3 d-inline-block"><i class="bi bi-tools me-1"></i>Fast &
+                        Reliable</div>
+                    <h2 class="display-5 fw-bold mb-3">Professional <span class="text-gradient">Mobile Repair</span>
+                        Services</h2>
+                    <p class="lead text-muted mb-4">Got a broken screen or a battery that won't hold charge? We've got
+                        you covered. Book our reliable repair service to fix your device quickly.</p>
+
+                    <!-- 3 Feature Boxes -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-4">
+                            <div class="p-3 bg-white rounded-3 shadow-sm border text-center h-100 feature-box-hover">
+                                <i class="bi bi-house-door text-gradient-red fs-2 mb-2 d-inline-block"></i>
+                                <h6 class="fw-bold mb-1">Doorstep Pickup</h6>
+                                <p class="small text-muted mb-0">Hassle-free service</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="p-3 bg-white rounded-3 shadow-sm border text-center h-100 feature-box-hover">
+                                <i class="bi bi-tags text-gradient-blue fs-2 mb-2 d-inline-block"></i>
+                                <h6 class="fw-bold mb-1">Low Price</h6>
+                                <p class="small text-muted mb-0">Affordable repairs</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="p-3 bg-white rounded-3 shadow-sm border text-center h-100 feature-box-hover">
+                                <i class="bi bi-shield-check text-warning fs-2 mb-2 d-inline-block"></i>
+                                <h6 class="fw-bold mb-1">Free ESD Temper</h6>
+                                <p class="small text-muted mb-0">Display Replacement</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <a href="pages/mobile-repair.html"
+                            class="btn btn-hero-primary rounded-pill mx-1 px-4 py-3 fw-bold">
+                            <i class="bi bi-wrench-adjustable me-2"></i>Book Repair Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOT DEALS SECTION (Custom UI) ===== -->
+    <section class="hot-deals-section py-4" id="deals">
+        <div class="container">
+            <!-- Header with Title  -->
+            <div class="section-header text-center mb-5">
                 <h2 class="section-title">Hot <span class="text-gradient-red">Deals</span></h2>
                 <p class="section-sub">Grab these amazing deals before they're gone!</p>
                 <!-- Countdown Timer -->
-                <div class="countdown-wrapper mt-3">
+                <div class="countdown-wrapper justify-content-center mt-3">
                     <span class="countdown-label">Deals expire in:</span>
                     <div class="countdown-timer">
                         <div class="time-block"><span id="countdown-h">00</span><small>hrs</small></div>
@@ -474,127 +434,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row g-4">
-                <!-- Deal Card 1 -->
-                <div class="col-6 col-lg-3">
-                    <div class="deal-card">
-                        <div class="deal-badge">🔥 50% OFF</div>
-                        <a href="pages/product-detail.html?id=9">
-                            <div class="deal-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&auto=format"
-                                    alt="Premium Headphones" class="deal-img" loading="lazy" />
-                            </div>
-                        </a>
-                        <div class="deal-body">
-                            <h6 class="deal-name">Premium Headphones XB900</h6>
-                            <div class="deal-prices">
-                                <span class="deal-price-new">₹4,499</span>
-                                <span class="deal-price-old">₹8,999</span>
-                            </div>
-                            <div class="deal-stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-half"></i>
-                                <span>(128)</span>
-                            </div>
-                            <button class="btn btn-add-cart w-100 mt-2"
-                                onclick="addToCart({id:9,name:'Premium Headphones XB900',price:4499,oldPrice:8999,img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&auto=format',category:'headphones'})">
-                                <i class="bi bi-cart-plus me-1"></i>Add to Cart
-                            </button>
-                        </div>
-                    </div>
+            <div class="deals-container-custom">
+                <!-- Circle Arrow -->
+                <div class="deals-header-row justify-content-end">
+                    <a href="pages/hot-deals.html" class=" view-all-circle">
+                        <i class="bi bi-arrow-right-short fs-4"></i>
+                    </a>
                 </div>
-                <!-- Deal Card 2 -->
-                <div class="col-6 col-lg-3">
-                    <div class="deal-card">
-                        <div class="deal-badge deal-badge-blue">⚡ 45% OFF</div>
-                        <a href="pages/product-detail.html?id=10">
-                            <div class="deal-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&h=300&fit=crop&auto=format"
-                                    alt="Fast Charger" class="deal-img" loading="lazy" />
-                            </div>
-                        </a>
-                        <div class="deal-body">
-                            <h6 class="deal-name">100W Super Fast Charger</h6>
-                            <div class="deal-prices">
-                                <span class="deal-price-new">₹1,099</span>
-                                <span class="deal-price-old">₹1,999</span>
-                            </div>
-                            <div class="deal-stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                                <span>(256)</span>
-                            </div>
-                            <button class="btn btn-add-cart w-100 mt-2"
-                                onclick="addToCart({id:10,name:'100W Super Fast Charger',price:1099,oldPrice:1999,img:'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&h=300&fit=crop&auto=format',category:'chargers'})">
-                                <i class="bi bi-cart-plus me-1"></i>Add to Cart
-                            </button>
-                        </div>
-                    </div>
+
+                <!-- Products Row -->
+                <div class="row g-3 px-3" id="hotDealsGrid">
+                    <!-- Loaded dynamically via main.js -->
                 </div>
-                <!-- Deal Card 3 -->
-                <div class="col-6 col-lg-3">
-                    <div class="deal-card">
-                        <div class="deal-badge">🎁 40% OFF</div>
-                        <a href="pages/product-detail.html?id=11">
-                            <div class="deal-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=400&h=300&fit=crop&auto=format"
-                                    alt="Phone Cover" class="deal-img" loading="lazy" />
-                            </div>
-                        </a>
-                        <div class="deal-body">
-                            <h6 class="deal-name">360° Protection Phone Cover</h6>
-                            <div class="deal-prices">
-                                <span class="deal-price-new">₹299</span>
-                                <span class="deal-price-old">₹499</span>
-                            </div>
-                            <div class="deal-stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star"></i>
-                                <span>(89)</span>
-                            </div>
-                            <button class="btn btn-add-cart w-100 mt-2"
-                                onclick="addToCart({id:11,name:'360° Protection Phone Cover',price:299,oldPrice:499,img:'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=400&h=300&fit=crop&auto=format',category:'covers'})">
-                                <i class="bi bi-cart-plus me-1"></i>Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Deal Card 4 -->
-                <div class="col-6 col-lg-3">
-                    <div class="deal-card">
-                        <div class="deal-badge deal-badge-blue">⚡ 35% OFF</div>
-                        <a href="pages/product-detail.html?id=12">
-                            <div class="deal-img-wrap">
-                                <img src="https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=400&h=300&fit=crop&auto=format"
-                                    alt="Power Bank" class="deal-img" loading="lazy" />
-                            </div>
-                        </a>
-                        <div class="deal-body">
-                            <h6 class="deal-name">Anker 26800mAh Power Bank</h6>
-                            <div class="deal-prices">
-                                <span class="deal-price-new">₹1,949</span>
-                                <span class="deal-price-old">₹2,999</span>
-                            </div>
-                            <div class="deal-stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-half"></i>
-                                <span>(312)</span>
-                            </div>
-                            <button class="btn btn-add-cart w-100 mt-2"
-                                onclick="addToCart({id:12,name:'Anker 26800mAh Power Bank',price:1949,oldPrice:2999,img:'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=400&h=300&fit=crop&auto=format',category:'powerbank'})">
-                                <i class="bi bi-cart-plus me-1"></i>Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5">
-                <a href="pages/hot-deals.html" class="btn btn-danger-custom">View All Hot Deals <i
-                        class="bi bi-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>
@@ -607,34 +458,34 @@
                 <h2 class="section-title">Why Choose <span class="text-gradient">Mobile Zone</span>?</h2>
             </div>
             <div class="row g-4">
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-4">
                     <div class="why-card">
                         <div class="why-icon-wrap"><i class="bi bi-award-fill"></i></div>
-                        <h5>Quality Products</h5>
-                        <p>100% genuine and certified mobile accessories from trusted brands.</p>
+                        <h5>Trusted Brand</h5>
+                        <p>Mobile accessories from trusted brands.</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-4">
                     <div class="why-card">
                         <div class="why-icon-wrap"><i class="bi bi-truck"></i></div>
                         <h5>Fast Delivery</h5>
-                        <p>Same-day dispatch with express delivery options available.</p>
+                        <p>Same-day dispatch in Chennai available.</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-4">
                     <div class="why-card">
                         <div class="why-icon-wrap"><i class="bi bi-tag-fill"></i></div>
                         <h5>Best Price</h5>
                         <p>Guaranteed lowest prices with exclusive deals and discounts.</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <!-- <div class="col-6 col-md-3">
                     <div class="why-card">
                         <div class="why-icon-wrap"><i class="bi bi-shield-check-fill"></i></div>
                         <h5>Warranty</h5>
                         <p>1-year warranty on all products with easy return policy.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -790,7 +641,7 @@
                                 <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                                 <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
                                 <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-                                <a href="https://wa.me/919876543210" aria-label="WhatsApp"><i
+                                <a href="https://wa.me/917358014459" aria-label="WhatsApp"><i
                                         class="bi bi-whatsapp"></i></a>
                             </div>
                         </div>
@@ -801,7 +652,7 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="pages/products.html">Products</a></li>
                             <li><a href="pages/hot-deals.html">Hot Deals</a></li>
-                            <li><a href="pages/new-year-offer.html">New Year Offer</a></li>
+                            <!-- <li><a href="pages/new-year-offer.html">New Year Offer</a></li> -->
                             <li><a href="pages/about.html">About Us</a></li>
                             <li><a href="pages/contact.html">Contact</a></li>
                         </ul>
@@ -812,6 +663,7 @@
                             <li><a href="pages/category.html?cat=display">Display</a></li>
                             <li><a href="pages/category.html?cat=headphones">Headphones</a></li>
                             <li><a href="pages/category.html?cat=battery">Battery</a></li>
+                            <li><a href="pages/category.html?cat=storage">Storage</a></li>
                             <li><a href="pages/category.html?cat=powerbank">Power Bank</a></li>
                             <li><a href="pages/category.html?cat=chargers">Chargers</a></li>
                             <li><a href="pages/category.html?cat=covers">Mobile Cases</a></li>
@@ -822,7 +674,7 @@
                         <ul class="footer-contact-list">
                             <li><i class="bi bi-geo-alt-fill"></i><span>13th ST S.V.M Nagar, Ennore, Chennai –
                                     600057</span></li>
-                            <li><i class="bi bi-telephone-fill"></i><span>+91 1234567890</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
                             <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
                             <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 10:00 AM – 8:00 PM</span></li>
                         </ul>
@@ -850,7 +702,7 @@
     </footer>
 
     <!-- ===== FLOATING BUTTONS ===== -->
-    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" id="whatsappFloat"
+    <a href="https://wa.me/917358014459" class="whatsapp-float" target="_blank" id="whatsappFloat"
         aria-label="Chat on WhatsApp">
         <i class="bi bi-whatsapp"></i>
         <span class="whatsapp-label">Chat with us</span>
@@ -918,35 +770,272 @@
     <!-- Custom JS -->
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
+
+
+    <!-- ===== INSTAGRAM REELS JS ===== -->
     <script>
-        // Featured Products data for modal
-        const featuredProducts = [
-            {
-                id: 1, name: 'Sony WH-1000XM5', category: 'Headphones', price: 8999, oldPrice: 12999,
-                img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format',
-                desc: 'Industry-leading noise cancellation with crystal clear calls. 30-hour battery life with quick charge.',
-                stars: 5
-            },
-            {
-                id: 2, name: '65W GaN Charger', category: 'Chargers', price: 1299, oldPrice: 1999,
-                img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format',
-                desc: 'Compact GaN fast charger supports up to 65W PD. Compatible with all USB-C devices.',
-                stars: 4
-            },
-            {
-                id: 3, name: 'Armor Phone Case', category: 'Mobile Cases', price: 399, oldPrice: 699,
-                img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format',
-                desc: 'Military-grade drop protection with slim profile. Raised bezels protect screen and camera.',
-                stars: 4
-            },
-            {
-                id: 4, name: '20000mAh Power Bank', category: 'Power Bank', price: 1499, oldPrice: 2499,
-                img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format',
-                desc: 'Massive 20000mAh capacity with dual USB output and USB-C PD fast charging.',
-                stars: 5
+        (function () {
+            /* -------------------------------------------------------
+             * ADMIN EDITABLE: Add / remove reel objects here.
+             * Each object:
+             *   url   – full Instagram reel URL  (required)
+             *   label – short product label shown on the card
+             * ------------------------------------------------------- */
+            const reels = [
+                {
+                    url: "https://www.instagram.com/reel/DVD7-LSkqHw/?utm_source=ig_web_copy_link",
+                    label: "🎧 Premium Headphones"
+                },
+                {
+                    url: "https://www.instagram.com/reel/DVD7-LSkqHw/?utm_source=ig_web_copy_link",
+                    label: "⚡ Fast Charger 100W"
+                },
+                {
+                    url: "https://www.instagram.com/reel/DVD7-LSkqHw/?utm_source=ig_web_copy_link",
+                    label: "📱 Armor Phone Cases"
+                },
+                {
+                    url: "https://www.instagram.com/reel/DVD7-LSkqHw/?utm_source=ig_web_copy_link",
+                    label: "🔋 20000mAh Power Bank"
+                },
+                {
+                    url: "https://www.instagram.com/reel/DVD7-LSkqHw/?utm_source=ig_web_copy_link",
+                    label: "📱 Armor Phone Cases"
+                }
+            ];
+
+            /* ---- helpers ---- */
+            const isMobile = () => window.innerWidth < 768;
+
+            function extractShortcode(url) {
+                const m = url.match(/\/reel\/([A-Za-z0-9_-]+)/);
+                return m ? m[1] : null;
             }
-        ];
+
+            /* ---- Build a single reel card ---- */
+            function createReelCard(reel, index) {
+                const shortcode = extractShortcode(reel.url);
+
+                // Fallback gradient backgrounds
+                const gradients = [
+                    'linear-gradient(135deg,#E53935 0%,#1565C0 100%)',
+                    'linear-gradient(135deg,#1565C0 0%,#E53935 100%)',
+                    'linear-gradient(135deg,#C62828 0%,#0D47A1 100%)',
+                    'linear-gradient(135deg,#0D47A1 0%,#C62828 100%)'
+                ];
+
+                const card = document.createElement('div');
+                card.className = 'reel-card fade-in-scroll';
+                card.setAttribute('data-reel-url', reel.url);
+
+                card.innerHTML = `
+                <div class="reel-card-inner" onclick="openReelModal('${reel.url}', ${index})">
+                    <div class="reel-thumb-wrap" style="background:${gradients[index % gradients.length]}">
+                        <img src="https://images.weserv.nl/?url=https://www.instagram.com/p/${shortcode}/media/?size=l" 
+                             class="reel-thumb" 
+                             alt="${reel.label}"
+                             loading="lazy"
+                             referrerpolicy="no-referrer">
+                        <!-- Instagram-style UI overlay -->
+                        <div class="reel-overlay">
+                            <div class="reel-play-btn"><i class="bi bi-play-fill"></i></div>
+                        </div>
+                        <!-- Reels icon -->
+                        <div class="reel-type-badge"><i class="bi bi-camera-reels-fill"></i> Reel</div>
+                        <!-- IG logo badge -->
+                        <div class="reel-ig-badge"><i class="bi bi-instagram"></i></div>
+                        <!-- Share icon -->
+                        <button class="reel-share-icon"
+                            onclick="event.stopPropagation(); shareReel('${reel.url}', '${reel.label}')"
+                            aria-label="Share reel">
+                            <i class="bi bi-share-fill"></i>
+                        </button>
+                    </div>
+                    <!-- Card footer -->
+                    <div class="reel-card-footer">
+                        <span class="reel-label">${reel.label}</span>
+                        <a href="${reel.url}" target="_blank" rel="noopener noreferrer"
+                           class="reel-ig-link" onclick="event.stopPropagation()" aria-label="Open on Instagram">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+                return card;
+            }
+
+            /* ---- Render slider (all devices) ---- */
+            function renderSlider() {
+                const track = document.getElementById('reelsSliderTrack');
+                const dotsEl = document.getElementById('reelsSliderDots');
+                track.innerHTML = '';
+                dotsEl.innerHTML = '';
+
+                reels.forEach((reel, i) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'reel-slide';
+                    slide.appendChild(createReelCard(reel, i));
+                    track.appendChild(slide);
+
+                    const dot = document.createElement('button');
+                    dot.className = 'reel-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to reel ' + (i + 1));
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsEl.appendChild(dot);
+                });
+
+                startAutoSlider();
+            }
+
+            let currentSlide = 0;
+            let sliderInterval = null;
+
+            function getItemsPerView() {
+                if (window.innerWidth >= 992) return 4;
+                if (window.innerWidth >= 768) return 3;
+                if (window.innerWidth >= 481) return 2;
+                return 1;
+            }
+
+            function goToSlide(index) {
+                const track = document.getElementById('reelsSliderTrack');
+                const dots = document.querySelectorAll('.reel-dot');
+                const itemsPerView = getItemsPerView();
+                const maxSlide = Math.max(0, reels.length - itemsPerView);
+
+                // Allow wrapping around
+                if (index > maxSlide) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = maxSlide;
+                } else {
+                    currentSlide = index;
+                }
+
+                // Move by pixel width of one slide
+                const slideWidth = track.children[0] ? track.children[0].offsetWidth : 0;
+                track.style.transform = 'translateX(-' + (currentSlide * slideWidth) + 'px)';
+
+                dots.forEach(function (d, i) { d.classList.toggle('active', i === currentSlide); });
+            }
+
+            function startAutoSlider() {
+                clearInterval(sliderInterval);
+                sliderInterval = setInterval(function () { goToSlide(currentSlide + 1); }, 3500);
+            }
+
+            /* ---- Show layout ---- */
+            function applyLayout() {
+                const skeleton = document.getElementById('reelsSkeleton');
+                const slider = document.getElementById('reelsSlider');
+                skeleton.classList.add('d-none');
+                slider.classList.remove('d-none');
+            }
+
+            /* ---- Scroll fade-in via IntersectionObserver ---- */
+            function initScrollFadeIn() {
+                if (!('IntersectionObserver' in window)) {
+                    document.querySelectorAll('.fade-in-scroll').forEach(function (el) {
+                        el.classList.add('visible');
+                    });
+                    return;
+                }
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+                document.querySelectorAll('.fade-in-scroll').forEach(function (el) {
+                    observer.observe(el);
+                });
+            }
+
+            /* ---- Modal opener ---- */
+            window.openReelModal = function (url, index) {
+                const embedDiv = document.getElementById('reelModalEmbed');
+                const igLink = document.getElementById('reelModalIgLink');
+                const shareBtn = document.getElementById('reelModalShare');
+
+                igLink.href = url;
+                shareBtn.onclick = function () {
+                    shareReel(url, reels[index] ? reels[index].label : 'Mobile Zone Reel');
+                };
+
+                embedDiv.innerHTML =
+                    '<blockquote class="instagram-media"' +
+                    ' data-instgrm-captioned' +
+                    ' data-instgrm-permalink="' + url + '"' +
+                    ' data-instgrm-version="14"' +
+                    ' style="width:100%;min-width:280px;max-width:400px;margin:0 auto;">' +
+                    '</blockquote>';
+
+                if (window.instgrm && window.instgrm.Embeds) {
+                    window.instgrm.Embeds.process();
+                }
+
+                new bootstrap.Modal(document.getElementById('reelModal')).show();
+            };
+
+            /* ---- Clear modal embed on close ---- */
+            document.getElementById('reelModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('reelModalEmbed').innerHTML = '';
+            });
+
+            /* ---- Share helper ---- */
+            window.shareReel = function (url, label) {
+                if (navigator.share) {
+                    navigator.share({ title: label, url: url }).catch(function () { });
+                } else {
+                    navigator.clipboard.writeText(url).then(function () {
+                        var toastEl = document.getElementById('cartToast');
+                        document.getElementById('toastMsg').textContent = '🔗 Reel link copied!';
+                        new bootstrap.Toast(toastEl).show();
+                    });
+                }
+            };
+
+            /* ---- Load Instagram embed script lazily ---- */
+            function loadInstagramScript() {
+                if (document.getElementById('ig-embed-script')) return;
+                var script = document.createElement('script');
+                script.id = 'ig-embed-script';
+                script.src = 'https://www.instagram.com/embed.js';
+                script.async = true;
+                document.body.appendChild(script);
+            }
+
+            /* ---- Init ---- */
+            function init() {
+                // 800ms skeleton delay for UX
+                setTimeout(function () {
+                    renderSlider();
+                    applyLayout();
+                    initScrollFadeIn();
+                    loadInstagramScript();
+                }, 800);
+
+                var resizeTimer;
+                window.addEventListener('resize', function () {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function () {
+                        goToSlide(currentSlide); // Recalculate translation offset
+                        initScrollFadeIn();
+                    }, 300);
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
     </script>
+
 </body>
 
 </html>

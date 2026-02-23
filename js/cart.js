@@ -129,7 +129,7 @@ function renderCartPage() {
 
     cartContainer.innerHTML = cart.map(item => `
     <div class="cart-item-row" id="cartItem-${item.id}">
-      <img src="${item.img}" alt="${item.name}" class="cart-item-img" loading="lazy" />
+      <img src="${fixImgPath(item.img)}" alt="${item.name}" class="cart-item-img" loading="lazy" />
       <div class="cart-item-info">
         <div class="cart-item-cat">${item.category || 'Accessory'}</div>
         <div class="cart-item-name">${item.name}</div>
@@ -152,7 +152,7 @@ function renderCartPage() {
     // Update summary
     const subtotal = cart.reduce((acc, item) => acc + item.price * (item.qty || 1), 0);
     const savings = cart.reduce((acc, item) => acc + ((item.oldPrice || item.price) - item.price) * (item.qty || 1), 0);
-    const delivery = subtotal >= 499 ? 0 : 49;
+    const delivery = subtotal >= 1500 ? 0 : 100;
     const total = subtotal + delivery;
 
     const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };

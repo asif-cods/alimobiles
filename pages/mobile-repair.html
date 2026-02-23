@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Book reliable mobile repair service with Mobile Zone. Select your device, choose repair and get door step service." />
+    <title>Mobile Repair – Mobile Zone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <style>
+        .repair-step {
+            background: #fff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .step-number {
+            background-color: #42A5F5;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 800;
+            margin-right: 0.75rem;
+        }
+
+        .repair-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .repair-card:hover {
+            border-color: #cbd5e1;
+        }
+
+        .repair-card.selected {
+            border-color: var(--red);
+            background: #fffcfcf0;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+        }
+
+        .repair-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #42A5F5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            margin-right: 1rem;
+            position: relative;
+        }
+
+        .repair-info {
+            flex: 1;
+        }
+
+        .repair-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0 0 0.2rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .repair-price {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .repair-price-old {
+            font-size: 0.9rem;
+            color: var(--mid-gray);
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+            font-weight: 500;
+        }
+
+        .repair-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .repair-add-btn {
+            width: 36px;
+            height: 36px;
+            background-color: #42A5F5;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .selected .repair-add-btn {
+            background: #22c55e;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #ff4d4f;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
+                <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
+            </a>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
+                <button class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></button>
+                <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                    <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu modern-dropdown">
+                            <li><a class="dropdown-item" href="category.html?cat=display"><i
+                                        class="bi bi-phone me-2"></i>Display</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
+                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
+                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=storage"><i
+                                        class="bi bi-sd-card me-2"></i>Storage</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
+                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
+                                        class="bi bi-plug me-2"></i>Chargers</a></li>
+                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
+                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+                </ul>
+                <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+                    <div class="nav-item mx-2">
+                        <a class="btn btn-danger-custom px-4 rounded-pill d-inline-flex align-items-center active"
+                            href="mobile-repair.html" style="font-weight:600; font-size: 0.95rem;">
+                            <i class="bi bi-tools me-2"></i>Mobile Repair
+                        </a>
+                    </div>
+                    <button class="nav-icon-btn" id="searchToggle"><i class="bi bi-search"></i></button>
+                    <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
+                        <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Search Bar -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for products..." class="form-control" />
+                    <button id="searchBtn"><i class="bi bi-search"></i></button>
+                    <button id="closeSearch"><i class="bi bi-x-lg"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="container">
+            <h1>Mobile Repair Service</h1>
+            <p style="color:rgba(255,255,255,.8);max-width:500px;margin:.5rem auto 1rem;font-size:.95rem;">Expert
+                repairs, rapid turnaround, and doorstep pickup.</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Mobile Repair</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- BOOKING FORM SECTION -->
+    <section class="py-5">
+        <div class="container" style="max-width:900px;">
+
+            <form id="repairForm" onsubmit="submitRepairForm(event)">
+
+                <!-- STEP 1: Select Device -->
+                <div class="repair-step">
+                    <h3 class="step-title"><span class="step-number">1</span> Select Your Device</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Brand *</label>
+                            <select class="form-select form-select-lg" id="deviceBrand" required
+                                onchange="populateModels()">
+                                <option value="" selected disabled>Select Brand</option>
+                                <option value="Apple">Apple iPhone</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="OnePlus">OnePlus</option>
+                                <option value="Xiaomi">Xiaomi / Redmi</option>
+                                <option value="Vivo">Vivo</option>
+                                <option value="Oppo">Oppo</option>
+                                <option value="Realme">Realme</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Model *</label>
+                            <select class="form-select form-select-lg" id="deviceModel" required disabled>
+                                <option value="" selected disabled>First Select Brand</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Pick Repair Service -->
+                <div class="repair-step">
+                    <h3 class="step-title"><span class="step-number">2</span> Pick Your Repair Service</h3>
+                    <div class="row g-3">
+
+                        <!-- Repair Item 1 -->
+                        <div class="col-md-6">
+                            <div class="repair-card" onclick="toggleRepair(this, 'Display Broken', 6500)">
+                                <div class="discount-badge">19% OFF</div>
+                                <div class="repair-icon"><i class="bi bi-phone"></i></div>
+                                <div class="repair-info">
+                                    <p class="repair-name">Display Broken <i class="bi bi-info-circle ms-1 text-muted"
+                                            style="font-size:12px;"></i></p>
+                                    <div><span class="repair-price">₹1,500 - ₹8,000</span> <span
+                                            class="repair-price-old">₹8,000</span></div>
+                                </div>
+                                <div class="repair-add-btn"><i class="bi bi-plus-lg"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Repair Item 2 -->
+                        <div class="col-md-6">
+                            <div class="repair-card" onclick="toggleRepair(this, 'Charging Issue', 1999)">
+                                <div class="repair-icon"><i class="bi bi-battery-charging"></i></div>
+                                <div class="repair-info">
+                                    <p class="repair-name">Charging Issue <i class="bi bi-info-circle ms-1 text-muted"
+                                            style="font-size:12px;"></i></p>
+                                    <div><span class="repair-price">₹1,999</span></div>
+                                </div>
+                                <div class="repair-add-btn"><i class="bi bi-plus-lg"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Repair Item 3 -->
+                        <div class="col-md-6">
+                            <div class="repair-card" onclick="toggleRepair(this, 'Broken Screen Glass', 3800)">
+                                <div class="repair-icon"><i class="bi bi-phone-flip"></i></div>
+                                <div class="repair-info">
+                                    <p class="repair-name">Mobile Board Issues <i
+                                            class="bi bi-info-circle ms-1 text-muted" style="font-size:12px;"></i></p>
+                                    <div><span class="repair-price">₹3,800</span></div>
+                                    <div class="repair-note"><i class="bi bi-truck me-1"></i> Pick & Drop Available
+                                    </div>
+                                </div>
+                                <div class="repair-add-btn"><i class="bi bi-plus-lg"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Repair Item 4 -->
+                        <div class="col-md-6">
+                            <div class="repair-card" onclick="toggleRepair(this, 'Diagnosis', 299)">
+                                <div class="repair-icon"><i class="bi bi-search"></i></div>
+                                <div class="repair-info">
+                                    <p class="repair-name">Diagnosis <i class="bi bi-info-circle ms-1 text-muted"
+                                            style="font-size:12px;"></i></p>
+                                    <div><span class="repair-price">₹299</span></div>
+                                    <div class="repair-note"><i class="bi bi-truck me-1"></i> Pick & Drop Available
+                                    </div>
+                                </div>
+                                <div class="repair-add-btn"><i class="bi bi-plus-lg"></i></div>
+                            </div>
+                        </div>
+
+                        <!-- Repair Item 5 -->
+                        <div class="col-md-6">
+                            <div class="repair-card" onclick="toggleRepair(this, 'Password Unlock', 299)">
+                                <div class="repair-icon"><i class="bi bi-shield-check"></i></div>
+                                <div class="repair-info">
+                                    <p class="repair-name">Password Unlock <i class="bi bi-info-circle ms-1 text-muted"
+                                            style="font-size:12px;"></i></p>
+                                    <div><span class="repair-price">₹299</span></div>
+                                    <div class="repair-note"><i class="bi bi-truck me-1"></i> Pick & Drop Available
+                                    </div>
+                                </div>
+                                <div class="repair-add-btn"><i class="bi bi-plus-lg"></i></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mt-3 text-danger fw-bold d-none" id="repairError">Please select at least one repair
+                        service.</div>
+                </div>
+
+                <!-- STEP 3: Contact Details -->
+                <div class="repair-step">
+                    <h3 class="step-title"><span class="step-number">3</span> Your Details</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Full Name *</label>
+                            <input type="text" class="form-control" id="custName" required
+                                placeholder="Enter your name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Mobile Number *</label>
+                            <input type="tel" class="form-control" id="custMobile" required
+                                placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Full Address (for Pickup) *</label>
+                            <textarea class="form-control" id="custAddress" rows="3" required
+                                placeholder="Enter your full address with pin code"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Area -->
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-hero-primary btn-lg py-3 rounded-pill"
+                        style="font-size: 1.1rem; justify-content: center;">
+                        <i class="bi bi-whatsapp me-2 fs-4"></i> Confirm Book via WhatsApp
+                    </button>
+                    <p class="text-center text-muted small mt-2"><i class="bi bi-shield-check text-success me-1"></i>
+                        100% Secure & Data Protected</p>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-section">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-brand">
+                            <a class="footer-logo" href="../index.html">
+                                <i class="bi bi-phone-fill"></i>
+                                Mobile<span>Zone</span>
+                            </a>
+                            <p>Your one-stop destination for premium mobile accessories. Quality products, unbeatable
+                                prices, and excellent service.</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="https://wa.me/917358014459" aria-label="WhatsApp"><i
+                                        class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="hot-deals.html">Hot Deals</a></li>
+                            <!-- <li><a href="new-year-offer.html">New Year Offer</a></li> -->
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <h6 class="footer-heading">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=display">Display</a></li>
+                            <li><a href="category.html?cat=headphones">Headphones</a></li>
+                            <li><a href="category.html?cat=battery">Battery</a></li>
+                            <li><a href="category.html?cat=storage">Storage</a></li>
+                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                            <li><a href="category.html?cat=chargers">Chargers</a></li>
+                            <li><a href="category.html?cat=covers">Mobile Cases</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class="footer-heading">Contact & Store</h6>
+                        <ul class="footer-contact-list">
+                            <li><i class="bi bi-geo-alt-fill"></i><span>13th ST S.V.M Nagar, Ennore, Chennai –
+                                    600057</span></li>
+                            <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
+                            <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
+                            <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 10:00 AM – 8:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="payment-icons">
+                            <img src="https://img.icons8.com/color/40/visa.png" alt="Visa" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/mastercard.png" alt="Mastercard" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/gpay.png" alt="Google Pay" loading="lazy" />
+                            <img src="https://img.icons8.com/color/40/paytm.png" alt="Paytm" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <a href="https://wa.me/917358014459" class="whatsapp-float" target="_blank" id="whatsappFloat"
+        aria-label="Chat on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-label">Chat with us</span>
+    </a>
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- ===== PRODUCT MODAL ===== -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-label="Product Details">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content product-modal">
+                <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="bi bi-x-lg"></i></button>
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <div class="modal-product-img-wrap">
+                            <img src="" alt="" id="modalProductImg" class="modal-product-img" />
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="modal-product-body">
+                            <span class="modal-product-cat" id="modalProductCat"></span>
+                            <h4 id="modalProductName"></h4>
+                            <div class="modal-stars" id="modalStars"></div>
+                            <div class="modal-prices">
+                                <span class="modal-price-new" id="modalPriceNew"></span>
+                                <span class="modal-price-old" id="modalPriceOld"></span>
+                                <span class="modal-discount" id="modalDiscount"></span>
+                            </div>
+                            <p id="modalProductDesc" class="modal-desc"></p>
+                            <div class="modal-qty-row">
+                                <label>Quantity:</label>
+                                <div class="qty-control">
+                                    <button id="qtyMinus" onclick="changeQty(-1)">-</button>
+                                    <span id="qtyValue">1</span>
+                                    <button id="qtyPlus" onclick="changeQty(1)">+</button>
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <button class="btn btn-add-cart-modal" id="modalAddCart"><i
+                                        class="bi bi-cart-plus me-2"></i>Add to Cart</button>
+                                <a class="btn btn-view-detail" id="modalViewDetail" href="#"><i
+                                        class="bi bi-eye me-2"></i>View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOAST NOTIFICATION ===== -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartToast" class="toast cart-toast" role="alert">
+            <div class="toast-body">
+                <i class="bi bi-cart-check-fill me-2"></i>
+                <span id="toastMsg">Item added to cart!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+
+    <script>
+        // Mock DB for models
+        const modelsDB = {
+            'Apple': ['iPhone 15 Pro Max', 'iPhone 15 Pro', 'iPhone 15 Plus', 'iPhone 15', 'iPhone 14 Series', 'iPhone 13 Series', 'iPhone 12 Series', 'Other Apple'],
+            'Samsung': ['Galaxy S24 Ultra', 'Galaxy S23 Series', 'Galaxy S22 Series', 'Galaxy Z Fold/Flip', 'Galaxy A Series', 'Galaxy M/F Series', 'Other Samsung'],
+            'OnePlus': ['OnePlus 12', 'OnePlus 12R', 'OnePlus 11', 'OnePlus Nord Series', 'Other OnePlus'],
+            'Xiaomi': ['Redmi Note 13 Series', 'Redmi Note 12 Series', 'Xiaomi 14 Series', 'POCO Series', 'Other Xiaomi'],
+            'Vivo': ['V Series', 'X Series', 'T Series', 'Y Series', 'Other Vivo'],
+            'Oppo': ['Reno Series', 'Find N Series', 'F Series', 'A Series', 'Other Oppo'],
+            'Realme': ['Number Series', 'GT Series', 'Narzo Series', 'C Series', 'Other Realme'],
+            'Other': ['Please mention model in WhatsApp']
+        };
+
+        function populateModels() {
+            const brand = document.getElementById('deviceBrand').value;
+            const modelSelect = document.getElementById('deviceModel');
+
+            modelSelect.innerHTML = '<option value="" selected disabled>Select Model</option>';
+            modelSelect.disabled = false;
+
+            if (modelsDB[brand]) {
+                modelsDB[brand].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        let selectedRepairs = [];
+
+        function toggleRepair(card, name, price) {
+            card.classList.toggle('selected');
+            const icon = card.querySelector('.repair-add-btn i');
+
+            if (card.classList.contains('selected')) {
+                icon.className = 'bi bi-check-lg';
+                selectedRepairs.push({ name, price });
+            } else {
+                icon.className = 'bi bi-plus-lg';
+                selectedRepairs = selectedRepairs.filter(r => r.name !== name);
+            }
+            document.getElementById('repairError').classList.add('d-none');
+        }
+
+        function submitRepairForm(e) {
+            e.preventDefault();
+
+            if (selectedRepairs.length === 0) {
+                document.getElementById('repairError').classList.remove('d-none');
+                return;
+            }
+
+            const brand = document.getElementById('deviceBrand').value;
+            const model = document.getElementById('deviceModel').value;
+            const name = document.getElementById('custName').value;
+            const mobile = document.getElementById('custMobile').value;
+            const address = document.getElementById('custAddress').value;
+
+            let repairDetails = selectedRepairs.map(r => `• ${r.name} (approx. ₹${r.price})`).join('\n');
+            let totalApprox = selectedRepairs.reduce((sum, r) => sum + r.price, 0);
+
+            const shopWhatsApp = '917358014459';
+
+            const text = `*New Repair Booking Request 👋*\n\n` +
+                `📱 *Device:* ${brand} - ${model}\n\n` +
+                `🔧 *Issues Selected:*\n${repairDetails}\n` +
+                `*Estimated Cost:* ₹${totalApprox}+\n\n` +
+                `👤 *Customer Details:*\n` +
+                `Name: ${name}\n` +
+                `Mobile: ${mobile}\n` +
+                `Address: ${address}\n\n` +
+                `_Please confirm availability and exact pricing._`;
+
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/${shopWhatsApp}?text=${encodedText}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+
+</html>
