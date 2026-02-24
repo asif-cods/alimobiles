@@ -993,3 +993,147 @@
     font-size: .9rem;
     color: white;
 }
+
+/* =============================================
+   RESPONSIVE STYLES
+   ============================================= */
+@media (max-width: 991px) {
+    .about-story-img img {
+        height: 300px;
+    }
+
+    .main-product-img {
+        height: 320px;
+    }
+
+    .product-detail-gallery {
+        position: static;
+        margin-bottom: 2rem;
+    }
+
+    .filter-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-story-img img {
+        height: 250px;
+    }
+
+    .team-card img {
+        height: 180px;
+    }
+
+    .deals-hero,
+    .ny-hero,
+    .page-hero {
+        padding: 4rem 0 2rem;
+    }
+
+    .detail-price-main {
+        font-size: 1.6rem;
+    }
+
+    .contact-form-wrap {
+        padding: 1.5rem;
+    }
+
+    .spec-table td {
+        font-size: 0.8rem;
+        padding: 0.45rem 0.6rem;
+    }
+
+    .modal-product-body {
+        padding: 1.5rem 1rem;
+    }
+
+    .modal-product-img-wrap {
+        min-height: 280px;
+    }
+
+    .modal-product-img {
+        max-height: 280px;
+    }
+
+    /* Mobile Repair Page Tweak */
+    .repair-step {
+        padding: 1rem !important;
+    }
+
+    .repair-card {
+        padding: 0.75rem !important;
+    }
+
+    .repair-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.4rem !important;
+        margin-right: 0.75rem !important;
+    }
+
+    .repair-name {
+        font-size: 0.95rem !important;
+    }
+
+    .repair-price {
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-stat-num {
+        font-size: 1.8rem;
+    }
+
+    .sort-filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .thumb-item {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cart-item-row {
+        padding: 0.75rem;
+    }
+
+    .cart-item-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .modal-actions .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-actions .btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .page-hero h1 {
+        font-size: 1.75rem !important;
+    }
+
+    .detail-action-row {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+    }
+
+    .detail-action-row .modal-qty-row {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .detail-action-row .btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

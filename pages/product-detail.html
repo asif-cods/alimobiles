@@ -24,8 +24,7 @@
                 <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
                 <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
             </a>
-            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
-                <button class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></button>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-3 d-lg-none">
                 <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                     <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
                 </a>
@@ -38,28 +37,15 @@
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Categories</a>
-                        <ul class="dropdown-menu modern-dropdown">
-                            <li><a class="dropdown-item" href="category.html?cat=display"><i
-                                        class="bi bi-phone me-2"></i>Display</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
-                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
-                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=storage"><i
-                                        class="bi bi-sd-card me-2"></i>Storage</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
-                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
-                                        class="bi bi-plug me-2"></i>Chargers</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
-                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
-                        </ul>
-                    </li>
+
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <div class="nav-item mx-2 d-lg-none mt-2 mb-2 text-center">
+                        <a class="btn btn-danger-custom px-4 rounded-pill d-inline-flex align-items-center"
+                            href="mobile-repair.html" style="font-weight:600; font-size: 0.95rem;">
+                            <i class="bi bi-tools me-2"></i>Mobile Repair
+                        </a>
+                    </div>
 
                 </ul>
                 <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
@@ -69,20 +55,9 @@
                             <i class="bi bi-tools me-2"></i>Mobile Repair
                         </a>
                     </div>
-                    <button class="nav-icon-btn" id="searchToggle"><i class="bi bi-search"></i></button>
                     <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                         <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
                     </a>
-                </div>
-            </div>
-        </div>
-        <!-- Search Bar -->
-        <div class="search-overlay" id="searchOverlay">
-            <div class="container">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search for products..." class="form-control" />
-                    <button id="searchBtn"><i class="bi bi-search"></i></button>
-                    <button id="closeSearch"><i class="bi bi-x-lg"></i></button>
                 </div>
             </div>
         </div>
@@ -93,8 +68,8 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0" style="font-size:.82rem;">
-                    <li class="breadcrumb-item"><a href="../index.html" style="color:var(--blue)">Home</a></li>
-                    <li class="breadcrumb-item"><a href="products.html" style="color:var(--blue)">Products</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html" style="color:var(--blue)">Home</a> ></li>
+                    <li class="breadcrumb-item"><a href="products.html" style="color:var(--blue)">Products</a> ></li>
                     <li class="breadcrumb-item active" id="breadcrumbCat">Product</li>
                 </ol>
             </nav>
@@ -125,7 +100,7 @@
     </section>
 
     <!-- RELATED PRODUCTS -->
-    <section class="py-5">
+    <!-- <section class="py-5">
         <div class="container">
             <div class="section-header text-center mb-4">
                 <span class="section-badge">You May Also Like</span>
@@ -139,10 +114,10 @@
                     data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- FOOTER -->
-    <footer class="footer-section">
+    <!-- <footer class="footer-section">
         <div class="footer-top">
             <div class="container">
                 <div class="row g-4">
@@ -191,7 +166,7 @@
                 <p class="mb-0">© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <a href="https://wa.me/917358014459" class="whatsapp-float" target="_blank"><i class="bi bi-whatsapp"></i><span
             class="whatsapp-label">Chat with us</span></a>
@@ -252,7 +227,7 @@
                     <div class="col-lg-4 col-md-6">
                         <h6 class="footer-heading">Contact & Store</h6>
                         <ul class="footer-contact-list">
-                            <li><i class="bi bi-geo-alt-fill"></i><span>13th ST S.V.M Nagar, Ennore, Chennai –
+                            <li><i class="bi bi-geo-alt-fill"></i><span>13th St, S.V.M Nagar, Ennore, Chennai –
                                     600057</span></li>
                             <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
                             <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
@@ -264,18 +239,18 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-4 text-center">
                         <p>© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
                     </div>
-                    <div class="col-md-6 text-md-end">
+                    <!-- <div class="col-md-6 text-md-end">
                         <div class="payment-icons">
                             <img src="https://img.icons8.com/color/40/visa.png" alt="Visa" loading="lazy" />
                             <img src="https://img.icons8.com/color/40/mastercard.png" alt="Mastercard" loading="lazy" />
                             <img src="https://img.icons8.com/color/40/gpay.png" alt="Google Pay" loading="lazy" />
                             <img src="https://img.icons8.com/color/40/paytm.png" alt="Paytm" loading="lazy" />
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -319,9 +294,9 @@
     <!-- Gallery -->
     <div class="col-lg-5">
       <div class="product-detail-gallery">
-        <img src="${fixImgPath(p.img)}" alt="${p.name}" class="main-product-img" id="mainImg" />
+        <img src="${fixImgPath(p.images && p.images.length > 0 ? p.images[0] : p.img)}" alt="${p.name}" class="main-product-img" id="mainImg" />
         <div class="thumb-gallery">
-          ${[p.img, p.img, p.img].map((src, i) => `
+          ${(p.images || [p.img, p.img, p.img]).map((src, i) => `
             <div class="thumb-item${i === 0 ? ' active' : ''}" onclick="switchImg(this,'${fixImgPath(src)}')">
               <img src="${fixImgPath(src)}" alt="View ${i + 1}" loading="lazy"/>
             </div>`).join('')}
@@ -356,7 +331,7 @@
       </div>
 
       <!-- Qty + Cart -->
-      <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+      <div class="detail-action-row d-flex align-items-center gap-3 mb-3 flex-wrap">
         <div class="modal-qty-row mb-0">
           <label style="font-size:.88rem;font-weight:600;">Qty:</label>
           <div class="qty-control">
@@ -376,9 +351,11 @@
       <!-- Specs Table -->
       <div class="mt-3">
         <h6 style="font-weight:700;margin-bottom:.7rem;">Specifications</h6>
-        <table class="table spec-table table-sm mb-0" style="border-radius:var(--radius-sm);overflow:hidden;">
-          ${specRows}
-        </table>
+        <div class="table-responsive">
+          <table class="table spec-table table-sm mb-0" style="border-radius:var(--radius-sm);overflow:hidden;">
+            ${specRows}
+          </table>
+        </div>
       </div>
     </div>
   `;
@@ -420,9 +397,6 @@
               <div class="product-slide-img-wrap">
                 ${d ? `<div class="product-grid-badge">-${d}%</div>` : ''}
                 <img src="${fixImgPath(pr.img)}" alt="${pr.name}" class="product-slide-img" loading="lazy"/>
-                <div class="product-overlay">
-                  <button class="overlay-btn" onclick="addToCart(${JSON.stringify(pr).replace(/"/g, '&quot;')})"><i class="bi bi-cart-plus"></i> Add to Cart</button>
-                </div>
               </div>
               <div class="product-slide-info">
                 <h6 class="product-name"><a href="product-detail.html?id=${pr.id}" style="color:inherit;">${pr.name}</a></h6>

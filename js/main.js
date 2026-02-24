@@ -10,23 +10,150 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initScrollTop();
-  initSearch();
   initRevealAnimations();
   initCountdownTimer();
   initCartCount();
   // Init Dynamic Content
   initFeaturedProducts();
+  initCategoriesSlider();
   initHotDeals();
   initHotDealsPage();
 });
+
+// ============================================
+// CATEGORIES SLIDER
+// ============================================
+function initCategoriesSlider() {
+  const track = document.getElementById('categoriesSliderTrack');
+  const dotsEl = document.getElementById('categoriesSliderDots');
+  if (!track || !dotsEl) return;
+
+  const slides = track.querySelectorAll('.category-slide');
+  let currentSlide = 0;
+  let sliderInterval = null;
+
+  // Create dots
+  dotsEl.innerHTML = '';
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'category-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to category ' + (i + 1));
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsEl.appendChild(dot);
+  });
+
+  function getItemsPerView() {
+    if (window.innerWidth >= 1200) return 6;
+    if (window.innerWidth >= 992) return 5;
+    if (window.innerWidth >= 768) return 4;
+    if (window.innerWidth >= 576) return 3;
+    return 2;
+  }
+
+  function goToSlide(index) {
+    const itemsPerView = getItemsPerView();
+    const maxSlide = Math.max(0, slides.length - itemsPerView);
+
+    if (index > maxSlide) {
+      currentSlide = 0;
+    } else if (index < 0) {
+      currentSlide = maxSlide;
+    } else {
+      currentSlide = index;
+    }
+
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+    const dots = dotsEl.querySelectorAll('.category-dot');
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  function startAutoSlider() {
+    stopAutoSlider();
+    sliderInterval = setInterval(() => goToSlide(currentSlide + 1), 4000);
+  }
+
+  function stopAutoSlider() {
+    if (sliderInterval) clearInterval(sliderInterval);
+  }
+
+  track.addEventListener('mouseenter', stopAutoSlider);
+  track.addEventListener('mouseleave', startAutoSlider);
+
+  // Drag / Touch Support
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID = 0;
+
+  track.addEventListener('touchstart', touchStart);
+  track.addEventListener('touchend', touchEnd);
+  track.addEventListener('touchmove', touchMove);
+  track.addEventListener('mousedown', touchStart);
+  track.addEventListener('mouseup', touchEnd);
+  track.addEventListener('mouseleave', touchEnd);
+  track.addEventListener('mousemove', touchMove);
+
+  function touchStart(event) {
+    isDragging = true;
+    startX = getPositionX(event);
+    stopAutoSlider();
+    track.style.transition = 'none';
+    const transform = window.getComputedStyle(track).transform;
+    if (transform !== 'none') {
+      const matrix = new DOMMatrix(transform);
+      prevTranslate = matrix.m41;
+    } else {
+      prevTranslate = 0;
+    }
+  }
+
+  function touchEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.transition = 'transform 0.45s cubic-bezier(.77, 0, .18, 1)';
+
+    const movedBy = currentTranslate - prevTranslate;
+    const slideWidth = slides[0].offsetWidth;
+
+    if (movedBy < -100) {
+      goToSlide(currentSlide + 1);
+    } else if (movedBy > 100) {
+      goToSlide(currentSlide - 1);
+    } else {
+      goToSlide(currentSlide);
+    }
+    startAutoSlider();
+  }
+
+  function touchMove(event) {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(event);
+    const diff = currentPosition - startX;
+    currentTranslate = prevTranslate + diff;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  }
+
+  function getPositionX(event) {
+    return event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+  }
+
+  window.addEventListener('resize', () => {
+    goToSlide(currentSlide);
+  });
+
+  startAutoSlider();
+}
 
 
 // ============================================
 // PRODUCTS DATA (shared across pages)
 // ============================================
 const PRODUCTS = [
-  { id: 1, name: 'Dell Keyboard and Mouse', cat: 'keyboard', price: 499, oldPrice: 699, img: '../images/KM-1.png', rating: 4, reviews: 45, desc: 'Fast Latency Keyboard and Mouse combo.', brand: 'DELL' },
-  { id: 2, name: 'Sony WH-1000XM5', cat: 'headphones', price: 8999, oldPrice: 12999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 214, desc: 'Industry-leading noise cancellation.', brand: 'OUD', model: 'WH-1000XM5' },
+  { id: 1, name: 'Dell Keyboard and Mouse', cat: 'keyboard', price: 499, oldPrice: 699, img: '../images/KM-1.png', images: ['../images/KM-1.png', '../images/HE-1.png', '../images/KM-1.png'], rating: 4, reviews: 45, desc: 'Fast Latency Keyboard and Mouse combo.', brand: 'DELL' },
+  { id: 2, name: 'Sony WH-1000XM5', cat: 'headphones', price: 8999, oldPrice: 12999, img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop&auto=format', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=500&fit=crop', 'https://images.unsplash.com/photo-1505740420928?w=600&h=500&fit=crop'], rating: 5, reviews: 214, desc: 'Industry-leading noise cancellation.', brand: 'OUD', model: 'WH-1000XM5' },
   { id: 3, name: '65W GaN Fast Charger', cat: 'chargers', price: 1299, oldPrice: 1999, img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 89, desc: 'Compact GaN technology.', brand: 'ZEBRONICS', watts: 65, model: 'FastCharge65' },
   { id: 4, name: 'Armor Phone Case', cat: 'covers', price: 399, oldPrice: 699, img: 'https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=600&h=500&fit=crop&auto=format', rating: 4, reviews: 156, desc: 'Military-grade drop protection.', brand: 'MZ' },
   { id: 5, name: '20000mAh Power Bank', cat: 'powerbank', price: 1499, oldPrice: 2499, img: 'https://images.unsplash.com/photo-1609592806596-b12f6bde1c78?w=600&h=500&fit=crop&auto=format', rating: 5, reviews: 302, desc: 'Massive capacity with dual USB.', brand: 'REDME', mah: 20000 },
@@ -114,61 +241,6 @@ function updateScrollTopBtn() {
   }
 }
 
-// ============================================
-// SEARCH OVERLAY
-// ============================================
-function initSearch() {
-  const toggleBtns = [
-    document.getElementById('searchToggle'),
-    document.getElementById('mobileSearchToggle')
-  ];
-  const overlay = document.getElementById('searchOverlay');
-  const closeBtn = document.getElementById('closeSearch');
-  const searchInput = document.getElementById('searchInput');
-
-  if (!overlay) return;
-
-  toggleBtns.forEach(btn => {
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        overlay.classList.toggle('active');
-        if (overlay.classList.contains('active') && searchInput) {
-          setTimeout(() => searchInput.focus(), 100);
-        }
-      });
-    }
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
-  }
-
-  // Search on Enter
-  if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') doSearch(searchInput.value.trim());
-    });
-  }
-  const searchBtn = document.getElementById('searchBtn');
-  if (searchBtn) {
-    searchBtn.addEventListener('click', () => {
-      if (searchInput) doSearch(searchInput.value.trim());
-    });
-  }
-
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') overlay.classList.remove('active');
-  });
-}
-
-function doSearch(query) {
-  if (!query) return;
-  const isInPages = window.location.pathname.includes('/pages/');
-  const path = isInPages ? `products.html?search=${encodeURIComponent(query)}` : `pages/products.html?search=${encodeURIComponent(query)}`;
-  window.location.href = path;
-}
 
 // ============================================
 // SCROLL REVEAL ANIMATIONS
@@ -332,14 +404,6 @@ function initFeaturedProducts() {
                 <div class="product-slide-card" onclick="openProductModal(${p.id})">
                   <div class="product-slide-img-wrap">
                     <img src="${fixImgPath(p.img)}" alt="${p.name}" class="product-slide-img" loading="lazy" />
-                    <div class="product-overlay">
-                      <button class="overlay-btn" onclick="event.stopPropagation(); addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})">
-                        <i class="bi bi-cart-plus"></i> Add to Cart
-                      </button>
-                      <button class="overlay-view-btn" onclick="event.stopPropagation(); openProductModal(${p.id})">
-                        <i class="bi bi-eye"></i>
-                      </button>
-                    </div>
                   </div>
                   <div class="product-slide-info">
                     <span class="product-category">${p.cat}</span>

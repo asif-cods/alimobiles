@@ -25,8 +25,7 @@
                 <span class="brand-icon"><i class="bi bi-phone-fill"></i></span>
                 <span class="brand-text">Mobile<span class="brand-accent">Zone</span></span>
             </a>
-            <div class="navbar-mobile-actions d-flex align-items-center gap-2 d-lg-none">
-                <button class="nav-icon-btn" id="mobileSearchToggle"><i class="bi bi-search"></i></button>
+            <div class="navbar-mobile-actions d-flex align-items-center gap-3 d-lg-none">
                 <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                     <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCount">0</span>
                 </a>
@@ -39,28 +38,15 @@
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="hot-deals.html">Hot Deals</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Categories</a>
-                        <ul class="dropdown-menu modern-dropdown">
-                            <li><a class="dropdown-item" href="category.html?cat=display"><i
-                                        class="bi bi-phone me-2"></i>Display</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=headphones"><i
-                                        class="bi bi-headphones me-2"></i>Headphones</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=battery"><i
-                                        class="bi bi-battery-charging me-2"></i>Battery</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=storage"><i
-                                        class="bi bi-sd-card me-2"></i>Storage</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
-                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=chargers"><i
-                                        class="bi bi-plug me-2"></i>Chargers</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=covers"><i
-                                        class="bi bi-shield me-2"></i>Mobile Cases</a></li>
-                        </ul>
-                    </li>
+
                     <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <div class="nav-item mx-2 d-lg-none mt-2 mb-2 text-center">
+                        <a class="btn btn-danger-custom px-4 rounded-pill d-inline-flex align-items-center"
+                            href="mobile-repair.html" style="font-weight:600; font-size: 0.95rem;">
+                            <i class="bi bi-tools me-2"></i>Mobile Repair
+                        </a>
+                    </div>
 
                 </ul>
                 <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
@@ -70,20 +56,9 @@
                             <i class="bi bi-tools me-2"></i>Mobile Repair
                         </a>
                     </div>
-                    <button class="nav-icon-btn" id="searchToggle"><i class="bi bi-search"></i></button>
                     <a href="cart.html" class="nav-icon-btn cart-btn position-relative">
                         <i class="bi bi-cart3"></i><span class="cart-badge" id="cartCountDesktop">0</span>
                     </a>
-                </div>
-            </div>
-        </div>
-        <!-- Search Bar -->
-        <div class="search-overlay" id="searchOverlay">
-            <div class="container">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search for products..." class="form-control" />
-                    <button id="searchBtn"><i class="bi bi-search"></i></button>
-                    <button id="closeSearch"><i class="bi bi-x-lg"></i></button>
                 </div>
             </div>
         </div>
@@ -97,7 +72,7 @@
                 partner for premium mobile accessories since 2018</p>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html/">Home</a></li>
                     <li class="breadcrumb-item active">About</li>
                 </ol>
             </nav>
@@ -110,13 +85,13 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
                     <div class="about-story-img reveal">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=500&fit=crop&auto=format"
-                            alt="Mobile Zone Store" loading="lazy" />
+                        <!-- <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=500&fit=crop&auto=format" -->
+                        <img src="../images/about-img.png" alt="Mobile Zone Store" loading="lazy" />
                     </div>
                 </div>
                 <div class="col-lg-6 reveal">
                     <span class="section-badge">Our Story</span>
-                    <h2 class="section-title mt-2">We're Passionate About <span class="text-gradient">Mobile Tech</span>
+                    <h2 class="section-title mt-2">Passionate In <span class="text-gradient">Mobile Tech</span>
                     </h2>
                     <p style="color:var(--text-muted);line-height:1.8;margin-bottom:1rem;">Founded in 2018 in the heart
                         of Mumbai's Lamington Road electronics market, Mobile Zone started as a small shop with a big
@@ -127,27 +102,27 @@
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="about-stat-card">
-                                <div class="about-stat-num">10K+</div>
+                                <div class="about-stat-num">500+</div>
                                 <div style="font-size:.85rem;color:var(--text-muted);font-weight:600;">Happy Customers
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="about-stat-card">
-                                <div class="about-stat-num">500+</div>
+                                <div class="about-stat-num">1K+</div>
                                 <div style="font-size:.85rem;color:var(--text-muted);font-weight:600;">Products</div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="about-stat-card">
-                                <div class="about-stat-num">8+</div>
+                                <div class="about-stat-num">10+</div>
                                 <div style="font-size:.85rem;color:var(--text-muted);font-weight:600;">Years Experience
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="about-stat-card">
-                                <div class="about-stat-num">50+</div>
+                                <div class="about-stat-num">10+</div>
                                 <div style="font-size:.85rem;color:var(--text-muted);font-weight:600;">Brands Stocked
                                 </div>
                             </div>
@@ -166,23 +141,23 @@
                 <h2 class="section-title">Why We're <span class="text-gradient">Different</span></h2>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="why-card reveal">
                         <div class="why-icon-wrap"><i class="bi bi-award-fill"></i></div>
-                        <h5>100% Genuine</h5>
+                        <h5>Trusted Brand</h5>
                         <p>Every product we sell goes through rigorous quality checks. We stock only authentic items
-                            from authorized distributors. No fakes, ever.</p>
+                            from authorized distributors.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="why-card reveal">
                         <div class="why-icon-wrap"><i class="bi bi-people-fill"></i></div>
                         <h5>Customer First</h5>
-                        <p>Our customers are the heart of everything we do. 24/7 support, easy returns, and personalized
+                        <p>Our customers are the heart of everything we do. 24/7 support and personalized
                             recommendations for every need.</p>
                     </div>
-                </div>
-                <div class="col-md-4">
+                </div> -->
+                <div class="col-md-3">
                     <div class="why-card reveal">
                         <div class="why-icon-wrap"><i class="bi bi-tag-fill"></i></div>
                         <h5>Best Price Guarantee</h5>
@@ -190,36 +165,37 @@
                             asked.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="why-card reveal">
                         <div class="why-icon-wrap"><i class="bi bi-truck"></i></div>
                         <h5>Fast Shipping</h5>
-                        <p>Orders placed before 3PM are dispatched the same day. Express and next-day delivery options
-                            available across India.</p>
+                        <p>Orders placed in Chennai are dispatched the same day. Courier options
+                            available outside of Chennai.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="why-card reveal">
-                        <div class="why-icon-wrap"><i class="bi bi-shield-check-fill"></i></div>
-                        <h5>Warranty Covered</h5>
-                        <p>All products come with minimum 6-month to 1-year warranty. Our after-sales support team is
-                            always here to help.</p>
+                        <div class="why-icon-wrap"><i class="bi bi-house-door-fill"></i></div>
+                        <h5>Doorstep Service</h5>
+                        <p>We offer doorstep service for Your mobile phone repair. Our team will come to your location
+                            and repair
+                            the phone for you.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="why-card reveal">
                         <div class="why-icon-wrap"><i class="bi bi-arrow-repeat"></i></div>
                         <h5>Easy Returns</h5>
                         <p>Not happy? Return within 7 days, no questions asked. Hassle-free refunds processed within 48
                             hours.</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 
     <!-- TEAM -->
-    <section class="py-5">
+    <!-- <section class="py-5">
         <div class="container">
             <div class="section-header text-center mb-5">
                 <span class="section-badge">The Team</span>
@@ -256,7 +232,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- CTA -->
     <section class="py-5"
@@ -326,7 +302,7 @@
                     <div class="col-lg-4 col-md-6">
                         <h6 class="footer-heading">Contact & Store</h6>
                         <ul class="footer-contact-list">
-                            <li><i class="bi bi-geo-alt-fill"></i><span>13th ST S.V.M Nagar, Ennore, Chennai –
+                            <li><i class="bi bi-geo-alt-fill"></i><span>13th St, S.V.M Nagar, Ennore, Chennai –
                                     600057</span></li>
                             <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
                             <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
@@ -339,17 +315,17 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6">
+                    <div class="col-md-12 text-center">
                         <p>© 2026 <strong>Mobile Zone</strong>. All Rights Reserved.</p>
                     </div>
-                    <div class="col-md-6 text-md-end">
+                    <!-- <div class="col-md-6 text-md-end">
                         <div class="payment-icons">
                             <img src="https://img.icons8.com/color/40/visa.png" alt="Visa" loading="lazy" />
                             <img src="https://img.icons8.com/color/40/mastercard.png" alt="Mastercard" loading="lazy" />
                             <img src="https://img.icons8.com/color/40/gpay.png" alt="Google Pay" loading="lazy" />
                             <img src="https://img.icons8.com/color/40/paytm.png" alt="Paytm" loading="lazy" />
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -221,10 +221,6 @@ function renderProducts() {
           <div class="product-grid-img-wrap">
             ${disc ? `<span class="product-grid-badge">-${disc}%</span>` : ''}
             <img src="${fixImgPath(p.img)}" alt="${p.name}" class="product-grid-img" loading="lazy" />
-            <div class="product-grid-actions">
-              <button class="action-btn-sm" onclick="openQuickView(${p.id})" title="Quick View"><i class="bi bi-eye"></i></button>
-              <button class="action-btn-sm" onclick="addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
-            </div>
           </div>
           <div class="product-grid-body">
             <div class="product-category text-uppercase" style="font-size:.72rem;font-weight:700;color:var(--blue)">${p.cat}</div>

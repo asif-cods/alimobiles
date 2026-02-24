@@ -68,6 +68,44 @@ ul {
   margin: 0;
 }
 
+.container {
+  max-width: 1440px;
+}
+
+
+@media (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+
+/* navbar responsive  */
+@media (max-width: 991px) {
+  .navbar-nav {
+    align-items: center;
+    padding: 1rem 0;
+    gap: 0.2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* custom responsive */
+@media (max-width: 480px) {
+
+  .btn-hero-primary,
+  .btn-hero-outline {
+    width: 70%;
+
+  }
+}
+
+
+
+
+
+
 /* ---- Utility ---- */
 .text-gradient {
   background: linear-gradient(135deg, var(--blue) 0%, #42A5F5 100%);
@@ -247,6 +285,7 @@ ul {
 .navbar-toggler {
   border: none;
   padding: 0.2rem;
+  margin-left: 0.8rem;
 }
 
 .navbar-toggler:focus {
@@ -254,7 +293,7 @@ ul {
 }
 
 .navbar-toggler .bi {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--text-dark);
 }
 
@@ -654,6 +693,86 @@ ul {
   color: var(--blue);
 }
 
+/* Categories Slider */
+.categories-slider-wrapper {
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+}
+
+.categories-slider {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(.77, 0, .18, 1);
+  will-change: transform;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.categories-slider:active {
+  cursor: grabbing;
+}
+
+.category-slide {
+  min-width: 16.666%;
+  /* Default for lg (6 items) */
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1199px) {
+  .category-slide {
+    min-width: 20%;
+    /* 5 items */
+  }
+}
+
+@media (max-width: 991px) {
+  .category-slide {
+    min-width: 25%;
+    /* 4 items */
+  }
+}
+
+@media (max-width: 767px) {
+  .category-slide {
+    min-width: 33.333%;
+    /* 3 items */
+  }
+}
+
+/* @media (max-width: 575px) {
+  .category-slide { */
+/* min-width: 50%; */
+/* 2 items */
+/* }
+} */
+
+
+.categories-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.category-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #cbd5e1;
+  padding: 0;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-dot.active {
+  background: linear-gradient(135deg, var(--blue), var(--red));
+  width: 24px;
+  border-radius: 4px;
+}
+
 /* =============================================
    PRODUCT SLIDER / CARDS
    ============================================= */
@@ -762,6 +881,7 @@ ul {
   color: var(--text-dark);
   margin: 0.2rem 0;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -1335,6 +1455,17 @@ ul {
   display: inline;
 }
 
+/* Feature Box Hover Effect */
+.feature-box-hover {
+  transition: var(--transition);
+}
+
+.feature-box-hover:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
 .scroll-top-btn {
   position: fixed;
   bottom: 24px;
@@ -1901,12 +2032,6 @@ ul {
    RESPONSIVE
    ============================================= */
 @media (max-width: 991px) {
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    display: none;
-  }
-
   .navbar-nav {
     padding: 1rem 0;
     gap: 0.2rem;
@@ -1914,6 +2039,11 @@ ul {
 
   .navbar-nav .nav-link {
     padding: 0.5rem 0.5rem !important;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
   }
 
   .hero-stats {
@@ -1986,7 +2116,138 @@ ul {
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  /* Cart Mobile Optimization */
+  .cart-item-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    position: relative;
+    align-items: flex-start;
+  }
+
+  .cart-item-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 0;
+  }
+
+  .cart-item-info {
+    width: calc(100% - 75px);
+    flex: none;
+    padding-right: 25px;
+  }
+
+  .cart-item-name {
+    font-size: 0.82rem;
+    margin-bottom: 0.1rem;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .qty-control {
+    order: 3;
+    margin-top: 0.4rem;
+  }
+
+  .qty-control button {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .qty-control span {
+    padding: 0 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .cart-item-row .ms-2.fw-bold {
+    order: 4;
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+    margin-left: auto !important;
+    text-align: right;
+    min-width: 80px;
+  }
+
+  .cart-item-row .btn.btn-sm.ms-2 {
+    position: absolute !important;
+    top: 0.4rem;
+    right: 0.4rem;
+    padding: 0.2rem !important;
+    margin: 0 !important;
+  }
+
+  .cart-summary {
+    position: static !important;
+    padding: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Footer Mobile */
+  .payment-icons {
+    justify-content: flex-start !important;
+    margin-top: 1rem;
+  }
+
+  .footer-logo {
+    font-size: 1.4rem;
+  }
+
+  .social-links a {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  /* WhatsApp Float Tweak */
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 80px;
+    right: 15px;
+  }
+
+  .whatsapp-float:hover {
+    width: 50px;
+    /* Disable hover expansion on mobile */
+  }
+
+  .scroll-top-btn {
+    bottom: 80px;
+    right: 75px;
+    /* Adjust to not overlap WhatsApp */
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+  }
+
+  /* Search Box Mobile */
+  .search-box {
+    padding: 0 1rem;
+  }
+
+  .search-box .form-control {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .search-box button {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
 }
+
+
 
 /* =============================================
    LATEST REELS SECTION
@@ -2456,6 +2717,7 @@ ul {
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   background: none;
   pointer-events: none;
 }
