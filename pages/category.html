@@ -42,15 +42,15 @@
                             data-bs-toggle="dropdown">Categories</a>
                         <ul class="dropdown-menu modern-dropdown">
                             <li><a class="dropdown-item" href="category.html?cat=display"><i
-                                        class="bi bi-phone me-2"></i>Display</a></li>
+                                        class="bi bi-phone me-2"></i>Temper Glass</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=headphones"><i
                                         class="bi bi-headphones me-2"></i>Headphones</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=battery"><i
                                         class="bi bi-battery-charging me-2"></i>Battery</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=storage"><i
                                         class="bi bi-sd-card me-2"></i>Storage</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
-                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li>
+                            <!-- <li><a class="dropdown-item" href="category.html?cat=powerbank"><i
+                                        class="bi bi-lightning-charge me-2"></i>Power Bank</a></li> -->
                             <li><a class="dropdown-item" href="category.html?cat=chargers"><i
                                         class="bi bi-plug me-2"></i>Chargers</a></li>
                             <li><a class="dropdown-item" href="category.html?cat=covers"><i
@@ -117,26 +117,26 @@
                             <label class="fw-bold mb-2">Category</label>
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="covers" /> Back Cases</label>
-                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                                    value="display" /> Display</label>
+                            <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="display" /> Display</label> -->
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="tempglass" /> Temp Glass</label>
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="battery" /> Battery</label>
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="speakers" /> Speakers</label>
-                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                                    value="keyboard" /> Keyboard & Mouse</label>
+                            <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="keyboard" /> Keyboard & Mouse</label> -->
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="storage" /> Storage</label>
-                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                                    value="powerbank" /> Power Bank</label>
+                            <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="powerbank" /> Power Bank</label> -->
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="chargers" /> Chargers</label>
                             <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                                     value="headphones" /> Headphones</label>
-                            <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                                    value="connectors" /> Connectors</label>
+                            <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                                    value="connectors" /> Connectors</label> -->
                         </div>
 
                         <!-- General Filters -->
@@ -172,11 +172,11 @@
                                     onchange="applyFilters()">
                                     <option value="all">Any Brand</option>
                                     <option value="apple">Apple</option>
-                                    <option value="samsung">Samsung</option>
+                                    <!-- <option value="samsung">Samsung</option>
                                     <option value="vivo">Vivo</option>
                                     <option value="oppo">Oppo</option>
                                     <option value="realme">Realme</option>
-                                    <option value="xiaomi">Xiaomi</option>
+                                    <option value="xiaomi">Xiaomi</option> -->
                                 </select>
                                 <label class="fw-bold mb-2">Color</label>
                                 <select id="coverColorFilter" class="form-select form-select-sm"
@@ -191,7 +191,7 @@
                             </div>
 
                             <!-- Display -->
-                            <div class="filter-group mb-3 cat-spec-filter" data-cat="display" style="display:none;">
+                            <!-- <div class="filter-group mb-3 cat-spec-filter" data-cat="display" style="display:none;">
                                 <label class="fw-bold mb-2">Display Brand/Type</label>
                                 <select id="displayTypeFilter" class="form-select form-select-sm"
                                     onchange="applyFilters()">
@@ -201,7 +201,7 @@
                                     <option value="oled">OLED</option>
                                     <option value="original">ORIGINAL BRAND</option>
                                 </select>
-                            </div>
+                            </div> -->
 
                             <!-- Temp Glass -->
                             <div class="filter-group mb-3 cat-spec-filter" data-cat="tempglass" style="display:none;">
@@ -256,7 +256,7 @@
                             </div>
 
                             <!-- Keyboard & Mouse -->
-                            <div class="filter-group mb-3 cat-spec-filter" data-cat="keyboard" style="display:none;">
+                            <!-- <div class="filter-group mb-3 cat-spec-filter" data-cat="keyboard" style="display:none;">
                                 <label class="fw-bold mb-2">Brand</label>
                                 <select id="kbBrandFilter" class="form-select form-select-sm mb-2"
                                     onchange="applyFilters()">
@@ -270,7 +270,7 @@
                                     <option value="bluetooth">Bluetooth</option>
                                     <option value="wired">Wired</option>
                                 </select>
-                            </div>
+                            </div> -->
 
                             <!-- Storage -->
                             <div class="filter-group mb-3 cat-spec-filter" data-cat="storage" style="display:none;">
@@ -288,7 +288,7 @@
                             </div>
 
                             <!-- Power Bank -->
-                            <div class="filter-group mb-3 cat-spec-filter" data-cat="powerbank" style="display:none;">
+                            <!-- <div class="filter-group mb-3 cat-spec-filter" data-cat="powerbank" style="display:none;">
                                 <label class="fw-bold mb-2">Brand</label>
                                 <select id="pbBrandFilter" class="form-select form-select-sm mb-2"
                                     onchange="applyFilters()">
@@ -307,7 +307,7 @@
                                     <option value="20000">20000 mAh</option>
                                     <option value="22000">22000 mAh</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -358,26 +358,26 @@
                 <label class="fw-bold mb-2">Category</label>
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="covers" /> Back Cases</label>
-                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                        value="display" /> Display</label>
+                <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="display" /> Display</label> -->
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="tempglass" /> Temp Glass</label>
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="battery" /> Battery</label>
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="speakers" /> Speakers</label>
-                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                        value="keyboard" /> Keyboard & Mouse</label>
+                <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="keyboard" /> Keyboard & Mouse</label> -->
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="storage" /> Storage</label>
-                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                        value="powerbank" /> Power Bank</label>
+                <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="powerbank" /> Power Bank</label> -->
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="chargers" /> Chargers</label>
                 <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
                         value="headphones" /> Headphones</label>
-                <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
-                        value="connectors" /> Connectors</label>
+                <!-- <label class="filter-check"><input type="checkbox" class="form-check-input cat-filter-check"
+                        value="connectors" /> Connectors</label> -->
             </div>
 
             <!-- General Filters -->
@@ -430,7 +430,7 @@
                 </div>
 
                 <!-- Display -->
-                <div class="filter-group mb-3 cat-spec-filter" data-cat="display" style="display:none;">
+                <!-- <div class="filter-group mb-3 cat-spec-filter" data-cat="display" style="display:none;">
                     <label class="fw-bold mb-2">Display Brand/Type</label>
                     <select id="displayTypeFilterMobile" class="form-select form-select-sm" onchange="applyFilters()">
                         <option value="all">All Types</option>
@@ -439,7 +439,7 @@
                         <option value="oled">OLED</option>
                         <option value="original">ORIGINAL BRAND</option>
                     </select>
-                </div>
+                </div> -->
 
                 <!-- Temp Glass -->
                 <div class="filter-group mb-3 cat-spec-filter" data-cat="tempglass" style="display:none;">
@@ -627,11 +627,11 @@
                     <div class="col-lg-2 col-md-6 col-6">
                         <h6 class="footer-heading">Categories</h6>
                         <ul class="footer-links">
-                            <li><a href="category.html?cat=display">Display</a></li>
+                            <li><a href="category.html?cat=tempglass">Tempered Glass</a></li>
                             <li><a href="category.html?cat=headphones">Headphones</a></li>
                             <li><a href="category.html?cat=battery">Battery</a></li>
                             <li><a href="category.html?cat=storage">Storage</a></li>
-                            <li><a href="category.html?cat=powerbank">Power Bank</a></li>
+                            <!-- <li><a href="category.html?cat=powerbank">Power Bank</a></li> -->
                             <li><a href="category.html?cat=chargers">Chargers</a></li>
                             <li><a href="category.html?cat=covers">Mobile Cases</a></li>
                         </ul>
@@ -641,8 +641,8 @@
                         <ul class="footer-contact-list">
                             <li><i class="bi bi-geo-alt-fill"></i><span>13th St, S.V.M Nagar, Ennore, Chennai –
                                     600057</span></li>
-                            <li><i class="bi bi-telephone-fill"></i><span>+91 7358014459</span></li>
-                            <li><i class="bi bi-envelope-fill"></i><span>info@mobilezone.in</span></li>
+                            <li><i class="bi bi-whatsapp"></i><span>+91 7358014459</span></li>
+                            <li><i class="bi bi-envelope-fill"></i><span>Ch57mobilezone@gmail.com</span></li>
                             <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 10:00 AM – 8:00 PM</span></li>
                         </ul>
                     </div>
@@ -688,9 +688,9 @@
         const CAT_INFO = {
             headphones: { title: 'Headphones & Earphones', icon: '🎧', desc: 'Premium audio experience with noise cancellation and crisp sound quality.' },
             chargers: { title: 'Chargers & Cables', icon: '🔌', desc: 'Fast charging solutions for all your devices. GaN, PD, and wireless options.' },
-            powerbank: { title: 'Power Banks', icon: '⚡', desc: 'Stay charged all day with our high-capacity portable power banks.' },
+            // powerbank: { title: 'Power Banks', icon: '⚡', desc: 'Stay charged all day with our high-capacity portable power banks.' },
             covers: { title: 'Mobile Cases & Covers', icon: '🛡️', desc: 'Protect your phone in style with our wide range of cases.' },
-            display: { title: 'Display Screens', icon: '📱', desc: 'High-quality OLED and IPS display replacements for all major brands.' },
+            tempglass: { title: 'Tempered Glass', icon: '📱', desc: 'High-quality Tempered Glass for all types of display.' },
             battery: { title: 'Replacement Batteries', icon: '🔋', desc: 'Long-lasting Li-Ion batteries to restore your phone\'s power.' },
             all: { title: 'All Products', icon: '🛒', desc: 'Browse our complete range of premium mobile accessories.' },
         };

@@ -1,0 +1,145 @@
+PRODUCTS = 
+
+
+                                                       DISPLAY CATEGORY .>>>>
+
+
+{id: 1,name: 'COMPATIBLE LCD SCREEN',cat: ' DISPLAY ',price: 1500,oldPrice: 2200,img: --- ,rating: 4.5,reviews: 55, desc " anti glare , highlight, and perfect fitting.' brand OUD & RD}
+{id: 2,name: 'OLED DISPLAY',cat: ' DISPLAY ',price: 4500,oldPrice: 7500,img: --- ,rating: 4.5,reviews: 55,desc " Highdefinition , Touch sensitve .' brand XYC ,OUD & RD}
+{id: 3,name: 'PURE OG & CURVE DISPLAY',cat: ' DISPLAY ',price: 6500 ,oldPrice: 9999,img: --- ,rating: 4.5,reviews: 55,desc " Perfect brightness , compatibility .' brand CRG & BKC}
+
+                                                   
+                                                     PROTECTION CATEGORY.>>>>
+
+
+{id: 4,name: 'FULL GLUE CURVED TEMPERGLASS ',cat: TEMPER GLASS ' ',price: 349 , oldPrice: 999 ,img: --- ,rating: 4.5,reviews: 55,desc " Anti-dust ,Big Edge, glass shield .' brand ROPI ,g-tel}
+{id: 5,name: 'UV LIQUID GLUE CURVED GLASS ',cat: TEMPER GLASS ' ',price: 299 , oldPrice: 899 ,img: --- ,rating: 4.5,reviews: 55,desc " Anti-dust ,Big Edge, glass shield .' brand ESD ,g-tel}
+{id: 6,name: 'MATTE SCRATCH GUARD',cat: SCRATCH GUARD' ',price: 249 , oldPrice: 399 ,img: --- ,rating: 4.5,reviews: 55,desc " Anti-dust , SMOOTH TOUCH.'}
+{id: 7,name: 'CLEAR SCRATCH GUARD',cat: SCRATCH GUARD' ',price: 249 , oldPrice: 399 ,img: --- ,rating: 4.5,reviews: 55,desc " Anti-dust , SMOOTH TOUCH.'}
+{id: 8,name: 'GORRILA GLASS 6D D+',cat:TEMPER GLASS '',price: 149 , oldPrice: 699 ,img: --- ,rating: 4.5,reviews: 55,desc " Anti-dust ,Big Edge, glass shield .' brand ROPI ,MLETUBL,G-TEL}
+{id: 9,name: 'ESD+ 11D ',cat:TEMPER GLASS '',price: 89 , oldPrice: 199 ,img: --- ,rating: 4.5,reviews: 55,desc " ,Full glass, Protection glass  .' brand .G-TEL}
+{id: 10,name: '0.3MM GLASS',cat: TEMPER GLASS ' ',price: 49 , oldPrice: 99 ,img: --- ,rating: 4.5,reviews: 55,desc " Anti-dust ,Big Edge, glass shield .' brand ESD ,g-tel}
+
+                                                     BATTERY CATEGORY.>>>>
+
+{id: 11,name: '5C Li-ion battery',price ',cat: Battery': 199 , oldPrice: 299 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.' brand OUD,VALI}
+{id: 12,name: 'X200 Li-ion battery',price ',cat: Battery': 199 , oldPrice: 299 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.' brand OUD,VALI}
+{id: 13,name: 'JIO Li-ion battery',price ',cat: Battery': 249 , oldPrice: 299 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.' brand JIO }
+{id: 14,name: 'LAVA LEB 023  Li-ion battery',price ',cat: Battery': 399 , oldPrice: 599 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.}
+{id: 15,name: 'LAVA LEB 024  Li-ion battery',price ',cat: Battery': 399 , oldPrice: 599 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.}
+{id: 16,name: 'Li-ion battery',price ',cat: Battery': 899 , oldPrice: 1799 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.' brand OUD,TRECON}
+{id: 17,name: 'Li-ion battery',price ',cat: Battery': 1399 , oldPrice: 1999 ,img: --- ,rating: 4.5,reviews: 55,desc " smart&efficent ,composite protection.' brand OUD,TRECON}
+
+                                                    HEADPHONES CATEGORY.>>>>
+
+{id: 18,name: ' Nylonwire ',cat: EARPHONE '',price: 99 , oldPrice: 299 ,img: --- ,rating: 4.5,reviews: 55,desc ", lightweight, stereo sound effect ' brand OUD & 7colors,}
+{id: 19,name: ' C-type WIRE Earphone' ,cat: 'EARPHONE',price:299 , oldPrice: 499  ,img: --- ,rating: 4.5,reviews: 55, desc ",noise reduction, Super Bass ' brand   OUD, boAt.}
+{id: 20,name: 'IoS-WIRE Earphone ',cat: 'EARPHONE ',price:499, oldPrice: 999 ,img: --- ,rating: 4.5,reviews: 55, desc ",  noise reduction, Super Bass ' brand  OUD , NIRMAX}
+{id: 21,name: 'WIRELESS NECKBAND',cat: 'NECKBAND ',price: 999 , oldPrice: 1499 ,img: --- ,rating: 4.5,reviews: 55,desc " Vibration function, Magnetic ON/OFF.' brand OUD , AROMA }
+{id: 22,name: 'Black pods',cat: ' AIRDOPES ',price: 999 , oldPrice: 1399 ,img: --- ,rating: 4.5,reviews: 55,desc 5.4 BT Version , Inductive Touch " .' brand OUD , zebronics }
+{id: 23,name: 'Headphone With MIC',cat: ' HEADPHONE ',price: 499 , oldPrice: 1299 ,img: --- ,rating: 4.5,reviews: 55,desc IN-LINE MIC, 40 MM DRIVERS , 3.5 MM JACK" .' brand, zebronics }
+
+                                                    DATA CABLE CATEGORY.>>>>
+
+
+{id: 24,name: 'C TYPE CABLE',cat: 'DATACABLE ',price:149 , oldPrice: 399 ,img: --- ,rating: 4.5,reviews: 55, desc : Fast charging , 1000mm length" .' brand OUD , zebronics, watts : 12W,65W}
+{id: 25,name: 'B TYPE CABLE ',cat: 'DATACABLE ',price: 99 , oldPrice: 299 ,img: --- ,rating: 4.5,reviews: 55,desc ", Fast Charging, 1000 mm length ' brand OUD , zebronics , Watts : 12W,65W}
+{id: 26,name: 'ios CABLE',cat: 'DATACABLE ',price: 199 , oldPrice: 499 ,img: --- ,rating: 4.5,reviews: 55,desc ", Fast Charging, 1000 mm length ' brand OUD , zebronics , Watts : 25W}
+{id: 27,name: '3 IN 1 CABLE',cat: 'DATACABLE ',price: 399 , oldPrice: 999 ,img: --- ,rating: 4.5,reviews: 55,desc ", Fast Charging, 1000 mm length ' brand OUD , Watts : 100W }
+{id: 28,name: 'C TO C CABLE ,cat: 'DATACABLE ',price: 249 , oldPrice: 599 ,img: --- ,rating: 4.5,reviews: 55,desc ", Fast Charging, 1000 mm length ' brand OUD , zebronics , Watts : 65W,120W}
+{id: 29,name: '2 TO 2 FAST DATA CABLE',cat: 'DATACABLE ',price: 299 , oldPrice: 999 ,img: --- ,rating: 4.5,reviews: 55,desc ", Fast Charging, 1000 mm length ' brand 7COLORS , Watts :65W }
+                                       
+                                                   SPEAKERS CATEGORY.>>>>
+
+{id: 30,name: ' TIN Wireless Speaker ',cat: 'SPEAKER ',price: 199 , oldPrice: 499 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+{id: 31,name: ' BOXY Wireless Speaker ',cat: 'SPEAKER ',price: 399 , oldPrice: 799 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+{id: 32,name: 'SOUND BAR',cat: 'SPEAKER ',price:899 , oldPrice:1499 ,img: --- ,rating: 4.5,reviews: 55, desc ", 6 hours Battery Backup' brand  OUD & MZ, watts 12 W }
+{id: 33,name: 'ROBOT Wireless Speaker ',cat: 'SPEAKER ',price: 699 , oldPrice: 1499 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+{id: 34,name: 'TYRE Wireless Speaker ',cat: 'SPEAKER ',price: 599 , oldPrice: 1299 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+{id: 35,name: 'RADIO Wireless Speaker ',cat: 'SPEAKER ',price: 599 , oldPrice: 1299 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+{id: 36,name: 'TOUR Wireless Speaker ',cat: 'SPEAKER ',price: 1499 , oldPrice: 2799 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+{id: 37,name: 'MASTER Wireless Speaker ',cat: 'SPEAKER ',price: 2499 , oldPrice: 3999 ,img: --- ,rating: 4.5,reviews: 55, desc ", TWS Function , Loud & Clear' brand OUD & MZ,}
+
+
+                                                  CHARGERS CATEGORY.>>>>
+
+
+{id: 38,name: 'C TYPE CHARGER',cat: 'CHARGER',price:600, oldPrice:1100 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :85W.} 
+{id: 39,name: 'C TYPE CHARGER,cat: 'CHARGER',price:1100 , oldPrice:2500 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :120W.}
+{id: 40,name: 'V8 B TYPE CHARGER',cat: 'CHARGER',price:199, oldPrice:799,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :15W.}
+{id: 41,name: 'V8 B TYPE CHARGER',cat: 'CHARGER',price:299, oldPrice:899 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :18W.}
+{id: 42,name: 'V8 B TYPE CHARGER',cat: 'CHARGER',price:450 , oldPrice:1100 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :45W.}
+{id: 43,name: 'V8 B TYPE CHARGER',cat: 'CHARGER',price:749 , oldPrice:1200 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :85W.}
+{id: 44,name: 'V8 B TYPE CHARGER',cat: 'CHARGER',price:1200 , oldPrice:2400 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors 
+Watts :120W.}
+{id: 45,name: 'C TYPE CHARGER',cat: 'CHARGER',price: 899, oldPrice:1800 ,img: ---,rating: 4.5,reviews: 55, desc ", High Efficiently and low power consumption' brand OUD & 7Colors Watts :85W.}
+{id: 46,name: 'PD CAR CHARGER',cat: 'CHARGER ',price: 299, oldPrice:999 ,img: ---,rating: 4.5,reviews: 55, desc ", Fast Charge and Smart Chip' brand Vali & Sonilex & OUD Watts :65W.}
+
+
+                                                 POWERBANK CATEGORY.>>>>
+
+
+{id: 47,name: '10000 mAh POWERBANK',cat: 'POWERBANK',price: 1199, oldPrice:2499 ,img: ---,rating: 4.5,reviews: 55, desc ", Fast Charge and Smart Chip' brand Vali  Watts :22W.}
+{id: 48,name: '12000 mAh POWERBANK',cat: 'POWERBANK',price: 1399, oldPrice:2599 ,img: ---,rating: 4.5,reviews: 55, desc ", Fast Charge and Smart Chip' brand Vali  Watts :22W.}
+{id: 49,name: '20000 mAh POWERBANK',cat: 'POWERBANK',price: 1799, oldPrice:2799 ,img: ---,rating: 4.5,reviews: 55, desc ", Fast Charge and Smart Chip' brand Vali  Watts :22W.}
+{id: 50,name: '22000 mAh POWERBANK',cat: 'POWERBANK',price: 1899, oldPrice:2999 ,img: ---,rating: 4.5,reviews: 55, desc ", Fast Charge and Smart Chip' brand Vali  Watts :22W.}
+{id: 51,name: '5000 mAh MagSafe POWERBANK',cat:POWERBANK ' DISPLAY ',price: 1299,oldPrice: 2499,img: --- ,rating: 4.5,reviews: 55, desc "  Fast Charge and Smart Chip' brand Vali  Watts :22W}
+{id: 52,name: '10000 mAh MagSafe POWERBANK',cat:POWERBANK ' DISPLAY ',price: 1499,oldPrice: 2999,img: --- ,rating: 4.5,reviews: 55, desc "  Fast Charge and Smart Chip' brand Vali  Watts :22W}
+
+
+                                                  STORAGE CATEGORY.>>>>
+
+{id: 53,name: '8 GB PENDRIVE',cat: STORAGE ' ,price: 449 ,oldPrice: 599,img: --- ,rating: 4.5,reviews: 55, desc "  USB 2.0 FLASH DRIVE ' brand SanDisk, WARRENTY 1 TEAR}
+{id: 54,name: '16 GB PENDRIVE',cat: STORAGE ',price: 529 ,oldPrice: 799,img: --- ,rating: 4.5,reviews: 55, desc "  USB 2.0 FLASH DRIVE ' brand SanDisk, WARRENTY 1YEAR }
+{id: 55,name: '32 GB PENDRIVE',cat: STORAGE ',price: 629 ,oldPrice: 999,img: --- ,rating: 4.5,reviews: 55, desc "  USB 2.0 FLASH DRIVE ' brand SanDisk, WARRENTY 1YEAR }
+{id: 56,name: '64 GB PENDRIVE',cat: STORAGE ',price: 799 ,oldPrice: 1299,img: --- ,rating: 4.5,reviews: 55, desc "  USB 2.0 FLASH DRIVE ' brand SanDisk, WARRENTY 1YEAR }
+{id: 57,name: '128 GB PENDRIVE',cat: STORAGE ',price: 1399 ,oldPrice:1699,img: --- ,rating: 4.5,reviews: 55, desc "  USB 2.0 FLASH DRIVE ' brand SanDisk, WARRENTY 1YEAR }
+{id: 58,name: '256 GB PENDRIVE',cat: STORAGE ',price: 2699 ,oldPrice:3499,img: --- ,rating: 4.5,reviews: 55, desc "  USB 2.0 FLASH DRIVE ' brand SanDisk, WARRENTY 1YEAR }
+
+
+{id: 59,name: '8 GB MEMORY CARD',cat: STORAGE ',price: 320 ,oldPrice : 599:,img: --- ,rating: 4.5,reviews: 55, desc "  UHS Class 1 / Class10 - microSDHC UHS-I ' brand SanDisk, WARRENTY 1YEAR}
+{id: 60,name: '16 GB MEMORY CARD',cat: STORAGE ',price: 419 ,oldPrice : 799:,img: --- ,rating: 4.5,reviews: 55, desc "  UHS Class 1 / Class10 - microSDHC UHS-I ' brand SanDisk, WARRENTY 1YEAR }
+{id: 61,name: '32 GB MEMORY CARD',cat: STORAGE ',price: 549 ,oldPrice : 999:,img: --- ,rating: 4.5,reviews: 55, desc "  UHS Class 1 / Class10 - microSDHC UHS-I ' brand SanDisk, WARRENTY 1YEAR}
+{id: 62,name: '64 GB MEMORY CARD',cat: STORAGE ',price: 749 ,oldPrice : 1199:,img: --- ,rating: 4.5,reviews: 55, desc "  UHS Class 1 / Class10 - microSDHC UHS-I ' brand SanDisk, WARRENTY 1YEAR}
+{id: 63,name: '128 GB MEMORY CARD',cat: STORAGE ',price: 1199,oldPrice : 1599:,img: --- ,rating: 4.5,reviews: 55, desc "  UHS Class 1 / Class10 - microSDHC UHS-I ' brand SanDisk, WARRENTY 1YEAR }
+{id: 64,name: '256 GB MEMORY CARD',cat: STORAGE ',price: 2549 ,oldPrice : 2799:,img: --- ,rating: 4.5,reviews: 55, desc "  UHS Class 1 / Class10 - microSDHC UHS-I ' brand SanDisk , WARRENTY 1YEAR}
+
+
+
+                                                          MOBILECOVERS CATEGORY.>>>>
+
+{id: 65,name: 'IPHONE X LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 66,name: 'IPHONE 11 LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 67,name: 'IPHONE 11 PRO LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 68,name: 'IPHONE 11 PRO MAX LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 69,name: 'IPHONE 12 LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 70,name: 'IPHONE 12 PRO LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 71,name: 'IPHONE 13 LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 72,name: 'IPHONE 13 PRO  LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 73,name: 'IPHONE 14 LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 74,name: 'IPHONE 14 PLUS LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 75,name: 'IPHONE 14 PRO MAX LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 76,name: 'IPHONE 15 LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 77,name: 'IPHONE 15PLUS LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 78,name: 'IPHONE 16  LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 79,name: 'IPHONE 16 PLUS LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 80,name: 'IPHONE 16 PRO LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 81,name: 'IPHONE 16 PRO MAX LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 82,name: 'IPHONE 17 LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+{id: 83,name: 'IPHONE 17 PRO MAX LUXURY CASE',cat: BACKCASE',price: 499 ,oldPrice : 799:,img: --- ,rating: 4.9,reviews: 55, desc " DESIGNED FOR FASION }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

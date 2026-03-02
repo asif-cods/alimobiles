@@ -943,6 +943,177 @@ ul {
   right: -22px !important;
 }
 
+
+/* Doorstep Repair Utility Section Styles */
+.doorstep-section {
+  background-color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.doorstep-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.section-header {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 2.25rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--blue), var(--red));
+  border-radius: 2px;
+}
+
+.benefit-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--blue-light);
+}
+
+.benefit-icon-box {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--blue-light), #e3f2fd);
+  color: var(--blue);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:nth-child(even) .benefit-icon-box {
+  background: linear-gradient(135deg, var(--red-light), #fff1f0);
+  color: var(--red);
+}
+
+.benefit-card:hover .benefit-icon-box {
+  transform: rotateY(180deg);
+}
+
+.benefit-card h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-dark);
+}
+
+.benefit-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cta-bottom {
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  margin-top: 4rem;
+  border: 1px solid var(--border);
+}
+
+.btn-call-tech {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+}
+
+.btn-call-tech:hover {
+  background: var(--red-dark);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4);
+}
+
+.btn-book-now {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+}
+
+.btn-book-now:hover {
+  background: var(--red-dark);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4);
+}
+
+/* Scroll Animation classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* =============================================
    HOT DEALS
    ============================================= */
